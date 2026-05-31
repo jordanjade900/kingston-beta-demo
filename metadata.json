@@ -1,0 +1,6 @@
+{
+  "name": "Kingston Beta",
+  "description": "A cinematic editorial website representing Jamaica's technology community.",
+  "requestFramePermissions": [],
+  "majorCapabilities": ["MAJOR_CAPABILITY_SERVER_SIDE_GEMINI_API"]
+}
