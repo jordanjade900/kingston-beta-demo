@@ -1,5 +1,5 @@
 import { motion, useReducedMotion, useScroll, useTransform } from "motion/react";
-import { ArrowUpRight, CalendarDays, MapPin, Mic2, UsersRound } from "lucide-react";
+import { ArrowUpRight } from "lucide-react";
 import { useRef } from "react";
 
 const images = {
@@ -12,29 +12,51 @@ const images = {
 
 const programs = [
   {
-    title: "Founder Rooms",
-    meta: "invite-led working sessions",
-    copy: "Small rooms for operators to sharpen ideas, compare notes, and leave with a next move.",
+    title: "Kingston BETA Meetup & Startup Stage",
+    meta: "longest-running tech event series",
+    copy: "The Caribbean's longest-running tech event series kicked off Jamaica's startup ecosystem on February 28, 2007.",
   },
   {
-    title: "Builder Labs",
-    meta: "hands-on technical workshops",
-    copy: "Practical sessions for developers, designers, and makers building useful products.",
+    title: "Kingston BETA | Tech Happy Hour",
+    meta: "monthly mixer",
+    copy: "A monthly mixer for tech entrepreneurs, digital creatives, tech talent, digital business owners, digital nomads, investors, and ecosystem supporters.",
   },
   {
-    title: "Demo Nights",
-    meta: "public product moments",
-    copy: "A stage for projects, prototypes, and early companies to meet the community.",
+    title: "Kingston BETA House | CoWorking Club",
+    meta: "daytime coworking club",
+    copy: "A daytime coworking club for people building what's next, hosted in great restaurants and spaces with food, energy, and ambitious builders.",
+  },
+  {
+    title: "Kingston BETA HitList",
+    meta: "invite-only matchmaking pitch dinners",
+    copy: "Curated dinners for entrepreneurs and digital business owners seeking an investor, loan, new business partner, or new market.",
   },
 ];
 
-const events = [
-  ["01", "Community Night", "Talks, demos, and open networking for Kingston's builders."],
-  ["02", "Prototype Review", "Bring a product, workflow, or rough idea and get sharp feedback."],
-  ["03", "Founder Circle", "A focused room for early operators building in and from Jamaica."],
+const blogPopouts = [
+  ["2012-2013", "Caribbean BETA", "First Caribbean tech entrepreneurship conference. Two editions, 32 teams pitching ideas, and 500 attendees from 6 Caribbean countries."],
+  ["2012", "Startup Showcase - Nairobi, Kenya", "Kingston BETA was invited to Fin4Ag to take Caribbean startups to the global stage at a major agri-finance conference."],
+  ["2013", "Jamaica's First Startup Weekend", "The second Startup Weekend in the Caribbean, helping kickstart Jamaica's startup culture and practical innovation movement."],
+  ["2018", "Kingston BETA Trend Forum", "The first blockchain and crypto event in Jamaica, introducing blockchain and digital currency discussions to the national stage."],
+  ["2022", "Future of Caribbean Money", "A hybrid conference with 300+ attendees from 12 countries and 40 speakers, produced with Crypto Isle, Microsoft, Mastercard, First Atlantic Commerce, and Simplified Lending."],
 ];
 
-export default function CultureStackSection() {
+const partnerLogos = [
+  { src: "/assets/logos/founder-room.svg", alt: "Founder Room" },
+  { src: "/assets/logos/builder-labs.svg", alt: "Builder Labs" },
+  { src: "/assets/logos/caribbean-devs.svg", alt: "Caribbean Devs" },
+  { src: "/assets/logos/startup-yard.svg", alt: "Startup Yard" },
+  { src: "/assets/logos/code-876.svg", alt: "Code 876" },
+  { src: "/assets/logos/digital-jamaica.svg", alt: "Digital Jamaica" },
+];
+
+type CulturePage = "community" | "programs" | "events";
+
+interface CultureStackSectionProps {
+  page?: CulturePage;
+}
+
+export default function CultureStackSection({ page }: CultureStackSectionProps) {
   const containerRef = useRef<HTMLDivElement>(null);
   const prefersReducedMotion = useReducedMotion();
   const { scrollYProgress } = useScroll({
@@ -42,111 +64,149 @@ export default function CultureStackSection() {
     offset: ["start start", "end end"],
   });
 
-  const communityScale = useTransform(scrollYProgress, [0, 0.42], [1, 0.94]);
-  const communityRotate = useTransform(scrollYProgress, [0, 0.42], [0, -1.8]);
   const programsScale = useTransform(scrollYProgress, [0.22, 0.72], [0.92, 1]);
   const programsY = useTransform(scrollYProgress, [0.22, 0.72], [36, 0]);
+  const showCommunity = !page || page === "community";
+  const showPrograms = !page || page === "programs" || page === "events";
+  const showEvents = !page || page === "events";
 
   return (
     <main ref={containerRef} className="relative bg-[#FAFAF7] text-editorial">
-      <section
-        id="community"
-        className="kb-scroll-section kb-section-edge kb-section-edge-flip relative overflow-hidden border-t border-editorial/10 bg-[#F4F2EC] px-4 py-20 sm:px-6 lg:min-h-screen lg:px-12 lg:py-24"
-      >
-        <motion.div
-          className="mx-auto grid max-w-[1700px] gap-8 lg:grid-cols-[0.92fr_1.08fr] lg:items-stretch"
-          style={
-            prefersReducedMotion
-              ? undefined
-              : { scale: communityScale, rotate: communityRotate }
-          }
+      {showCommunity && (
+        <section
+          id="community"
+          className="kb-section-edge relative overflow-hidden border-t border-editorial/10 bg-[#F7F5F0] px-4 py-20 sm:px-6 lg:min-h-screen lg:px-12 lg:py-24"
         >
-          <article className="relative overflow-hidden border border-editorial/10 bg-[#FAFAF7] p-6 md:p-8">
-            <div className="absolute right-0 top-0 h-full w-[34%] skew-x-[-16deg] bg-[#AFCB27]" />
-            <div className="relative z-10 max-w-2xl">
-              <p className="mb-5 inline-flex border border-editorial/10 bg-white px-3 py-2 text-xs font-black uppercase tracking-[0.18em] text-editorial/60">
-                Community
-              </p>
-              <h2 className="font-display text-5xl font-extrabold leading-[0.92] tracking-tight sm:text-6xl lg:text-7xl">
-                A room for people building what Kingston becomes next.
-              </h2>
-              <p className="mt-6 max-w-xl text-lg leading-relaxed text-editorial/68">
-                Kingston Beta is the gathering point: founders, developers,
-                designers, students, investors, and operators trading practical
-                knowledge in public.
-              </p>
-            </div>
-
-            <div className="relative z-10 mt-12 grid gap-3 sm:grid-cols-3">
-              {[
-                ["1,200+", "members in the network"],
-                ["100+", "events and workshops"],
-                ["20+", "partners and supporters"],
-              ].map(([value, label]) => (
-                <div key={label} className="border border-editorial/10 bg-white p-4">
-                  <p className="font-display text-4xl font-extrabold tracking-tight text-[#AFCB27]">
-                    {value}
-                  </p>
-                  <p className="mt-2 text-xs font-black uppercase tracking-[0.12em] text-editorial/55">
-                    {label}
-                  </p>
-                </div>
-              ))}
-            </div>
-          </article>
-
-          <div className="grid gap-3 md:grid-cols-5">
-            <figure className="relative min-h-[360px] overflow-hidden border border-editorial/10 bg-editorial md:col-span-3">
-              <img
-                src={images.communityHub}
-                alt="Kingston Beta community members collaborating"
-                className="h-full w-full object-cover"
-                loading="lazy"
-              />
-              <figcaption className="absolute bottom-4 left-4 max-w-[15rem] bg-[#FAFAF7] p-4 text-sm font-bold leading-tight">
-                Community-led spaces for serious builders, not passive audiences.
-              </figcaption>
-            </figure>
-
-            <div className="grid gap-3 md:col-span-2">
-              <div className="border border-editorial/10 bg-[#AFCB27] p-5">
-                <UsersRound className="mb-10" size={24} />
-                <p className="font-display text-4xl font-extrabold">People</p>
-                <p className="mt-2 text-sm font-bold leading-tight">
-                  A network that mixes skill, ambition, culture, and trust.
+          <div className="mx-auto max-w-[1700px]">
+            <div className="grid gap-10 lg:grid-cols-[0.86fr_1.14fr] lg:items-end">
+              <div>
+                <p className="mb-5 inline-flex bg-[#AFCB27] px-3 py-2 text-xs font-black uppercase tracking-[0.18em]">
+                  Join The Community
+                </p>
+                <h1 className="max-w-5xl font-display text-5xl font-extrabold leading-[0.92] tracking-tight sm:text-6xl lg:text-8xl">
+                  You Belong Here.
+                </h1>
+              </div>
+              <div className="max-w-3xl border-l-4 border-[#AFCB27] pl-6 text-xl font-semibold leading-relaxed text-editorial/64">
+                <p>
+                  Real people. Real resources. Real community that moves,
+                  grows, and shows up every single day.
+                </p>
+                <p className="mt-4">
+                  Get Kingston BETA member perks on the CDRS platform, plus
+                  the weekly SCI newsletter where events, stories, wins, and
+                  real talk keep showing up.
+                </p>
+                <p className="mt-4">
+                  The community is here for you.
                 </p>
               </div>
-              <figure className="min-h-[220px] overflow-hidden border border-editorial/10">
+            </div>
+
+            <div className="mt-12 grid gap-4 lg:grid-cols-3">
+              {[
+                ["Pitch + Feedback", "The Startup Stage gives entrepreneurs a recurring opportunity to present publicly, sharpen their pitch, and get real reactions."],
+                ["Credibility", "Being part of Kingston BETA signals that you are a serious, vetted entrepreneur, not just someone with an idea."],
+                ["Relationships", "The community creates the conditions for connections to form organically before the right opportunity arrives."],
+                ["Social Proof", "As Kingston BETA entrepreneurs win, every entrepreneur in the community benefits from the network's track record."],
+                ["Investor Access", "Kingston BETA brings global investors into the room with local entrepreneurs, creating deal opportunities that do not happen without the network."],
+              ].map(([title, copy]) => (
+                <article key={title} className="border border-editorial/10 bg-white p-6">
+                  <p className="font-display text-4xl font-extrabold">{title}</p>
+                  <p className="mt-5 text-base leading-relaxed text-editorial/62">
+                    {copy}
+                  </p>
+                  <a href="#contact" className="mt-8 inline-flex text-xs font-black uppercase tracking-[0.16em] text-[#1F7A3A]">
+                    Start here
+                  </a>
+                </article>
+              ))}
+            </div>
+
+            <div className="mt-4 grid gap-4 lg:grid-cols-[1.2fr_0.8fr]">
+              <figure className="relative min-h-[420px] overflow-hidden bg-editorial">
                 <img
-                  src={images.kingstonLandscape}
-                  alt="Kingston city and mountain landscape"
-                  className="h-full w-full object-cover"
+                  src={images.communityHub}
+                  alt="Kingston Beta community members collaborating"
+                  className="h-full w-full object-cover opacity-82"
                   loading="lazy"
                 />
+                <figcaption className="absolute bottom-5 left-5 max-w-sm bg-[#FAFAF7] p-5 text-sm font-bold leading-tight">
+                  Relationships built before you need them can open doors when
+                  the right opportunity arrives.
+                </figcaption>
               </figure>
+
+              <aside className="grid gap-4">
+                <div className="bg-editorial p-6 text-warm">
+                  <p className="text-xs font-black uppercase tracking-[0.18em] text-[#AFCB27]">
+                    Community signal
+                  </p>
+                  <div className="mt-8 grid gap-6">
+                    {[
+                      ["100,000+", "people directly impacted"],
+                      ["300+", "events across the ecosystem"],
+                      ["4", "micro-communities and networks"],
+                    ].map(([value, label]) => (
+                      <div key={label} className="border-t border-white/10 pt-4">
+                        <p className="font-display text-5xl font-extrabold text-[#AFCB27]">
+                          {value}
+                        </p>
+                        <p className="mt-2 text-xs font-black uppercase tracking-[0.16em] text-warm/55">
+                          {label}
+                        </p>
+                      </div>
+                    ))}
+                  </div>
+                </div>
+                <div className="border border-editorial/10 bg-[#AFCB27] p-6">
+                  <p className="text-xs font-black uppercase tracking-[0.18em]">
+                    Partner lane
+                  </p>
+                  <p className="mt-4 text-2xl font-extrabold leading-tight">
+                    Support the room with funding, space, media, knowledge, or
+                    founder access.
+                  </p>
+                </div>
+              </aside>
+            </div>
+
+            <div className="mt-4 border-y border-editorial/10 bg-[#F4F2EC] py-6 [mask-image:linear-gradient(to_right,transparent,black_12%,black_88%,transparent)]">
+              <div className="flex min-w-max animate-[kb-logo-cloud_60s_linear_infinite] gap-12 px-8">
+                {[...partnerLogos, ...partnerLogos].map((logo, index) => (
+                  <img
+                    key={`${logo.alt}-${index}`}
+                    src={logo.src}
+                    alt={logo.alt}
+                    className="h-6 opacity-65 grayscale"
+                    loading="lazy"
+                  />
+                ))}
+              </div>
             </div>
           </div>
-        </motion.div>
-      </section>
+        </section>
+      )}
 
-      <section
-        id="programs"
-        className="kb-scroll-section kb-section-edge relative overflow-hidden bg-[#FAFAF7] px-4 py-20 sm:px-6 lg:min-h-screen lg:px-12 lg:py-24"
-      >
+      {showPrograms && (
+        <section
+          id="programs"
+          className="kb-scroll-section kb-section-edge relative overflow-hidden bg-[#FAFAF7] px-4 py-20 sm:px-6 lg:min-h-screen lg:px-12 lg:py-24"
+        >
         <motion.div
           className="mx-auto grid max-w-[1700px] gap-10 lg:grid-cols-[0.72fr_1.28fr] lg:items-start"
           style={prefersReducedMotion ? undefined : { scale: programsScale, y: programsY }}
         >
           <div className="lg:sticky lg:top-16">
             <p className="mb-5 inline-flex bg-[#AFCB27] px-3 py-2 text-xs font-black uppercase tracking-[0.18em]">
-              Programs
+              Our Events
             </p>
             <h2 className="font-display text-5xl font-extrabold leading-[0.94] tracking-tight sm:text-6xl">
-              Practical formats for moving from conversation to output.
+              Our Roster of Events
             </h2>
             <p className="mt-6 max-w-md text-lg leading-relaxed text-editorial/65">
-              Each format exists to help members find collaborators, test ideas,
-              learn faster, and build with local context.
+              Every event format is designed for one reason: to put the right
+              people in the right room at the right moment.
             </p>
           </div>
 
@@ -182,41 +242,47 @@ export default function CultureStackSection() {
             ))}
           </div>
         </motion.div>
-      </section>
+        </section>
+      )}
 
-      <section
-        id="events"
-        className="kb-scroll-section kb-section-edge kb-section-edge-flip relative overflow-hidden bg-editorial px-4 py-20 text-warm sm:px-6 lg:px-12 lg:py-24"
-      >
+      {showEvents && (
+        <section
+          id="events"
+          className="kb-scroll-section kb-section-edge kb-section-edge-flip relative overflow-hidden bg-editorial px-4 py-20 text-warm sm:px-6 lg:px-12 lg:py-24"
+        >
         <div className="mx-auto grid max-w-[1700px] gap-8 lg:grid-cols-[1fr_1fr]">
           <div>
             <p className="mb-5 inline-flex border border-white/10 bg-white/5 px-3 py-2 text-xs font-black uppercase tracking-[0.18em] text-[#AFCB27]">
-              Events
+              Our Pioneering Tech Event Milestones
             </p>
             <h2 className="font-display text-5xl font-extrabold leading-[0.94] tracking-tight sm:text-6xl lg:text-7xl">
-              Designed to be attended, remembered, and acted on.
+              19 years of rooms that moved the ecosystem.
             </h2>
+            <p className="mt-6 max-w-xl text-lg leading-relaxed text-warm/62">
+              Kingston BETA has been at the center of Caribbean tech since
+              before most people knew there was a scene to build.
+            </p>
           </div>
 
           <div className="grid gap-3">
-            {events.map(([number, title, copy]) => (
+            {blogPopouts.map(([number, title, copy]) => (
               <article
                 key={title}
-                className="grid grid-cols-[4.5rem_1fr] border border-white/10 bg-white/[0.035]"
+                className="group grid min-h-[220px] border border-white/10 bg-white/[0.035] transition hover:bg-white/[0.075] sm:grid-cols-[7rem_1fr]"
               >
-                <div className="grid place-items-center border-r border-white/10 font-mono text-xs uppercase tracking-[0.18em] text-[#AFCB27]">
+                <div className="grid place-items-center border-b border-white/10 font-mono text-xs uppercase tracking-[0.18em] text-[#AFCB27] sm:border-b-0 sm:border-r">
                   {number}
                 </div>
-                <div className="p-5">
-                  <div className="flex items-start justify-between gap-4">
-                    <h3 className="font-display text-2xl font-extrabold">
-                      {title}
-                    </h3>
-                    <CalendarDays className="text-[#AFCB27]" size={20} />
-                  </div>
-                  <p className="mt-3 max-w-xl text-sm leading-relaxed text-warm/65">
+                <div className="flex flex-col justify-between p-6">
+                  <h3 className="font-display text-4xl font-extrabold">
+                    {title}
+                  </h3>
+                  <p className="mt-8 max-w-xl text-base leading-relaxed text-warm/65">
                     {copy}
                   </p>
+                  <span className="mt-8 inline-flex text-xs font-black uppercase tracking-[0.16em] text-[#AFCB27]">
+                    Milestone
+                  </span>
                 </div>
               </article>
             ))}
@@ -224,22 +290,23 @@ export default function CultureStackSection() {
             <div className="grid gap-3 border border-white/10 bg-[#AFCB27] p-5 text-editorial sm:grid-cols-[1fr_auto] sm:items-center">
               <div>
                 <p className="text-xs font-black uppercase tracking-[0.18em]">
-                  Next room
+                  Events Calendar
                 </p>
                 <p className="mt-2 text-2xl font-extrabold">
                   RSVP for the next Kingston Beta gathering.
                 </p>
               </div>
               <a
-              href="#about"
+              href="#contact"
                 className="kb-btn"
               >
-                Get details <MapPin size={16} />
+                Get details
               </a>
             </div>
           </div>
         </div>
-      </section>
+        </section>
+      )}
     </main>
   );
 }

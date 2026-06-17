@@ -1,7 +1,6 @@
 import React, { useState, useRef, useEffect, useMemo } from "react";
 import { gsap } from "gsap";
 import { useGSAP } from "@gsap/react";
-import Header from "./Header";
 import {
   ArrowRight,
   PlayCircle,
@@ -48,7 +47,11 @@ const KB_IMAGES = {
   builderLab: "/assets/kingston-beta-builder-lab-slide-v2.png",
 };
 
-export default function EcosystemHero() {
+interface EcosystemHeroProps {
+  playIntro?: boolean;
+}
+
+export default function EcosystemHero({ playIntro = false }: EcosystemHeroProps) {
   const containerRef = useRef<HTMLDivElement>(null);
   const commentsPanelRef = useRef<HTMLDivElement>(null);
   const curtainRef = useRef<HTMLDivElement>(null);
@@ -282,13 +285,7 @@ export default function EcosystemHero() {
         "(prefers-reduced-motion: reduce)",
       ).matches;
 
-      gsap.set(".mask-target", { yPercent: 100, opacity: 0 });
-      gsap.set(".hero-desc", { opacity: 0, y: 15 });
-      gsap.set(".metric-node", { opacity: 0, x: 20 });
-      gsap.set(".grid-col-tile", { opacity: 0, scale: 0.97, y: 18 });
-      gsap.set(".kb-hero-content-stage", { scale: 1.045 });
-
-      if (prefersReducedMotion) {
+      if (!playIntro) {
         gsap.set(curtainRef.current, { display: "none" });
         gsap.set(
           ".mask-target, .hero-desc, .metric-node, .grid-col-tile, .kb-hero-content-stage",
@@ -300,13 +297,33 @@ export default function EcosystemHero() {
         return;
       }
 
-      const playIntro = () => {
+      gsap.set(".mask-target", { yPercent: 100, opacity: 0 });
+      gsap.set(".hero-desc", { opacity: 0, y: 15 });
+      gsap.set(".metric-node", { opacity: 0, x: 20 });
+      gsap.set(".grid-col-tile", { opacity: 0, scale: 0.97, y: 18 });
+      gsap.set(".kb-hero-content-stage", { scale: 1.045 });
+
+      if (prefersReducedMotion) {
+        gsap.set(curtainRef.current, { display: "none" });
+        gsap.set(
+          ".mask-target, .hero-desc, .metric-node, .grid-col-tile, .kb-hero-content-stage, .kb-curtain-word, .kb-curtain-word-accent",
+          {
+            clearProps: "all",
+            opacity: 1,
+          },
+        );
+        return;
+      }
+
+      const runCurtainIntro = () => {
         const percent = { value: 0 };
         const percentEl = containerRef.current?.querySelector(
           ".kb-curtain-percent",
         );
 
         gsap.set(".kb-curtain-progress-bar", { scaleX: 0 });
+        gsap.set(".kb-curtain-word", { yPercent: 110, rotate: 2, opacity: 0 });
+        gsap.set(".kb-curtain-word-accent", { yPercent: 110, rotate: -2, opacity: 0 });
 
         const tl = gsap.timeline({
           defaults: { ease: "power3.out" },
@@ -318,18 +335,43 @@ export default function EcosystemHero() {
         tl.fromTo(
           ".kb-curtain-mark",
           { autoAlpha: 0, y: 10, scale: 0.94 },
-          { autoAlpha: 1, y: 0, scale: 1, duration: 0.86, ease: "power3.out" },
-        )
+          { autoAlpha: 1, y: 0, scale: 1, duration: 0.42, ease: "power3.out" },
+          )
           .fromTo(
-            ".kb-curtain-asset",
-            { rotate: -5, scale: 0.92 },
+            ".kb-curtain-word:not(.kb-curtain-word-accent)",
+            { yPercent: 110, rotate: 2, opacity: 0 },
             {
+              yPercent: 0,
               rotate: 0,
-              scale: 1.04,
-              duration: 2.15,
+              opacity: 1,
+              duration: 0.86,
+              stagger: 0.1,
+              ease: "expo.out",
+            },
+            "-=0.12",
+          )
+          .fromTo(
+            ".kb-curtain-word-accent",
+            { yPercent: 110, rotate: -2, opacity: 0 },
+            {
+              yPercent: 0,
+              rotate: 0,
+              opacity: 1,
+              duration: 0.86,
+              ease: "expo.out",
+            },
+            "-=0.68",
+          )
+          .to(
+            ".kb-curtain-word-accent",
+            {
+              textShadow: "0 0 22px rgba(175,203,39,0.32)",
+              duration: 0.5,
+              repeat: 1,
+              yoyo: true,
               ease: "sine.inOut",
             },
-            "<",
+            "-=0.32",
           )
           .to(
             ".kb-curtain-progress-bar",
@@ -338,7 +380,7 @@ export default function EcosystemHero() {
               duration: 2.15,
               ease: "power2.inOut",
             },
-            "-=0.1",
+            "-=0.92",
           )
           .to(
             percent,
@@ -435,19 +477,19 @@ export default function EcosystemHero() {
       let loadTimer: number | undefined;
 
       if (document.readyState === "complete") {
-        loadTimer = window.setTimeout(playIntro, 180);
+        loadTimer = window.setTimeout(runCurtainIntro, 180);
       } else {
-        window.addEventListener("load", playIntro, { once: true });
+        window.addEventListener("load", runCurtainIntro, { once: true });
       }
 
       return () => {
         if (loadTimer) {
           window.clearTimeout(loadTimer);
         }
-        window.removeEventListener("load", playIntro);
+        window.removeEventListener("load", runCurtainIntro);
       };
     },
-    { scope: containerRef },
+    { scope: containerRef, dependencies: [playIntro] },
   );
 
   // Toggle Like Handler
@@ -525,52 +567,41 @@ export default function EcosystemHero() {
       ref={containerRef}
       className="kb-hero-shell w-full min-h-screen lg:h-screen flex flex-col bg-[#F7F5F0] overflow-x-hidden lg:overflow-hidden select-none text-editorial"
     >
-      <div
-        ref={curtainRef}
-        className="kb-intro-curtain fixed inset-0 z-[999] bg-[#ECEDEA] text-editorial"
-        aria-hidden="true"
-      >
-        <div className="kb-curtain-panel absolute inset-0 flex items-center justify-center bg-[#ECEDEA]">
-          <div className="absolute inset-0 bg-[radial-gradient(circle_at_50%_42%,#FFFFFF_0%,#F4F4F1_34%,#E4E5E1_72%,#D7D8D3_100%)]" />
-          <div className="absolute inset-0 opacity-[0.12] [background-image:linear-gradient(to_right,rgba(17,17,17,0.05)_1px,transparent_1px),linear-gradient(to_bottom,rgba(17,17,17,0.05)_1px,transparent_1px)] [background-size:58px_58px]" />
-          <div className="kb-curtain-mark relative z-10 flex flex-col items-center justify-center">
-            <div className="kb-curtain-asset relative h-44 w-44 sm:h-52 sm:w-52">
-              <video
-                className="kb-curtain-video-glow absolute inset-0 h-full w-full object-contain"
-                src="/assets/3D/kingston-wave-loop.webm"
-                autoPlay
-                muted
-                loop
-                playsInline
-                preload="auto"
-              />
-              <div className="absolute inset-0 z-10">
-                <video
-                  className="kb-curtain-video h-full w-full object-contain"
-                  src="/assets/3D/kingston-wave-loop.webm"
-                  autoPlay
-                  muted
-                  loop
-                  playsInline
-                  preload="auto"
-                />
+      {playIntro && (
+        <div
+          ref={curtainRef}
+          className="kb-intro-curtain fixed inset-0 z-[999] bg-[#ECEDEA] text-editorial"
+          aria-hidden="true"
+        >
+          <div className="kb-curtain-panel absolute inset-0 flex items-center justify-center bg-[#ECEDEA]">
+            <div className="absolute inset-0 bg-[radial-gradient(circle_at_50%_42%,#FFFFFF_0%,#F4F4F1_34%,#E4E5E1_72%,#D7D8D3_100%)]" />
+            <div className="absolute inset-0 opacity-[0.12] [background-image:linear-gradient(to_right,rgba(17,17,17,0.05)_1px,transparent_1px),linear-gradient(to_bottom,rgba(17,17,17,0.05)_1px,transparent_1px)] [background-size:58px_58px]" />
+            <div className="kb-curtain-mark relative z-10 flex flex-col items-center justify-center text-center">
+              <div className="kb-curtain-title font-display text-[42px] font-extrabold leading-none tracking-[-0.055em] text-editorial sm:text-[58px]">
+                <span className="kb-curtain-word-wrap inline-block overflow-hidden pb-2">
+                  <span className="kb-curtain-word inline-block">Kingston</span>
+                </span>
+                <span className="kb-curtain-word-wrap ml-2 inline-block overflow-hidden pb-2 sm:ml-3">
+                  <span className="kb-curtain-word kb-curtain-word-accent inline-block text-[#AFCB27]">
+                    Beta
+                  </span>
+                </span>
               </div>
-            </div>
-            <div className="mt-4 text-center">
-              <p className="font-display text-[22px] font-extrabold tracking-tight text-editorial">
-                Kingston <span className="text-[#AFCB27]">Beta</span>
+              <p className="kb-curtain-tagline mt-3 text-[10px] font-black uppercase tracking-[0.28em] text-editorial/42">
+                Loading the room
               </p>
-              <div className="mx-auto mt-5 h-[2px] w-32 overflow-hidden bg-editorial/10">
-                <span className="kb-curtain-progress-bar block h-full origin-left scale-x-0 bg-[#AFCB27]" />
-              </div>
-              <div className="kb-curtain-percent mt-3 font-mono text-[10px] font-black tabular-nums tracking-[0.2em] text-editorial/48">
-                0%
+              <div className="mt-6 text-center">
+                <div className="mx-auto h-[2px] w-40 overflow-hidden bg-editorial/10 sm:w-48">
+                  <span className="kb-curtain-progress-bar block h-full origin-left scale-x-0 bg-[#AFCB27]" />
+                </div>
+                <div className="kb-curtain-percent mt-3 font-mono text-[10px] font-black tabular-nums tracking-[0.2em] text-editorial/48">
+                  0%
+                </div>
               </div>
             </div>
           </div>
         </div>
-      </div>
-      <Header />
+      )}
       <div className="kb-hero-content-stage flex-1 flex flex-col justify-start px-4 sm:px-6 lg:px-12 pb-8 lg:pb-6 pt-28 sm:pt-32 lg:pt-[146px] min-h-0 relative z-10">
         {/* SECTION 1: Dynamic Hero Text & Metrics Area (Takes ~24% Height on Desktop) */}
         <div className="w-full flex flex-col lg:flex-row justify-between items-start lg:items-end gap-5 lg:gap-10 py-4 lg:py-0 border-b border-editorial/5 shrink-0 z-20">
@@ -829,12 +860,12 @@ export default function EcosystemHero() {
                     300+
                   </h2>
                   <span className="rounded-full bg-warm/80 px-2.5 py-1 text-[9px] font-black uppercase tracking-[0.16em]">
-                    Active
+                    Events
                   </span>
                 </div>
                 <div className="flex justify-between items-end relative z-10">
                   <p className="max-w-[11rem] text-[13px] font-extrabold leading-tight text-editorial/90">
-                    Projects, ideas, and prototypes moving through the network.
+                    300+ events. 15 countries. 4 communities.
                   </p>
                   <div className="w-8 h-8 rounded-full bg-editorial text-warm flex items-center justify-center group-hover:rotate-45 transition-transform duration-300">
                     <ArrowRight size={14} />

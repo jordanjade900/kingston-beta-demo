@@ -7,6 +7,30 @@ const images = {
 };
 
 export default function AboutSection() {
+  const milestones = [
+    {
+      year: "1999",
+      title: "iGuide Jamaica",
+      copy: "Produced the first Jamaican and Caribbean Internet Guide, iGuide Jamaica.",
+    },
+    {
+      year: "2007",
+      title: "Kingston BETA",
+      copy: "The first technology community meetup in Jamaica and the Caribbean, helping kickstart the Jamaican tech startup scene.",
+    },
+    {
+      year: "2011",
+      title: "Caribbean BETA",
+      copy: "The first Caribbean tech entrepreneurship conference, with two editions, 32 teams pitching ideas, and 500 attendees from six Caribbean countries.",
+    },
+  ];
+
+  const whoItems = [
+    ["Founders", "Kingston BETA was initially co-founded by Ingrid Riley and Susan LeeQuee, two women entrepreneurs who funded the first event through Dutchpot Interactive."],
+    ["Leadership", "It is now led by Ingrid Riley, a multiple award-winning community and ecosystem builder, events producer, super connector, advisor, and speaker."],
+    ["Accolades", "Ingrid Riley has been called the Queen of Caribbean Tech and has been recognized by PSOJ, Techlinks Caribbean, Pitch Magazine UK, CaribizNetwork, and Caribbean Tech Collective."],
+  ];
+
   return (
     <section
       id="about"
@@ -36,17 +60,17 @@ export default function AboutSection() {
             <div className="flex items-start justify-between gap-4">
               <div>
                 <p className="font-display text-3xl font-extrabold tracking-tight">
-                  1,200+
+                  100,000+
                 </p>
                 <p className="mt-1 text-[11px] font-bold leading-tight text-editorial/55">
-                  community members, founders, creators, and operators.
+                  people directly impacted across Kingston BETA events and communities.
                 </p>
               </div>
               <TrendingUp size={18} className="text-[#1F7A3A]" />
             </div>
             <div className="mt-5 border-t border-editorial/10 pt-4">
               <div className="flex flex-wrap gap-1.5">
-                {["KB", "DEV", "876", "LAB", "JA", "OPS", "UX", "AI"].map(
+                {["300+ events", "15 countries", "3,000+ stories", "4 communities"].map(
                   (item) => (
                     <span
                       key={item}
@@ -65,7 +89,7 @@ export default function AboutSection() {
               Community signal
             </p>
             <p className="mt-3 text-xl font-extrabold text-[#AFCB27]">
-              Built in Kingston. Open to the region.
+              Jamaica. Caribbean. Diaspora
             </p>
           </div>
         </div>
@@ -78,21 +102,87 @@ export default function AboutSection() {
             About Us
           </h2>
           <p className="mt-8 max-w-xl text-lg leading-relaxed text-editorial/64">
-            Kingston Beta is Jamaica's practical technology community: a place
-            where founders, developers, designers, students, investors, and
-            operators meet to share knowledge, test ideas, and build momentum.
+            Kingston BETA kickstarted Jamaica's tech startup scene in 2007 and
+            remains the Caribbean and Diaspora's first and longest-running tech
+            event series and entrepreneur community.
           </p>
           <p className="mt-5 max-w-xl text-lg leading-relaxed text-editorial/64">
-            The platform exists for the people in the room. Events become
-            working sessions, conversations become collaborations, and the
-            culture of modern Caribbean technology gets sharper each time the
-            community gathers.
+            We just wanted to bring together people who loved the internet and
+            technology in one room, regularly, to share stories, trade ideas,
+            and inspire each other. That first meetup drew 90 people from 4
+            countries. We have not stopped since.
+          </p>
+          <p className="mt-5 max-w-xl text-lg leading-relaxed text-editorial/64">
+            Our mission is simple: to facilitate knowledge exchange, spark
+            innovation, fuel investment of all kinds, and foster new businesses
+            that transform industries, build wealth, and shift culture.
           </p>
 
           <a href="#community" className="kb-btn kb-btn-lime mt-10">
-            Explore More <ArrowUpRight size={17} />
+            Know More <ArrowUpRight size={17} />
           </a>
         </article>
+      </div>
+
+      <div className="mx-auto mt-18 max-w-[1500px] border-t border-editorial/10 pt-12 lg:mt-24 lg:pt-16">
+        <div className="grid gap-8 lg:grid-cols-[0.7fr_1.3fr]">
+          <div>
+            <p className="mb-5 inline-flex bg-editorial px-3 py-2 text-xs font-black uppercase tracking-[0.18em] text-warm">
+              Firsts
+            </p>
+            <h3 className="font-display text-4xl font-extrabold leading-[0.96] tracking-tight sm:text-5xl">
+              What We've Done So Far
+            </h3>
+          </div>
+          <div className="grid gap-3">
+            {milestones.map((milestone) => (
+              <article
+                key={milestone.title}
+                className="grid border border-editorial/10 bg-[#F4F2EC] p-5 md:grid-cols-[7rem_1fr] md:p-0"
+              >
+                <div className="border-editorial/10 md:border-r md:p-6">
+                  <p className="font-display text-4xl font-extrabold text-[#1F7A3A]">
+                    {milestone.year}
+                  </p>
+                </div>
+                <div className="pt-5 md:p-6">
+                  <h4 className="font-display text-3xl font-extrabold">
+                    {milestone.title}
+                  </h4>
+                  <p className="mt-4 text-base leading-relaxed text-editorial/64">
+                    {milestone.copy}
+                  </p>
+                </div>
+              </article>
+            ))}
+          </div>
+        </div>
+      </div>
+
+      <div className="mx-auto mt-18 max-w-[1500px] border-t border-editorial/10 pt-12 lg:mt-24 lg:pt-16">
+        <div className="grid gap-8 lg:grid-cols-[0.7fr_1.3fr]">
+          <div>
+            <p className="mb-5 inline-flex bg-[#AFCB27] px-3 py-2 text-xs font-black uppercase tracking-[0.18em]">
+              Founders
+            </p>
+            <h3 className="font-display text-4xl font-extrabold leading-[0.96] tracking-tight sm:text-5xl">
+              Built by women entrepreneurs. Led by a Caribbean tech connector.
+            </h3>
+          </div>
+          <div className="grid gap-3 md:grid-cols-3">
+            {whoItems.map(([title, copy], index) => (
+              <article key={title} className="border border-editorial/10 bg-white p-5">
+                <p className="font-mono text-xs text-editorial/36">0{index + 1}</p>
+                <h4 className="mt-12 font-display text-2xl font-extrabold">
+                  {title}
+                </h4>
+                <p className="mt-4 text-sm leading-relaxed text-editorial/60">
+                  {copy}
+                </p>
+              </article>
+            ))}
+          </div>
+        </div>
       </div>
     </section>
   );
