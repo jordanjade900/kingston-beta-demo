@@ -4,7 +4,7 @@ const footerLinks = [
   {
     heading: "Platform",
     links: [
-      { label: "Community", href: "#community" },
+      { label: "Community", href: "#events" },
       { label: "Programs", href: "#programs" },
       { label: "Events", href: "#events" },
     ],
@@ -13,7 +13,7 @@ const footerLinks = [
     heading: "Culture",
     links: [
       { label: "About", href: "#about" },
-      { label: "Manifesto", href: "#community" },
+      { label: "Manifesto", href: "#events" },
       { label: "Partners", href: "#partners" },
     ],
   },

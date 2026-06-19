@@ -1,11 +1,19 @@
 import type React from "react";
 import { ArrowUp } from "lucide-react";
 
-export default function BackToTopButton() {
+type BackToTopButtonProps = {
+  updateHash?: boolean;
+};
+
+export default function BackToTopButton({
+  updateHash = true,
+}: BackToTopButtonProps) {
   const handleBackToTop = (event: React.MouseEvent<HTMLAnchorElement>) => {
     event.preventDefault();
     window.scrollTo({ top: 0, behavior: "smooth" });
-    window.history.replaceState(null, "", "#top");
+    if (updateHash) {
+      window.history.replaceState(null, "", "#top");
+    }
   };
 
   return (

@@ -1,4 +1,5 @@
 import { ArrowUpRight, TrendingUp } from "lucide-react";
+import { eventMilestones } from "../data/siteContent";
 
 const images = {
   communityHub: "/assets/kingston-beta-community-hub-v2.png",
@@ -25,10 +26,13 @@ export default function AboutSection() {
     },
   ];
 
-  const whoItems = [
-    ["Founders", "Kingston BETA was initially co-founded by Ingrid Riley and Susan LeeQuee, two women entrepreneurs who funded the first event through Dutchpot Interactive."],
-    ["Leadership", "It is now led by Ingrid Riley, a multiple award-winning community and ecosystem builder, events producer, super connector, advisor, and speaker."],
-    ["Accolades", "Ingrid Riley has been called the Queen of Caribbean Tech and has been recognized by PSOJ, Techlinks Caribbean, Pitch Magazine UK, CaribizNetwork, and Caribbean Tech Collective."],
+  const ingridAwards = [
+    '"Queen of Caribbean Tech" - Caribbean Media (2012)',
+    "PSOJ Game Changer Award (2012)",
+    "Techlinks Caribbean Innovators Award (2013)",
+    '"Caribbean Future Proofer" - Pitch Magazine UK (2019)',
+    "CaribizNetwork Top 150 Caribbean Boss Ladies (2026)",
+    "Caribbean Tech Collective - Top Caribbean Tech Stars (2026)",
   ];
 
   return (
@@ -59,7 +63,7 @@ export default function AboutSection() {
           <div className="absolute right-[10%] top-0 w-[250px] border border-editorial/10 bg-white p-5 shadow-[0_22px_55px_rgba(17,17,17,0.08)]">
             <div className="flex items-start justify-between gap-4">
               <div>
-                <p className="font-display text-3xl font-extrabold tracking-tight">
+                  <p className="kb-stat-value font-display text-3xl font-extrabold tracking-tight">
                   100,000+
                 </p>
                 <p className="mt-1 text-[11px] font-bold leading-tight text-editorial/55">
@@ -118,7 +122,7 @@ export default function AboutSection() {
             that transform industries, build wealth, and shift culture.
           </p>
 
-          <a href="#community" className="kb-btn kb-btn-lime mt-10">
+          <a href="#events" className="kb-btn kb-btn-lime mt-10">
             Know More <ArrowUpRight size={17} />
           </a>
         </article>
@@ -138,10 +142,10 @@ export default function AboutSection() {
             {milestones.map((milestone) => (
               <article
                 key={milestone.title}
-                className="grid border border-editorial/10 bg-[#F4F2EC] p-5 md:grid-cols-[7rem_1fr] md:p-0"
+                className="grid border border-editorial/10 bg-[#F4F2EC] p-5 md:grid-cols-[10rem_1fr] md:p-0"
               >
-                <div className="border-editorial/10 md:border-r md:p-6">
-                  <p className="font-display text-4xl font-extrabold text-[#1F7A3A]">
+                <div className="flex items-start border-editorial/10 md:border-r md:p-6">
+                  <p className="kb-stat-value font-display text-3xl font-extrabold text-[#1F7A3A] xl:text-4xl">
                     {milestone.year}
                   </p>
                 </div>
@@ -160,25 +164,127 @@ export default function AboutSection() {
       </div>
 
       <div className="mx-auto mt-18 max-w-[1500px] border-t border-editorial/10 pt-12 lg:mt-24 lg:pt-16">
-        <div className="grid gap-8 lg:grid-cols-[0.7fr_1.3fr]">
+        <div className="mb-8 grid gap-6 lg:grid-cols-[0.42fr_1.58fr] lg:items-end">
           <div>
-            <p className="mb-5 inline-flex bg-[#AFCB27] px-3 py-2 text-xs font-black uppercase tracking-[0.18em]">
+            <p className="inline-flex bg-[#AFCB27] px-3 py-2 text-xs font-black uppercase tracking-[0.18em]">
               Founders
             </p>
-            <h3 className="font-display text-4xl font-extrabold leading-[0.96] tracking-tight sm:text-5xl">
-              Built by women entrepreneurs. Led by a Caribbean tech connector.
+          </div>
+          <p className="max-w-4xl text-lg font-semibold leading-relaxed text-editorial/68 sm:text-xl">
+            Kingston BETA was initially co-founded by Ingrid Riley and Susan
+            LeeQuee, two women entrepreneurs who founded and funded the very
+            first event from their then digital agency business - Dutchpot
+            Interactive.
+          </p>
+        </div>
+
+        <article className="overflow-hidden bg-editorial text-warm">
+          <div className="grid lg:grid-cols-[0.82fr_1.18fr]">
+            <figure className="relative min-h-[560px] overflow-hidden bg-[#F4F2EC] lg:min-h-[760px]">
+              <img
+                src="/assets/ingrid-riley-founder.png"
+                alt="Ingrid Riley, founder and current leader of Kingston BETA"
+                className="absolute inset-0 h-full w-full object-cover object-center"
+                loading="lazy"
+              />
+              <div className="absolute inset-x-0 bottom-0 bg-[linear-gradient(180deg,transparent,rgba(17,17,17,0.86))] px-6 pb-7 pt-32 sm:px-8">
+                <p className="font-mono text-[10px] font-black uppercase tracking-[0.2em] text-[#C7E51D]">
+                  Founder / Current Lead
+                </p>
+                <h3 className="mt-3 font-display text-5xl font-extrabold leading-none sm:text-6xl">
+                  Ingrid Riley
+                </h3>
+              </div>
+            </figure>
+
+            <div className="flex flex-col p-6 sm:p-9 lg:p-12">
+              <div>
+                <p className="text-xs font-black uppercase tracking-[0.2em] text-[#AFCB27]">
+                  Community + Ecosystem Builder
+                </p>
+                <p className="mt-6 max-w-3xl text-xl font-semibold leading-relaxed text-warm/82">
+                  It is now led by Ingrid Riley, a multiple award-winning
+                  community and ecosystem builder, events producer, super
+                  connector, advisor and speaker.
+                </p>
+                <p className="mt-5 max-w-3xl text-base leading-relaxed text-warm/60">
+                  Ingrid Riley&apos;s name has been synonymous with Caribbean Tech
+                  for 19 years and she has won many awards and accolades.
+                </p>
+              </div>
+
+              <div className="mt-10 border-t border-white/12 pt-7">
+                <p className="text-xs font-black uppercase tracking-[0.18em] text-[#AFCB27]">
+                  A few awards and accolades
+                </p>
+                <ul className="mt-5 grid gap-3">
+                  {ingridAwards.map((award) => (
+                    <li
+                      key={award}
+                      className="grid grid-cols-[1.5rem_1fr] gap-3 text-sm leading-relaxed text-warm/72 sm:text-base"
+                    >
+                      <span className="font-mono font-black text-[#AFCB27]">+</span>
+                      <span>{award}</span>
+                    </li>
+                  ))}
+                </ul>
+              </div>
+
+              <blockquote className="mt-10 bg-[#AFCB27] p-6 text-editorial sm:p-8">
+                <p className="font-display text-xl font-extrabold italic leading-snug sm:text-2xl">
+                  &ldquo;My intention has always been about connecting Caribbean
+                  people to the opportunities of this Digital Age and to help
+                  them take full advantage of it. To help reposition the
+                  Caribbean as a place where entrepreneurship, innovation and
+                  excellence lives. Beyond the Beach.&rdquo;
+                </p>
+                <footer className="mt-6 text-xs font-black uppercase tracking-[0.14em]">
+                  Ingrid Riley / Founder of SiliconCaribe
+                </footer>
+              </blockquote>
+            </div>
+          </div>
+
+          <div className="grid border-t border-white/10 bg-white/[0.04] p-6 sm:grid-cols-[0.38fr_1.62fr] sm:items-center sm:p-8">
+            <p className="text-xs font-black uppercase tracking-[0.18em] text-[#AFCB27]">
+              Founding acknowledgment
+            </p>
+            <p className="mt-4 text-base leading-relaxed text-warm/62 sm:mt-0">
+              Susan LeeQuee is acknowledged as Kingston BETA&apos;s initial
+              co-founder and as part of the Dutchpot Interactive team that
+              founded and funded the first event.
+            </p>
+          </div>
+        </article>
+      </div>
+
+      <div className="mx-auto mt-18 max-w-[1500px] border-t border-editorial/10 pt-12 lg:mt-24 lg:pt-16">
+        <div className="grid gap-6 bg-editorial p-5 text-warm lg:grid-cols-[0.72fr_1.28fr] lg:p-8">
+          <div className="min-h-[360px] bg-[#AFCB27] p-6 text-editorial">
+            <p className="text-xs font-black uppercase tracking-[0.18em]">
+              Our Pioneering Tech Event Milestones
+            </p>
+            <h3 className="mt-10 font-display text-4xl font-extrabold leading-[0.94] sm:text-5xl">
+              The rooms that moved the scene forward.
             </h3>
           </div>
-          <div className="grid gap-3 md:grid-cols-3">
-            {whoItems.map(([title, copy], index) => (
-              <article key={title} className="border border-editorial/10 bg-white p-5">
-                <p className="font-mono text-xs text-editorial/36">0{index + 1}</p>
-                <h4 className="mt-12 font-display text-2xl font-extrabold">
-                  {title}
-                </h4>
-                <p className="mt-4 text-sm leading-relaxed text-editorial/60">
-                  {copy}
+          <div className="grid gap-3">
+            {eventMilestones.map((milestone) => (
+              <article
+                key={`${milestone.year}-${milestone.title}`}
+                className="grid gap-4 border border-white/10 bg-white/[0.04] p-5 transition hover:bg-white/[0.075] md:grid-cols-[8rem_1fr]"
+              >
+                <p className="kb-stat-value font-mono text-xs font-black uppercase tracking-[0.18em] text-[#AFCB27]">
+                  {milestone.year}
                 </p>
+                <div>
+                  <h4 className="font-display text-2xl font-extrabold">
+                    {milestone.title}
+                  </h4>
+                  <p className="mt-3 text-sm leading-relaxed text-warm/62">
+                    {milestone.copy}
+                  </p>
+                </div>
               </article>
             ))}
           </div>

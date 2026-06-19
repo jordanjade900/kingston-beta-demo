@@ -287,13 +287,48 @@ export default function EcosystemHero({ playIntro = false }: EcosystemHeroProps)
 
       if (!playIntro) {
         gsap.set(curtainRef.current, { display: "none" });
-        gsap.set(
-          ".mask-target, .hero-desc, .metric-node, .grid-col-tile, .kb-hero-content-stage",
-          {
-            clearProps: "all",
-            opacity: 1,
-          },
-        );
+        if (prefersReducedMotion) {
+          gsap.set(
+            ".mask-target, .hero-desc, .metric-node, .grid-col-tile, .kb-hero-content-stage",
+            {
+              clearProps: "all",
+              opacity: 1,
+            },
+          );
+          return;
+        }
+
+        gsap
+          .timeline({ defaults: { ease: "power3.out" } })
+          .fromTo(
+            ".kb-hero-content-stage",
+            { autoAlpha: 0, y: 22, scale: 1.012 },
+            { autoAlpha: 1, y: 0, scale: 1, duration: 0.9 },
+          )
+          .fromTo(
+            ".mask-target",
+            { yPercent: 24, opacity: 0 },
+            { yPercent: 0, opacity: 1, duration: 0.7, stagger: 0.07 },
+            "-=0.54",
+          )
+          .fromTo(
+            ".hero-desc",
+            { opacity: 0, y: 12 },
+            { opacity: 1, y: 0, duration: 0.58 },
+            "-=0.44",
+          )
+          .fromTo(
+            ".metric-node",
+            { opacity: 0, x: 14 },
+            { opacity: 1, x: 0, duration: 0.52, stagger: 0.06 },
+            "-=0.42",
+          )
+          .fromTo(
+            ".grid-col-tile",
+            { opacity: 0, y: 16, scale: 0.985 },
+            { opacity: 1, y: 0, scale: 1, duration: 0.72, stagger: 0.045 },
+            "-=0.42",
+          );
         return;
       }
 
@@ -686,7 +721,7 @@ export default function EcosystemHero({ playIntro = false }: EcosystemHeroProps)
             </div>
 
             <div className="flex flex-row flex-wrap items-center gap-3 w-full sm:w-auto">
-              <a href="#community" className="kb-btn kb-btn-lime metric-node">
+              <a href="#events" className="kb-btn kb-btn-lime metric-node">
                 Join Community <ArrowRight size={15} />
               </a>
               <button className="metric-node hidden sm:flex items-center gap-1.5 text-xs text-editorial font-bold hover:opacity-75 transition-opacity py-3 px-2 cursor-pointer">
@@ -700,9 +735,9 @@ export default function EcosystemHero({ playIntro = false }: EcosystemHeroProps)
         {/* SECTION 2: Horizontal Scroll Row of Editorial Dashboard Tiles (Takes ~74% Height on Desktop) */}
         <div className="flex-none min-h-0 w-full relative z-10 flex items-center mt-6 lg:mt-8 mb-2">
           {/* Scrollable responsive wrapper container */}
-          <div className="kb-tile-board mx-auto w-full max-w-[1540px] h-auto lg:h-[min(38vh,370px)] max-h-none grid grid-cols-2 md:grid-cols-6 lg:grid-cols-9 lg:grid-rows-6 gap-3 md:gap-4 lg:gap-5 overflow-visible pb-2 pt-1">
+          <div className="kb-tile-board mx-auto w-full max-w-[1540px] h-auto max-h-none grid grid-cols-2 gap-3 overflow-visible pb-2 pt-1 min-[720px]:grid-cols-5 min-[720px]:gap-4 lg:h-[min(38vh,370px)] lg:grid-cols-9 lg:grid-rows-6 lg:gap-5">
             {/* COLUMN 1: Visual Kingston Hub card */}
-            <div className="grid-col-tile col-span-2 md:col-span-4 lg:col-span-5 lg:row-span-6 flex min-h-[280px] md:min-h-[330px] lg:min-h-0">
+            <div className="grid-col-tile col-span-2 flex min-h-[280px] min-[720px]:col-span-2 min-[720px]:min-h-[430px] lg:col-span-5 lg:row-span-6 lg:min-h-0">
               <div className="flex-1 rounded-[1.65rem] bg-[#EAE8E2] border border-black/10 overflow-hidden relative shadow-[0_20px_56px_rgba(17,17,17,0.11)] flex flex-col justify-between p-5 lg:p-5 group hover:scale-[1.006] transition-transform duration-500">
                 {/* Background cover image */}
                 <div className="absolute inset-0 z-0">
@@ -777,7 +812,7 @@ export default function EcosystemHero({ playIntro = false }: EcosystemHeroProps)
             </div>
 
             {/* COLUMN 2: Woman typing (65%) & Projects Green card (35%) */}
-            <div className="grid-col-tile col-span-2 md:col-span-2 lg:col-span-4 lg:row-span-6 flex min-h-[320px] flex-col gap-3 md:gap-4 lg:min-h-0 lg:gap-5">
+            <div className="grid-col-tile col-span-2 flex min-h-[320px] flex-col gap-3 min-[720px]:col-span-3 min-[720px]:min-h-[430px] min-[720px]:gap-4 lg:col-span-4 lg:row-span-6 lg:min-h-0 lg:gap-5">
               {/* Top Coding card with live comments trigger */}
               <div className="flex-[1.25] rounded-[1.4rem] bg-stone-950 overflow-hidden relative shadow-[0_16px_44px_rgba(17,17,17,0.13)] flex flex-col justify-between p-4 group hover:scale-[1.006] transition-transform duration-500">
                 <div className="absolute inset-0 z-0">
@@ -856,7 +891,7 @@ export default function EcosystemHero({ playIntro = false }: EcosystemHeroProps)
                   }}
                 ></div>
                 <div className="relative z-10 flex items-start justify-between">
-                  <h2 className="font-display text-5xl font-extrabold text-editorial tracking-tighter m-0 leading-none">
+                  <h2 className="kb-stat-value font-display text-5xl font-extrabold text-editorial tracking-tighter m-0 leading-none">
                     300+
                   </h2>
                   <span className="rounded-full bg-warm/80 px-2.5 py-1 text-[9px] font-black uppercase tracking-[0.16em]">
