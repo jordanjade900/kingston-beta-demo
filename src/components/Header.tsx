@@ -143,12 +143,12 @@ export default function Header() {
         >
           <motion.a
             href="#events"
-            className="kb-nav-event-button hidden min-h-[42px] items-center justify-center bg-editorial px-5 text-[12px] font-bold text-warm transition hover:bg-[#1F7A3A] focus-visible:outline focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-[#AFCB27] lg:flex"
+            className="kb-nav-event-button hidden min-h-[42px] items-center justify-center px-5 text-[12px] font-bold text-editorial transition hover:bg-white/60 focus-visible:outline focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-[#AFCB27] lg:flex"
             onClick={() => setIsMenuOpen(false)}
             whileHover={{ y: -1 }}
             whileTap={{ scale: 0.985 }}
           >
-            Events Calendar
+            Events
           </motion.a>
 
           <motion.button
@@ -223,7 +223,7 @@ export default function Header() {
               transition={{ duration: 0.34, ease: [0.16, 1, 0.3, 1], delay: 0.24 }}
               whileTap={{ scale: 0.985 }}
             >
-              Events Calendar
+              Events
             </motion.a>
           </motion.div>
         )}

@@ -1,58 +1,52 @@
-﻿[
+[
     {
-        "slug":  "2007-community-meetup",
-        "query":  "technology meetup audience",
-        "file":  "/assets/whos-who/2007-community-meetup.jpg",
-        "photographer":  "Tima Miroshnichenko",
-        "pexels_url":  "https://www.pexels.com/photo/people-inside-a-movie-theater-7991475/"
+        "slug":  "networking-conversation",
+        "file":  "/assets/whos-who/networking-conversation.png",
+        "label":  "Ingrid Hosting Early Kingston BETA"
     },
     {
-        "slug":  "2011-startup-stage",
-        "query":  "startup pitch presentation audience",
-        "file":  "/assets/whos-who/2011-startup-stage.jpg",
-        "photographer":  "RDNE Stock project",
-        "pexels_url":  "https://www.pexels.com/photo/man-in-black-suit-standing-near-black-and-white-projector-screen-9034760/"
+        "slug":  "christopher-karin-holta",
+        "file":  "/assets/whos-who/christopher-karin-holta.png",
+        "label":  "Christopher \u0026 Karin"
     },
     {
-        "slug":  "2013-workshop",
-        "query":  "people workshop collaboration laptop",
-        "file":  "/assets/whos-who/2013-workshop.jpg",
-        "photographer":  "Matheus Bertelli",
-        "pexels_url":  "https://www.pexels.com/photo/business-training-course-18999469/"
+        "slug":  "seminar-audience",
+        "file":  "/assets/whos-who/seminar-audience.png",
+        "label":  "In the Room"
     },
     {
-        "slug":  "2018-blockchain-forum",
-        "query":  "technology conference speaker stage",
-        "file":  "/assets/whos-who/2018-blockchain-forum.jpg",
-        "photographer":  "Matheus Bertelli",
-        "pexels_url":  "https://www.pexels.com/photo/modern-conference-presentation-with-speaker-on-stage-29708258/"
+        "slug":  "marc-ricardo-collaboration",
+        "file":  "/assets/whos-who/marc-ricardo-collaboration.png",
+        "label":  "Marc \u0026 Ricardo"
     },
     {
-        "slug":  "2022-money-conference",
-        "query":  "business conference networking",
-        "file":  "/assets/whos-who/2022-money-conference.jpg",
-        "photographer":  "RDNE Stock project",
-        "pexels_url":  "https://www.pexels.com/photo/women-standing-by-the-registration-booth-at-a-business-conference-7648057/"
+        "slug":  "community-participants",
+        "file":  "/assets/whos-who/community-participants.png",
+        "label":  "Community Session"
     },
     {
-        "slug":  "founder-circle",
-        "query":  "founders meeting boardroom",
-        "file":  "/assets/whos-who/founder-circle.jpg",
-        "photographer":  "MINEIA  MARTINS",
-        "pexels_url":  "https://www.pexels.com/photo/modern-conference-room-with-minimalist-design-34736064/"
+        "slug":  "ac-lounge-networking",
+        "file":  "/assets/whos-who/ac-lounge-networking.png",
+        "label":  "AC Lounge Evening"
     },
     {
-        "slug":  "builder-lab",
-        "query":  "software developers working laptop",
-        "file":  "/assets/whos-who/builder-lab.jpg",
-        "photographer":  "cottonbro studio",
-        "pexels_url":  "https://www.pexels.com/photo/men-sitting-at-the-desks-in-an-office-and-using-computers-6804068/"
+        "slug":  "events-full-house",
+        "file":  "/assets/whos-who/events-full-house.png",
+        "label":  "Full House"
     },
     {
-        "slug":  "community-archive",
-        "query":  "community event people talking",
-        "file":  "/assets/whos-who/community-archive.jpg",
-        "photographer":  "Caleb Oquendo",
-        "pexels_url":  "https://www.pexels.com/photo/casual-conversation-at-indoor-business-event-34623526/"
+        "slug":  "jampro-registration",
+        "file":  "/assets/whos-who/jampro-registration.png",
+        "label":  "Kingston BETA Check-In"
+    },
+    {
+        "slug":  "more-good-jobs-book",
+        "file":  "/assets/whos-who/more-good-jobs-book.png",
+        "label":  "Lucky Seat Winners"
+    },
+    {
+        "slug":  "kaseith-pegasus-jamaica",
+        "file":  "/assets/whos-who/kaseith-pegasus-jamaica.png",
+        "label":  "Kingston BETA Speaker Session"
     }
 ]

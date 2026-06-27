@@ -47,6 +47,13 @@ const KB_IMAGES = {
   builderLab: "/assets/kingston-beta-builder-lab-slide-v2.png",
 };
 
+const COMMUNITY_MEMBER_PORTRAITS = [
+  "/assets/community-members/member-1.jpg",
+  "/assets/community-members/member-2.jpg",
+  "/assets/community-members/member-3.jpg",
+  "/assets/community-members/member-4.jpg",
+];
+
 interface EcosystemHeroProps {
   playIntro?: boolean;
 }
@@ -676,60 +683,6 @@ export default function EcosystemHero({ playIntro = false }: EcosystemHeroProps)
             </p>
           </div>
 
-          {/* Right Side: Visual Metrics & Call To Actions */}
-          <div className="w-full lg:w-auto max-w-3xl flex flex-col sm:flex-row items-start sm:items-center justify-start gap-4 lg:gap-7 bg-black/5 p-3.5 sm:p-4 rounded-3xl shrink-0 overflow-hidden">
-            {/* Overlapping Crew Avatars & Member count */}
-            <div className="metric-node flex items-center justify-start gap-3 min-w-0">
-              <div className="flex -space-x-3.5">
-                <img
-                  src={KB_IMAGES.liveBuilder}
-                  className="w-11 h-11 rounded-full border-2 border-warm object-cover"
-                  alt="Member"
-                  referrerPolicy="no-referrer"
-                />
-                <img
-                  src={KB_IMAGES.buildingLearning}
-                  className="w-11 h-11 rounded-full border-2 border-warm object-cover"
-                  alt="Member"
-                  referrerPolicy="no-referrer"
-                />
-                <img
-                  src={KB_IMAGES.solutionsWorkshop}
-                  className="w-11 h-11 rounded-full border-2 border-warm object-cover"
-                  alt="Member"
-                  referrerPolicy="no-referrer"
-                />
-                <img
-                  src={KB_IMAGES.communityHub}
-                  className="w-11 h-11 rounded-full border-2 border-warm object-cover"
-                  alt="Member"
-                  referrerPolicy="no-referrer"
-                />
-              </div>
-              <div className="min-w-0">
-                <div className="font-extrabold text-[15px] text-editorial leading-tight">
-                  1,200+{" "}
-                  <span className="font-normal opacity-70">
-                    community members
-                  </span>
-                </div>
-                <div className="text-[12px] text-editorial/65 flex items-center gap-1 mt-0.5">
-                  <TrendingUp size={13} className="text-brand" /> and growing
-                  every day.
-                </div>
-              </div>
-            </div>
-
-            <div className="flex flex-row flex-wrap items-center gap-3 w-full sm:w-auto">
-              <a href="#events" className="kb-btn kb-btn-lime metric-node">
-                Join Community <ArrowRight size={15} />
-              </a>
-              <button className="metric-node hidden sm:flex items-center gap-1.5 text-xs text-editorial font-bold hover:opacity-75 transition-opacity py-3 px-2 cursor-pointer">
-                <PlayCircle size={22} className="text-editorial" /> See what
-                we're building
-              </button>
-            </div>
-          </div>
         </div>
 
         {/* SECTION 2: Horizontal Scroll Row of Editorial Dashboard Tiles (Takes ~74% Height on Desktop) */}
@@ -813,70 +766,41 @@ export default function EcosystemHero({ playIntro = false }: EcosystemHeroProps)
 
             {/* COLUMN 2: Woman typing (65%) & Projects Green card (35%) */}
             <div className="grid-col-tile col-span-2 flex min-h-[320px] flex-col gap-3 min-[720px]:col-span-3 min-[720px]:min-h-[430px] min-[720px]:gap-4 lg:col-span-4 lg:row-span-6 lg:min-h-0 lg:gap-5">
-              {/* Top Coding card with live comments trigger */}
-              <div className="flex-[1.25] rounded-[1.4rem] bg-stone-950 overflow-hidden relative shadow-[0_16px_44px_rgba(17,17,17,0.13)] flex flex-col justify-between p-4 group hover:scale-[1.006] transition-transform duration-500">
-                <div className="absolute inset-0 z-0">
-                  <img
-                    src={KB_IMAGES.buildingLearning}
-                    className="w-full h-full object-cover opacity-90 transition duration-700 group-hover:scale-[1.04]"
-                    alt="Kingston Beta builders learning together"
-                    referrerPolicy="no-referrer"
-                  />
-                </div>
-                <div className="absolute inset-0 bg-gradient-to-t from-black/88 via-black/10 to-black/30 z-[1]"></div>
-                <div className="absolute -right-8 top-0 z-[2] h-full w-20 skew-x-[-18deg] bg-[#AFCB27]/80"></div>
-
-                {/* Username badge */}
-                <div className="relative z-10 flex items-center gap-2">
-                  <img
-                    src={KB_IMAGES.liveBuilder}
-                    className="w-7 h-7 rounded-full border border-warm/40 object-cover"
-                    alt="KingstonBeta"
-                    referrerPolicy="no-referrer"
-                  />
-                  <div className="leading-none">
-                    <p className="text-[11px] font-bold text-warm">
-                      @kingstonbeta
-                    </p>
-                    <p className="text-[9px] text-warm/60">2h ago</p>
-                  </div>
-                </div>
-
-                {/* Captions and Call to action */}
-                <div className="relative z-10 space-y-3">
-                  <div className="text-warm max-w-[12rem]">
-                    <p className="mb-2 text-[9px] font-mono uppercase tracking-[0.16em] text-warm/72">
-                      Builder Rooms
-                    </p>
-                    <h4 className="font-display text-[20px] font-black leading-[0.98] tracking-tight">
-                      Building.
-                      <br />
-                      Learning.
-                    </h4>
-                    <p className="mt-1 text-[12px] opacity-80">
-                      Elevating together.
-                    </p>
-                  </div>
-
-                  <div
-                    onClick={() => openComments(posts[1])}
-                    className="flex items-center justify-between bg-white/10 hover:bg-white/15 active:scale-98 backdrop-blur-md rounded-full px-3.5 py-1.5 text-warm/80 leading-none cursor-pointer border border-white/5 transition"
-                  >
-                    <span className="text-[10px] font-medium">
-                      Add a comment...
-                    </span>
-                    <div className="flex items-center gap-1.5 text-white/50 hover:text-white transition">
-                      <Heart
-                        size={12}
-                        onClick={(e) => handleLike(2, e)}
-                        className="hover:scale-110 active:fill-red-500 hover:text-brand"
+              {/* Community members and calls to action, moved from the hero row */}
+              <div className="flex-[1.25] w-full max-w-3xl flex flex-col items-start justify-start gap-4 overflow-hidden rounded-3xl bg-black/5 p-3.5 sm:flex-row sm:items-center sm:p-4 lg:gap-7">
+                <div className="metric-node flex min-w-0 items-center justify-start gap-3">
+                  <div className="flex -space-x-4">
+                    {COMMUNITY_MEMBER_PORTRAITS.map((portrait, index) => (
+                      <img
+                        key={portrait}
+                        src={portrait}
+                        className="h-14 w-14 rounded-full border-2 border-warm object-cover object-top shadow-sm"
+                        alt={`Smiling Kingston BETA community member ${index + 1}`}
                       />
-                      <MessageCircle size={12} />
-                      <span className="text-[8px] font-bold">
-                        {posts[1].comments.length}
+                    ))}
+                  </div>
+                  <div className="min-w-0">
+                    <div className="text-[15px] font-extrabold leading-tight text-editorial">
+                      12,000+{" "}
+                      <span className="font-normal opacity-70">
+                        community members
                       </span>
                     </div>
+                    <div className="mt-0.5 flex items-center gap-1 text-[12px] text-editorial/65">
+                      <TrendingUp size={13} className="text-brand" /> and growing
+                      every day.
+                    </div>
                   </div>
+                </div>
+
+                <div className="flex w-full flex-row flex-wrap items-center gap-3 sm:w-auto">
+                  <a href="#events" className="kb-btn kb-btn-lime metric-node">
+                    Join Community <ArrowRight size={15} />
+                  </a>
+                  <button className="metric-node hidden items-center gap-1.5 px-2 py-3 text-xs font-bold text-editorial transition-opacity hover:opacity-75 sm:flex">
+                    <PlayCircle size={22} className="text-editorial" /> See what
+                    we're building
+                  </button>
                 </div>
               </div>
 

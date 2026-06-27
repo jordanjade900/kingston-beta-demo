@@ -5,7 +5,7 @@ const footerLinks = [
     heading: "Platform",
     links: [
       { label: "Community", href: "#events" },
-      { label: "Programs", href: "#programs" },
+      { label: "Programs", href: "#events" },
       { label: "Events", href: "#events" },
     ],
   },
@@ -13,7 +13,7 @@ const footerLinks = [
     heading: "Culture",
     links: [
       { label: "About", href: "#about" },
-      { label: "Manifesto", href: "#events" },
+      { label: "Who's Who", href: "#who" },
       { label: "Partners", href: "#partners" },
     ],
   },
@@ -30,14 +30,16 @@ const footerLinks = [
   },
 ];
 
-export default function SiteFooter() {
+export default function SiteFooter({ compact = false }: { compact?: boolean }) {
   return (
     <footer
       id="footer"
-      className="kb-scroll-section kb-section-edge relative overflow-hidden bg-[#FAFAF7] px-4 py-16 text-editorial sm:px-6 lg:px-12 lg:py-24"
+      className={`kb-scroll-section kb-section-edge relative overflow-hidden bg-[#FAFAF7] px-4 py-16 text-editorial sm:px-6 lg:px-12 lg:py-24 ${
+        compact ? "" : "kb-contact-footer-hard"
+      }`}
     >
       <div className="mx-auto max-w-[1700px]">
-        <div className="grid gap-3 lg:grid-cols-[1fr_1fr]">
+        {!compact && <div className="grid gap-3 lg:grid-cols-[1fr_1fr]">
           <section
             id="contact"
             className="relative overflow-hidden border border-editorial/10 bg-[#F4F2EC] p-6 md:p-8"
@@ -47,7 +49,7 @@ export default function SiteFooter() {
               <p className="mb-5 inline-flex bg-[#AFCB27] px-3 py-2 text-xs font-black uppercase tracking-[0.18em]">
                 Contact Us
               </p>
-              <h2 className="font-display text-5xl font-extrabold leading-[0.9] tracking-tight sm:text-6xl lg:text-7xl">
+              <h2 className="text-balance font-display text-4xl font-extrabold leading-[0.94] tracking-tight sm:text-5xl lg:text-7xl">
                 Bring your next room, program, or partnership into the network.
               </h2>
               <p className="mt-6 max-w-xl text-base leading-relaxed text-editorial/62">
@@ -109,9 +111,9 @@ export default function SiteFooter() {
               Plan a gathering <ArrowUpRight size={18} />
             </a>
           </section>
-        </div>
+        </div>}
 
-        <div className="mt-3 grid gap-3 text-sm text-editorial/65 sm:grid-cols-2 lg:grid-cols-4">
+        <div className={`${compact ? "" : "mt-3"} grid gap-3 text-sm text-editorial/65 sm:grid-cols-2 lg:grid-cols-4`}>
           {footerLinks.map((group) => (
             <div key={group.heading} className="border border-editorial/10 bg-white p-5">
               <p className="mb-3 font-black uppercase tracking-[0.16em] text-editorial">
@@ -145,7 +147,10 @@ export default function SiteFooter() {
           </div>
         </div>
 
-        <p className="mt-10 font-display text-[14vw] font-extrabold uppercase leading-[0.8] tracking-tight text-editorial/[0.045]">
+        <p
+          aria-hidden="true"
+          className="pointer-events-none mt-10 cursor-default select-none font-display text-[14vw] font-extrabold uppercase leading-[0.8] tracking-tight text-editorial/[0.045]"
+        >
           Kingston Beta
         </p>
         <p className="mt-6 text-left font-mono text-[10px] uppercase tracking-[0.2em] text-editorial/42">

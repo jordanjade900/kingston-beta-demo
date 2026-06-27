@@ -2,9 +2,7 @@ import { ArrowUpRight, TrendingUp } from "lucide-react";
 import { eventMilestones } from "../data/siteContent";
 
 const images = {
-  communityHub: "/assets/kingston-beta-community-hub-v2.png",
-  buildingLearning: "/assets/kingston-beta-building-learning-v2.png",
-  kingstonLandscape: "/assets/kingston-beta-kingston-landscape-v2.png",
+  aboutCommunitySignal: "/assets/kingston-beta-about-community-signal-correct.png",
 };
 
 export default function AboutSection() {
@@ -41,29 +39,20 @@ export default function AboutSection() {
       className="kb-scroll-section kb-section-edge border-y border-editorial/10 bg-[#FAFAF7] px-4 py-18 text-editorial sm:px-6 lg:px-12 lg:py-24"
     >
       <div className="mx-auto grid max-w-[1500px] gap-12 lg:grid-cols-[1.05fr_0.95fr] lg:items-center">
-        <div className="relative min-h-[560px]">
-          <figure className="absolute left-0 top-20 h-[310px] w-[46%] min-w-[210px] overflow-hidden border border-editorial/10 bg-[#F4F2EC] shadow-[0_24px_60px_rgba(17,17,17,0.1)]">
+        <div className="relative min-h-[680px]">
+          <figure className="absolute left-1/2 top-[225px] h-[360px] w-[66%] min-w-[280px] -translate-x-1/2 overflow-hidden border border-editorial/10 bg-[#F4F2EC] shadow-[0_26px_70px_rgba(17,17,17,0.13)]">
             <img
-              src={images.buildingLearning}
-              alt="Kingston Beta members learning and building together"
-              className="h-full w-full object-cover"
+              src={images.aboutCommunitySignal}
+              alt="Kingston Beta community members in conversation"
+              className="h-full w-full object-cover object-[52%_44%]"
               loading="lazy"
             />
           </figure>
 
-          <figure className="absolute bottom-4 right-0 h-[330px] w-[54%] min-w-[240px] overflow-hidden border border-editorial/10 bg-[#F4F2EC] shadow-[0_26px_70px_rgba(17,17,17,0.13)]">
-            <img
-              src={images.communityHub}
-              alt="Kingston Beta community members collaborating"
-              className="h-full w-full object-cover"
-              loading="lazy"
-            />
-          </figure>
-
-          <div className="absolute right-[10%] top-0 w-[250px] border border-editorial/10 bg-white p-5 shadow-[0_22px_55px_rgba(17,17,17,0.08)]">
+          <div className="absolute right-0 top-0 w-[250px] border border-editorial/10 bg-white p-5 shadow-[0_22px_55px_rgba(17,17,17,0.08)]">
             <div className="flex items-start justify-between gap-4">
               <div>
-                  <p className="kb-stat-value font-display text-3xl font-extrabold tracking-tight">
+                <p className="kb-stat-value font-display text-3xl font-extrabold tracking-tight">
                   100,000+
                 </p>
                 <p className="mt-1 text-[11px] font-bold leading-tight text-editorial/55">
@@ -88,7 +77,7 @@ export default function AboutSection() {
             </div>
           </div>
 
-          <div className="absolute bottom-0 left-[18%] border border-editorial/10 bg-white px-5 py-4 shadow-[0_20px_45px_rgba(17,17,17,0.08)]">
+          <div className="absolute bottom-0 left-0 border border-editorial/10 bg-white px-5 py-4 shadow-[0_20px_45px_rgba(17,17,17,0.08)]">
             <p className="text-xs font-black uppercase tracking-[0.18em]">
               Community signal
             </p>

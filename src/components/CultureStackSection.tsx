@@ -3,7 +3,13 @@ import { ArrowUpRight } from "lucide-react";
 import { useRef } from "react";
 
 const images = {
+  event01: "/assets/kingston-beta-event-01-team.png",
+  eventAudience: "/assets/kingston-beta-event-audience.jpeg",
+  event02: "/assets/kingston-beta-event-02.png",
+  event03: "/assets/kingston-beta-event-03.png",
+  event04: "/assets/kingston-beta-event-04.png",
   communityHub: "/assets/kingston-beta-community-hub-v2.png",
+  communityRelationships: "/assets/kingston-beta-community-relationships.png",
   buildingLearning: "/assets/kingston-beta-building-learning-v2.png",
   liveBuilder: "/assets/kingston-beta-live-builder-v2.png",
   solutionsWorkshop: "/assets/kingston-beta-solutions-workshop-v2.png",
@@ -14,22 +20,30 @@ const programs = [
   {
     title: "Kingston BETA Meetup & Startup Stage",
     meta: "longest-running tech event series",
-    copy: "The Caribbean's longest-running tech event series kicked off Jamaica's startup ecosystem on February 28, 2007.",
+    copy: "The Caribbean's longest-running tech event series kicked off Jamaica's startup ecosystem on February 28, 2007. Entrepreneurs, digital creatives, tech talent, investors, and executives in one room - making connections, pressure-testing ideas, launching careers. Our Startup Stage alumni have gone on to build Stock Exchange-listed companies and million-dollar digital businesses.",
+    image: images.event01,
+    position: "object-[50%_18%]",
   },
   {
     title: "Kingston BETA | Tech Happy Hour",
     meta: "monthly mixer",
     copy: "A monthly mixer for tech entrepreneurs, digital creatives, tech talent, digital business owners, digital nomads, investors, and ecosystem supporters.",
+    image: images.event02,
+    position: "object-center",
   },
   {
     title: "Kingston BETA House | CoWorking Club",
     meta: "daytime coworking club",
-    copy: "A daytime coworking club for people building what's next, hosted in great restaurants and spaces with food, energy, and ambitious builders.",
+    copy: "A daytime coworking club for people building what's next hosted in great restaurants and spaces where work actually gets done, your thinking sharpens, and your network grows.",
+    image: images.event04,
+    position: "object-[50%_38%]",
   },
   {
     title: "Kingston BETA HitList",
     meta: "invite-only matchmaking pitch dinners",
     copy: "Curated dinners for entrepreneurs and digital business owners seeking an investor, loan, new business partner, or new market.",
+    image: images.event03,
+    position: "object-center",
   },
 ];
 
@@ -66,7 +80,7 @@ export default function CultureStackSection({ page }: CultureStackSectionProps) 
                 <p className="mb-5 inline-flex bg-[#AFCB27] px-3 py-2 text-xs font-black uppercase tracking-[0.18em]">
                   Join The Community
                 </p>
-                <h1 className="max-w-5xl font-display text-5xl font-extrabold leading-[0.92] tracking-tight sm:text-6xl lg:text-8xl">
+                <h1 className="max-w-5xl font-display text-4xl font-extrabold leading-[0.95] tracking-tight sm:text-5xl lg:text-8xl">
                   You Belong Here.
                 </h1>
               </div>
@@ -164,14 +178,14 @@ export default function CultureStackSection({ page }: CultureStackSectionProps) 
           className="kb-scroll-section kb-section-edge relative overflow-hidden bg-[#FAFAF7] px-4 py-20 sm:px-6 lg:min-h-screen lg:px-12 lg:py-24"
         >
         <motion.div
-          className="mx-auto grid max-w-[1700px] gap-10 lg:grid-cols-[0.72fr_1.28fr] lg:items-start"
+          className="kb-programs-stage mx-auto grid max-w-[1700px] gap-10 lg:grid-cols-[0.72fr_1.28fr] lg:items-start"
           style={prefersReducedMotion ? undefined : { scale: programsScale, y: programsY }}
         >
           <div className="lg:sticky lg:top-16">
             <p className="mb-5 inline-flex bg-[#AFCB27] px-3 py-2 text-xs font-black uppercase tracking-[0.18em]">
               Our Events
             </p>
-            <h2 className="font-display text-5xl font-extrabold leading-[0.94] tracking-tight sm:text-6xl">
+            <h2 className="font-display text-4xl font-extrabold leading-[0.96] tracking-tight sm:text-5xl lg:text-6xl">
               Our Roster of Events
             </h2>
             <p className="mt-6 max-w-md text-lg leading-relaxed text-editorial/65">
@@ -182,33 +196,64 @@ export default function CultureStackSection({ page }: CultureStackSectionProps) 
 
           <div className="grid gap-3">
             {programs.map((program, index) => (
-              <article
-                key={program.title}
-                className="grid border border-editorial/10 bg-[#F4F2EC] md:grid-cols-[10rem_1fr_12rem]"
-              >
-                <div className="border-b border-editorial/10 p-5 md:border-b-0 md:border-r">
-                  <p className="font-mono text-xs uppercase tracking-[0.2em] text-editorial/45">
-                    0{index + 1}
-                  </p>
-                  <p className="mt-10 font-display text-3xl font-extrabold">
-                    {program.title}
-                  </p>
-                </div>
-                <div className="p-5 md:p-7">
-                  <p className="mb-4 text-xs font-black uppercase tracking-[0.18em] text-[#1F7A3A]">
-                    {program.meta}
-                  </p>
-                  <p className="max-w-2xl text-xl font-semibold leading-snug">
-                    {program.copy}
-                  </p>
-                </div>
-                <div className="flex items-end justify-between border-t border-editorial/10 p-5 md:border-l md:border-t-0">
-                  <span className="text-xs font-black uppercase tracking-[0.18em] text-editorial/45">
-                    Learn more
-                  </span>
-                  <ArrowUpRight size={22} />
-                </div>
-              </article>
+              <div key={program.title}>
+                <article className="overflow-hidden border border-editorial/10 bg-white shadow-[0_18px_50px_rgba(17,17,17,0.06)] lg:hidden">
+                  <figure className="relative aspect-[16/9] overflow-hidden bg-editorial sm:aspect-[2/1]">
+                    <img
+                      src={program.image}
+                      alt=""
+                      className={`h-full w-full object-cover ${program.position}`}
+                      loading={index === 0 ? "eager" : "lazy"}
+                    />
+                    <div className="absolute inset-0 bg-[linear-gradient(180deg,transparent_45%,rgba(17,17,17,0.46)_100%)]" />
+                    <span className="absolute left-4 top-4 bg-[#AFCB27] px-3 py-1.5 font-mono text-[10px] font-black tracking-[0.18em]">
+                      0{index + 1}
+                    </span>
+                  </figure>
+                  <div className="p-5 sm:p-7">
+                    <p className="text-[10px] font-black uppercase tracking-[0.18em] text-[#1F7A3A] sm:text-xs">
+                      {program.meta}
+                    </p>
+                    <h3 className="mt-3 max-w-xl font-display text-2xl font-extrabold leading-[1.04] sm:text-3xl">
+                      {program.title}
+                    </h3>
+                    <p className="mt-4 max-w-2xl text-[15px] leading-relaxed text-editorial/65 sm:text-base">
+                      {program.copy}
+                    </p>
+                    <div className="mt-6 flex items-center justify-between border-t border-editorial/10 pt-4">
+                      <span className="text-[10px] font-black uppercase tracking-[0.18em] text-editorial/45">
+                        Learn more
+                      </span>
+                      <ArrowUpRight size={19} />
+                    </div>
+                  </div>
+                </article>
+
+                <article className="hidden border border-editorial/10 bg-[#F4F2EC] lg:grid lg:grid-cols-[10rem_1fr_12rem]">
+                  <div className="border-r border-editorial/10 p-5">
+                    <p className="font-mono text-xs uppercase tracking-[0.2em] text-editorial/45">
+                      0{index + 1}
+                    </p>
+                    <p className="mt-10 font-display text-3xl font-extrabold">
+                      {program.title}
+                    </p>
+                  </div>
+                  <div className="p-7">
+                    <p className="mb-4 text-xs font-black uppercase tracking-[0.18em] text-[#1F7A3A]">
+                      {program.meta}
+                    </p>
+                    <p className="max-w-2xl text-xl font-semibold leading-snug">
+                      {program.copy}
+                    </p>
+                  </div>
+                  <div className="flex items-end justify-between border-l border-editorial/10 p-5">
+                    <span className="text-xs font-black uppercase tracking-[0.18em] text-editorial/45">
+                      Learn more
+                    </span>
+                    <ArrowUpRight size={22} />
+                  </div>
+                </article>
+              </div>
             ))}
           </div>
         </motion.div>
@@ -222,30 +267,25 @@ export default function CultureStackSection({ page }: CultureStackSectionProps) 
         >
           <div className="relative min-h-[88vh] overflow-hidden bg-editorial px-4 pb-10 pt-28 text-warm sm:px-6 lg:px-12 lg:pb-14 lg:pt-32">
             <img
-              src={images.communityHub}
-              alt=""
-              className="absolute inset-0 h-full w-full object-cover opacity-58"
-              loading="lazy"
+              src={images.eventAudience}
+              alt="A Kingston BETA founder presenting to a full event audience"
+              className="absolute inset-0 h-full w-full object-cover object-[68%_center] opacity-68 sm:object-[64%_center] lg:object-center"
+              loading="eager"
             />
-            <div className="absolute inset-0 bg-[linear-gradient(90deg,rgba(17,17,17,0.94)_0%,rgba(17,17,17,0.74)_42%,rgba(17,17,17,0.18)_100%)]" />
+            <div className="absolute inset-0 bg-[linear-gradient(180deg,rgba(17,17,17,0.25)_0%,rgba(17,17,17,0.24)_35%,rgba(17,17,17,0.92)_100%)] lg:bg-[linear-gradient(90deg,rgba(17,17,17,0.94)_0%,rgba(17,17,17,0.72)_45%,rgba(17,17,17,0.14)_100%)]" />
             <div className="relative z-10 mx-auto flex min-h-[calc(88vh-9rem)] max-w-[1700px] flex-col justify-end">
               <p className="mb-5 inline-flex w-fit bg-[#AFCB27] px-3 py-2 text-xs font-black uppercase tracking-[0.18em] text-editorial">
-                Events Calendar
+                Events
               </p>
               <div className="grid gap-8 lg:grid-cols-[1fr_0.72fr] lg:items-end">
-                <h1 className="max-w-5xl font-display text-5xl font-extrabold leading-[0.9] tracking-tight sm:text-6xl lg:text-7xl 2xl:text-8xl">
+                <h1 className="max-w-[58rem] text-balance font-display text-4xl font-extrabold leading-[0.95] tracking-[-0.035em] sm:text-5xl lg:text-6xl 2xl:text-7xl">
                   Rooms built for founders, builders, and the Caribbean tech
                   community.
                 </h1>
                 <div className="border-l-4 border-[#AFCB27] pl-6">
                   <p className="max-w-xl text-lg font-semibold leading-relaxed text-warm/74 sm:text-xl">
-                    From Startup Stage to Tech Happy Hour, Kingston BETA events
-                    put the right information, people, and opportunities in the
-                    room.
+                    Rooms full of Caribbean people building what&apos;s next
                   </p>
-                  <a href="#contact" className="kb-btn kb-btn-lime mt-7">
-                    Get event details
-                  </a>
                 </div>
               </div>
             </div>
@@ -277,15 +317,16 @@ export default function CultureStackSection({ page }: CultureStackSectionProps) 
               <div className="mt-14 grid gap-8 lg:grid-cols-[0.62fr_1.38fr]">
                 <div>
                   <p className="mb-4 inline-flex bg-editorial px-3 py-2 text-xs font-black uppercase tracking-[0.18em] text-warm">
-                    Event Formats
+                    Our Events
                   </p>
                   <h2 className="font-display text-4xl font-extrabold leading-tight sm:text-5xl">
-                    Each format has a job to do.
+                    19 years. Our events keeps getting more powerful.
                   </h2>
                   <p className="mt-5 max-w-md text-base leading-relaxed text-editorial/62">
-                    Kingston BETA is not one type of gathering. It is a system
-                    of rooms designed for discovery, trust, funding,
-                    collaboration, and momentum.
+                    Kingston BETA is not one type of gathering. It is a network
+                    of events designed for discovery, trust, community,
+                    collaboration, and momentum. Come as you are. Leave knowing
+                    someone who can change everything.
                   </p>
                 </div>
 
@@ -297,16 +338,9 @@ export default function CultureStackSection({ page }: CultureStackSectionProps) 
                     >
                       <figure className="relative h-56 overflow-hidden bg-editorial">
                         <img
-                          src={
-                            [
-                              images.liveBuilder,
-                              images.buildingLearning,
-                              images.solutionsWorkshop,
-                              images.kingstonLandscape,
-                            ][index]
-                          }
+                          src={program.image}
                           alt=""
-                          className="h-full w-full object-cover opacity-82 transition duration-500 group-hover:scale-105"
+                          className={`h-full w-full object-cover opacity-88 transition duration-500 group-hover:scale-105 ${program.position}`}
                           loading="lazy"
                         />
                         <span className="absolute left-4 top-4 bg-[#AFCB27] px-3 py-1 text-[10px] font-black uppercase tracking-[0.16em]">
@@ -329,15 +363,19 @@ export default function CultureStackSection({ page }: CultureStackSectionProps) 
                 </div>
               </div>
 
-              <section className="mt-16 overflow-hidden bg-editorial text-warm">
-                <div className="grid lg:grid-cols-[0.82fr_1.18fr]">
+              <section className="relative mt-16 overflow-hidden bg-editorial text-warm">
+                <img
+                  src={images.communityRelationships}
+                  alt="Kingston BETA community members smiling together after an event"
+                  className="absolute inset-0 h-full w-full object-cover object-[0%_28%] opacity-78"
+                  loading="lazy"
+                />
+                <div
+                  className="absolute inset-0 bg-[linear-gradient(180deg,rgba(17,17,17,0.16)_0%,rgba(17,17,17,0.34)_44%,#111111_68%,#111111_100%)] lg:bg-[linear-gradient(90deg,rgba(17,17,17,0.08)_0%,rgba(17,17,17,0.3)_34%,rgba(17,17,17,0.78)_50%,#111111_58%,#111111_100%)]"
+                  aria-hidden="true"
+                />
+                <div className="relative z-10 grid lg:grid-cols-[0.82fr_1.18fr]">
                   <figure className="relative min-h-[430px] overflow-hidden">
-                    <img
-                      src={images.communityHub}
-                      alt="Kingston BETA community members at an event"
-                      className="absolute inset-0 h-full w-full object-cover opacity-64"
-                      loading="lazy"
-                    />
                     <div className="absolute inset-0 bg-[linear-gradient(180deg,rgba(17,17,17,0.08),rgba(17,17,17,0.88))]" />
                     <figcaption className="absolute inset-x-6 bottom-6">
                       <p className="text-xs font-black uppercase tracking-[0.18em] text-[#AFCB27]">

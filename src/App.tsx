@@ -3,15 +3,23 @@
  * SPDX-License-Identifier: Apache-2.0
  */
 
-import { AnimatePresence, motion, useReducedMotion } from "motion/react";
-import { useEffect, useState } from "react";
-import { ArrowUpRight, Instagram, Linkedin, Mail, Youtube } from "lucide-react";
-import EcosystemHero from "./components/EcosystemHero";
+import { AnimatePresence, motion, useInView, useReducedMotion } from "motion/react";
+import { useEffect, useRef, useState } from "react";
+import {
+  ArrowUpRight,
+  Facebook,
+  Instagram,
+  Linkedin,
+  Mail,
+  Youtube,
+} from "lucide-react";
+import HomeHero from "./components/HomeHero";
 import AboutSection from "./components/AboutSection";
 import CultureStackSection from "./components/CultureStackSection";
 import Header from "./components/Header";
 import BackToTopButton from "./components/BackToTopButton";
 import WhosWhoGallery3D from "./components/WhosWhoGallery3D";
+import SiteFooter from "./components/SiteFooter";
 import { InfiniteSlider } from "../components/ui/infinite-slider";
 
 type Page =
@@ -39,6 +47,59 @@ const pages = new Set<Page>([
   "contact",
 ]);
 
+function CountUpStat({
+  value,
+  suffix = "",
+  delay = 0,
+  label,
+}: {
+  value: number;
+  suffix?: string;
+  delay?: number;
+  label: string;
+}) {
+  const ref = useRef<HTMLParagraphElement>(null);
+  const isInView = useInView(ref, { once: true, amount: 0.45 });
+  const prefersReducedMotion = useReducedMotion();
+  const [displayValue, setDisplayValue] = useState(0);
+
+  useEffect(() => {
+    if (!isInView) return;
+    if (prefersReducedMotion) {
+      setDisplayValue(value);
+      return;
+    }
+
+    let frame = 0;
+    const startedAt = performance.now() + delay;
+    const duration = 1350;
+
+    const tick = (now: number) => {
+      const progress = Math.min(1, Math.max(0, (now - startedAt) / duration));
+      const eased = 1 - Math.pow(1 - progress, 4);
+      setDisplayValue(Math.round(value * eased));
+
+      if (progress < 1) frame = window.requestAnimationFrame(tick);
+    };
+
+    frame = window.requestAnimationFrame(tick);
+    return () => window.cancelAnimationFrame(frame);
+  }, [delay, isInView, prefersReducedMotion, value]);
+
+  return (
+    <p
+      ref={ref}
+      className="kb-stat-value font-display text-5xl font-extrabold text-[#AFCB27]"
+      aria-label={`${value}${suffix} ${label}`}
+    >
+      <span aria-hidden="true">
+        {displayValue}
+        {suffix}
+      </span>
+    </p>
+  );
+}
+
 function getPageFromHash(): Page {
   const page = window.location.hash.replace("#", "") || "top";
   if (page === "community") return "events";
@@ -53,44 +114,60 @@ function HomeTestimonials() {
       image: "/assets/kingston-beta-community-hub-v2.png",
     },
     {
-      quote: "Kingston BETA is the guiding light in Jamaican-tech. Its commitment to entrepreneurs is tangible and effective.",
+      quote: "Kingston BETA is the guiding light in Jamaican-tech.",
       name: "Dyan Brennan, Cypher",
       image: "/assets/kingston-beta-building-learning-v2.png",
     },
     {
-      quote: "I have benefitted immeasurably via networking events, pitch competitions, one-on-one conversations with Ingrid, and access to Techstars by way of Kingston BETA.",
+      quote: "I have benefitted immeasurably via networking events, pitch competitions, and access to Techstars by way of Kingston BETA.",
       name: "Founder testimonial",
       image: "/assets/kingston-beta-live-builder-v2.png",
     },
   ];
 
   return (
-    <section className="bg-[#FAFAF7] px-4 py-16 text-editorial sm:px-6 lg:px-12 lg:py-24">
+    <section className="bg-[#FAFAF7] px-4 py-12 text-editorial sm:px-6 lg:px-12 lg:py-16">
       <div className="mx-auto max-w-[1700px]">
-        <div className="grid gap-8 lg:grid-cols-[0.72fr_1.28fr] lg:items-end">
+        <div className="grid gap-6 lg:grid-cols-[0.72fr_1.28fr] lg:items-end">
           <div>
             <p className="mb-5 inline-flex bg-[#AFCB27] px-3 py-2 text-xs font-black uppercase tracking-[0.18em]">
               Testimonials
             </p>
-            <h2 className="font-display text-3xl font-extrabold leading-[0.98] tracking-tight sm:text-4xl lg:text-6xl">
-              Investment success stories from the room.
+            <h2 className="font-display text-3xl font-extrabold leading-[0.98] tracking-tight sm:text-4xl lg:text-5xl">
+              Faces first. Then what the room made possible.
             </h2>
           </div>
-          <p className="max-w-3xl border-l-4 border-[#AFCB27] pl-5 text-base font-semibold leading-relaxed text-editorial/64 sm:text-lg lg:pl-6 lg:text-xl">
-            These sit after the homepage photos so the faces, rooms, and
-            outcomes work together: real people, real access, real momentum.
+          <p className="max-w-3xl border-l-4 border-[#AFCB27] pl-5 text-base font-semibold leading-relaxed text-editorial/64 lg:pl-6">
+            Stories from the people who found collaborators, sharpened ideas,
+            and built what came next through Kingston BETA.
           </p>
         </div>
 
-        <div className="mt-10 grid gap-4 lg:grid-cols-3">
+        <div className="mt-10 grid gap-5 md:grid-cols-3">
           {testimonials.map((item) => (
-            <article key={item.name} className="border border-editorial/10 bg-white">
-              <img src={item.image} alt="" className="h-56 w-full object-cover" loading="lazy" />
-              <div className="p-6">
-                <p className="font-display text-xl font-extrabold leading-tight sm:text-2xl">
-                  "{item.quote}"
-                </p>
-                <p className="mt-6 text-xs font-black uppercase tracking-[0.18em] text-[#1F7A3A]">
+            <article
+              key={item.name}
+              className="flex flex-col border border-editorial/10 border-t-[3px] border-t-[#AFCB27] bg-white"
+            >
+              <figure className="h-48 overflow-hidden bg-editorial sm:h-52">
+                <img
+                  src={item.image}
+                  alt=""
+                  className="h-full w-full object-cover transition duration-700 hover:scale-[1.025]"
+                  loading="lazy"
+                />
+              </figure>
+              <div className="flex flex-1 flex-col p-5 sm:p-6">
+                <span
+                  className="font-display text-4xl font-extrabold leading-none text-[#AFCB27]"
+                  aria-hidden="true"
+                >
+                  “
+                </span>
+                <blockquote className="-mt-2 max-w-[34rem] pb-8 font-display text-[clamp(1rem,1.25vw,1.25rem)] font-bold leading-[1.32] tracking-[-0.015em] text-editorial/90">
+                  {item.quote}
+                </blockquote>
+                <p className="mt-auto border-t border-editorial/10 pt-4 text-[10px] font-black uppercase tracking-[0.2em] text-[#1F7A3A]">
                   {item.name}
                 </p>
               </div>
@@ -102,11 +179,40 @@ function HomeTestimonials() {
   );
 }
 
+function BlogIndex({
+  value,
+  accent = false,
+}: {
+  value: number;
+  accent?: boolean;
+}) {
+  return (
+    <span
+      className={`kb-blog-index${accent ? " kb-blog-index--accent" : ""}`}
+      aria-hidden="true"
+    >
+      {String(value).padStart(2, "0")}
+    </span>
+  );
+}
+
 function BlogPage() {
   const posts = [
-    ["SiliconCaribe Stories", "3,000+ stories told about Caribbean tech, startups, innovation, digital business, and the people shaping the scene.", "Archive"],
-    ["Event Recaps", "What happened in the room, who showed up, and the connections, launches, and ideas worth carrying forward.", "Room Notes"],
-    ["Ecosystem Signals", "Perspective on entrepreneurs, tech talent, investment, digital culture, and the Caribbean's place in the Digital Age.", "Signal"],
+    [
+      "SiliconCaribe Stories",
+      "3,000+ stories told about Caribbean tech, startups, innovation, digital business, and the people shaping the scene.",
+      "Archive",
+    ],
+    [
+      "Event Recaps",
+      "What happened in the room, who showed up, and the connections, launches, and ideas worth carrying forward.",
+      "Room Notes",
+    ],
+    [
+      "Ecosystem Signals",
+      "Perspective on entrepreneurs, tech talent, investment, digital culture, and the Caribbean's place in the Digital Age.",
+      "Signal",
+    ],
   ];
 
   return (
@@ -128,7 +234,7 @@ function BlogPage() {
                 <p className="mb-4 font-mono text-xs font-black uppercase tracking-[0.2em] text-warm/52">
                   Featured Dispatch
                 </p>
-                <h1 className="max-w-4xl font-display text-5xl font-extrabold leading-[0.92] tracking-tight sm:text-6xl lg:text-7xl">
+                <h1 className="max-w-[48rem] text-balance font-display text-4xl font-extrabold leading-[0.96] tracking-[-0.035em] sm:text-5xl lg:text-6xl">
                   Caribbean tech stories with names, receipts, and context.
                 </h1>
               </div>
@@ -176,12 +282,12 @@ function BlogPage() {
             {posts.map(([title, copy, tag], index) => (
               <article
                 key={title}
-                className="grid gap-5 border border-editorial/10 bg-white p-5 md:grid-cols-[7rem_1fr_auto] md:items-center"
+                className="group/blog-post grid overflow-hidden border border-editorial/10 bg-white transition duration-300 hover:border-[#AFCB27]/70 hover:shadow-[0_18px_50px_rgba(17,17,17,0.08)] md:grid-cols-[9.5rem_1fr_auto] md:items-stretch"
               >
-                <p className="font-mono text-xs font-black text-editorial/36">
-                  0{index + 1}
-                </p>
-                <div>
+                <div className="kb-blog-index-panel">
+                  <BlogIndex value={index + 1} />
+                </div>
+                <div className="self-center p-5">
                   <p className="text-xs font-black uppercase tracking-[0.18em] text-[#1F7A3A]">
                     {tag}
                   </p>
@@ -192,7 +298,7 @@ function BlogPage() {
                     {copy}
                   </p>
                 </div>
-                <span className="text-xs font-black uppercase tracking-[0.16em] text-editorial/42">
+                <span className="self-center px-5 pb-5 text-xs font-black uppercase tracking-[0.16em] text-editorial/42 md:pb-0">
                   Read
                 </span>
               </article>
@@ -260,7 +366,7 @@ function PartnersPage() {
               <p className="mb-6 inline-flex bg-editorial px-3 py-2 text-xs font-black uppercase tracking-[0.18em] text-warm">
                 Partners
               </p>
-              <h1 className="max-w-4xl font-display text-5xl font-extrabold leading-[0.92] tracking-tight sm:text-6xl lg:text-7xl">
+              <h1 className="max-w-4xl text-balance font-display text-4xl font-extrabold leading-[0.95] tracking-tight sm:text-5xl lg:text-7xl">
                 Back the rooms where Caribbean tech moves.
               </h1>
               <p className="mt-7 max-w-2xl text-lg font-semibold leading-relaxed text-editorial/64">
@@ -272,15 +378,18 @@ function PartnersPage() {
 
             <div className="grid gap-5 self-end sm:grid-cols-2">
               {[
-                ["20+", "Partners and supporters"],
-                ["15", "Countries touched"],
-                ["300+", "Events backed"],
-                ["100k+", "People reached"],
-              ].map(([value, label]) => (
+                [20, "+", "Partners and supporters"],
+                [15, "", "Countries touched"],
+                [300, "+", "Events backed"],
+                [100, "k+", "People reached"],
+              ].map(([value, suffix, label], index) => (
                 <div key={label} className="bg-editorial p-5 text-warm">
-                  <p className="kb-stat-value font-display text-5xl font-extrabold text-[#AFCB27]">
-                    {value}
-                  </p>
+                  <CountUpStat
+                    value={value as number}
+                    suffix={suffix as string}
+                    label={label as string}
+                    delay={index * 110}
+                  />
                   <p className="mt-3 text-[11px] font-black uppercase tracking-[0.16em] text-warm/55">
                     {label}
                   </p>
@@ -321,9 +430,9 @@ function PartnersPage() {
         <div className="mt-8 grid gap-4 lg:grid-cols-[0.9fr_1.1fr]">
           <figure className="min-h-[520px] overflow-hidden bg-editorial">
             <img
-              src="/assets/kingston-beta-solutions-workshop-v2.png"
-              alt=""
-              className="h-full w-full object-cover opacity-86"
+              src="/assets/kingston-beta-kingston-landscape-v2.png"
+              alt="Kingston and Jamaica's surrounding landscape"
+              className="h-full w-full object-cover object-center opacity-90"
             />
           </figure>
           <div className="grid gap-4">
@@ -389,8 +498,8 @@ function MerchPage() {
               <p className="w-fit bg-[#AFCB27] px-3 py-2 text-xs font-black uppercase tracking-[0.18em] text-editorial">
                 Kingston BETA / Wearables
               </p>
-              <h1 className="max-w-5xl font-display text-5xl font-extrabold leading-[0.88] tracking-tight sm:text-7xl lg:text-[7.25rem]">
-                The room,<br />worn out loud.
+              <h1 className="max-w-5xl font-display text-4xl font-extrabold leading-[0.92] tracking-tight sm:text-6xl lg:text-[7.25rem]">
+                Our Digital Culture,<br />Worn Out Loud
               </h1>
             </div>
             <div className="flex flex-col justify-between bg-[#AFCB27] p-6 text-editorial sm:p-10 lg:p-12">
@@ -401,8 +510,9 @@ function MerchPage() {
               />
               <div className="mt-20">
                 <p className="max-w-lg text-xl font-semibold leading-relaxed">
-                  Four sample expressions of a community that has been building,
-                  connecting, and moving Caribbean tech forward since 2007.
+                  Not just t-shirts, but proof that the community,
+                  entrepreneurs and pioneers, who make Caribbean tech what it
+                  is are seen, and never forgotten.
                 </p>
                 <p className="mt-8 border-t border-editorial/20 pt-5 text-xs font-black uppercase tracking-[0.18em]">
                   Concept collection / Storefront launching separately
@@ -497,21 +607,74 @@ function ContactPage() {
   ];
 
   const socials = [
-    { name: "YouTube", icon: Youtube },
-    { name: "Instagram", icon: Instagram },
-    { name: "LinkedIn", icon: Linkedin },
+    {
+      name: "YouTube",
+      icon: Youtube,
+      href: "https://www.youtube.com/@kingstonbeta",
+    },
+    {
+      name: "Instagram",
+      icon: Instagram,
+      href: "https://www.instagram.com/kingstonbeta",
+    },
+    {
+      name: "Facebook",
+      icon: Facebook,
+      href: "https://www.facebook.com/kingstonbeta/",
+    },
+    {
+      name: "LinkedIn",
+      icon: Linkedin,
+      href: "https://www.linkedin.com/company/kingston-beta/",
+    },
   ];
 
   return (
     <main className="min-h-screen bg-[#F7F5F0] px-4 py-16 text-editorial sm:px-6 lg:px-12 lg:py-24">
       <section id="contact" className="mx-auto max-w-[1700px]">
-        <div className="grid overflow-hidden bg-editorial text-warm lg:grid-cols-[0.92fr_1.08fr]">
-          <div className="flex min-h-[500px] flex-col justify-between p-6 sm:p-10 lg:p-12">
+        <div className="overflow-hidden bg-editorial text-warm lg:hidden">
+          <div className="px-6 pb-8 pt-24 sm:px-10 sm:pb-10 sm:pt-28">
+            <p className="w-fit bg-[#AFCB27] px-3 py-2 text-[10px] font-black uppercase tracking-[0.18em] text-editorial sm:text-xs">
+              Contact Kingston BETA
+            </p>
+            <h1 className="mt-7 max-w-2xl text-balance font-display text-4xl font-extrabold leading-[0.94] tracking-tight sm:text-5xl">
+              Start with the conversation you want to have.
+            </h1>
+            <p className="mt-6 max-w-xl text-base font-semibold leading-relaxed text-warm/62 sm:text-lg">
+              Community, partnership, or story: choose the right door and your
+              note will reach the people best placed to answer it.
+            </p>
+          </div>
+          <figure className="relative aspect-[4/5] overflow-hidden sm:aspect-[4/3]">
+            <img
+              src="/assets/kingston-beta-contact-panel.jpeg"
+              alt="Kingston BETA panelist speaking into a microphone during a community discussion"
+              className="h-full w-full object-cover object-[72%_center] sm:object-[66%_center]"
+            />
+            <div className="absolute inset-0 bg-[linear-gradient(180deg,transparent_46%,rgba(17,17,17,0.92)_100%)]" />
+            <figcaption className="absolute inset-x-6 bottom-7 max-w-lg border-l-4 border-[#AFCB27] pl-5 text-base font-semibold leading-relaxed sm:inset-x-10 sm:bottom-10 sm:text-lg">
+              Real people are behind every inbox. Tell us enough to point the
+              conversation in the right direction.
+            </figcaption>
+          </figure>
+        </div>
+
+        <div className="relative hidden overflow-hidden bg-editorial text-warm lg:grid lg:grid-cols-[0.92fr_1.08fr]">
+          <img
+            src="/assets/kingston-beta-contact-panel.jpeg"
+            alt="Kingston BETA panelist speaking during a community discussion"
+            className="absolute inset-0 h-full w-full object-cover object-[68%_center] opacity-90 lg:left-auto lg:right-0 lg:w-[58%] lg:object-[58%_center]"
+          />
+          <div
+            className="absolute inset-0 bg-[linear-gradient(180deg,#111111_0%,rgba(17,17,17,0.97)_42%,rgba(17,17,17,0.56)_62%,rgba(17,17,17,0.18)_100%)] lg:bg-[linear-gradient(90deg,#111111_0%,#111111_35%,rgba(17,17,17,0.97)_43%,rgba(17,17,17,0.66)_53%,rgba(17,17,17,0.18)_70%,rgba(17,17,17,0.12)_100%)]"
+            aria-hidden="true"
+          />
+          <div className="relative z-10 flex min-h-[500px] flex-col justify-between p-6 sm:p-10 lg:p-12">
             <p className="w-fit bg-[#AFCB27] px-3 py-2 text-xs font-black uppercase tracking-[0.18em] text-editorial">
               Contact Kingston BETA
             </p>
             <div>
-              <h1 className="max-w-4xl font-display text-5xl font-extrabold leading-[0.9] tracking-tight sm:text-6xl lg:text-7xl">
+              <h1 className="max-w-4xl font-display text-4xl font-extrabold leading-[0.94] tracking-tight sm:text-5xl lg:text-6xl xl:text-7xl">
                 Start with the conversation you want to have.
               </h1>
               <p className="mt-7 max-w-2xl text-lg font-semibold leading-relaxed text-warm/60">
@@ -520,14 +683,9 @@ function ContactPage() {
               </p>
             </div>
           </div>
-          <div className="relative min-h-[500px] overflow-hidden">
-            <img
-              src="/assets/kingston-beta-demo-night-slide-v2.png"
-              alt="Kingston BETA community gathering"
-              className="absolute inset-0 h-full w-full object-cover opacity-72"
-            />
-            <div className="absolute inset-0 bg-[linear-gradient(180deg,rgba(17,17,17,0.05),rgba(17,17,17,0.72))]" />
-            <p className="absolute bottom-7 left-7 right-7 max-w-lg border-l-4 border-[#AFCB27] pl-5 text-xl font-semibold leading-relaxed sm:bottom-10 sm:left-10">
+          <div className="relative z-10 min-h-[500px] overflow-hidden">
+            <div className="absolute inset-0 bg-[linear-gradient(180deg,rgba(17,17,17,0.02),rgba(17,17,17,0.68))]" />
+            <p className="absolute bottom-7 left-7 right-7 max-w-lg border-l-4 border-[#AFCB27] pl-5 text-lg font-semibold leading-relaxed sm:bottom-10 sm:left-10 sm:text-xl">
               Real people are behind every inbox. Tell us enough to point the
               conversation in the right direction.
             </p>
@@ -570,7 +728,7 @@ function ContactPage() {
             <p className="text-xs font-black uppercase tracking-[0.2em] text-[#C7E51D]">
               Follow the signal
             </p>
-            <h2 className="mt-4 font-display text-4xl font-extrabold leading-tight">
+            <h2 className="mt-4 font-display text-3xl font-extrabold leading-tight sm:text-4xl">
               The room keeps moving between events.
             </h2>
             <p className="mt-4 max-w-xl text-base leading-relaxed text-warm/62">
@@ -578,22 +736,31 @@ function ContactPage() {
               across these channels. Links are being added next.
             </p>
           </div>
-          <div className="grid gap-px bg-white/15 sm:grid-cols-3">
-            {socials.map(({ name, icon: Icon }) => (
-              <div
+          <div className="grid gap-px bg-white/15 sm:grid-cols-2 2xl:grid-cols-4">
+            {socials.map(({ name, icon: Icon, href }) => {
+              const SocialCard = href ? "a" : "div";
+
+              return (
+              <SocialCard
                 key={name}
+                href={href ?? undefined}
+                target={href ? "_blank" : undefined}
+                rel={href ? "noreferrer" : undefined}
                 className="group/social flex min-h-44 flex-col justify-between bg-[#174F2E] p-6 transition hover:bg-editorial"
-                aria-label={`${name} link coming soon`}
+                aria-label={href ? `Visit Kingston BETA on ${name}` : `${name} link coming soon`}
               >
                 <Icon className="h-7 w-7 text-[#C7E51D]" />
-                <div className="flex items-end justify-between gap-4">
-                  <p className="font-display text-2xl font-extrabold">{name}</p>
+                <div className="flex min-w-0 items-end justify-between gap-3">
+                  <p className="min-w-0 whitespace-nowrap font-display text-xl font-extrabold sm:text-2xl">
+                    {name}
+                  </p>
                   <span className="text-[10px] font-black uppercase tracking-[0.14em] text-warm/40">
-                    Link soon
+                    {href ? "Visit" : "Link soon"}
                   </span>
                 </div>
-              </div>
-            ))}
+              </SocialCard>
+              );
+            })}
           </div>
         </div>
       </section>
@@ -652,6 +819,7 @@ export default function App() {
 
   const isHome = page === "top";
   const hideHeader = page === "who" && isWhoGalleryMode;
+  const hideFooter = page === "who" || hideHeader;
   const pageMotion = prefersReducedMotion
     ? {
         initial: { opacity: 1 },
@@ -692,7 +860,7 @@ export default function App() {
             {...pageMotion}
             className="min-h-screen will-change-transform"
           >
-            <EcosystemHero playIntro={false} />
+            <HomeHero />
             <HomeTestimonials />
             <BackToTopButton />
           </motion.div>
@@ -717,10 +885,11 @@ export default function App() {
               page={page}
               onWhoGalleryModeChange={setIsWhoGalleryMode}
             />
-            <BackToTopButton updateHash={false} />
+            <BackToTopButton />
           </motion.div>
         )}
       </AnimatePresence>
+      {!hideFooter && <SiteFooter compact={isHome || page === "contact"} />}
     </div>
   );
 }

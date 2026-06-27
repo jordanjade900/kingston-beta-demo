@@ -61,8 +61,8 @@ export default function Footer() {
           </h4>
           <ul className="space-y-4 font-body text-lg">
             <li>
-              <a href="#" className="hover:text-brand transition-colors">
-                Manifesto
+              <a href="#who" className="hover:text-brand transition-colors">
+                Who&apos;s Who
               </a>
             </li>
             <li>
@@ -85,17 +85,21 @@ export default function Footer() {
           </h4>
           <div className="flex flex-wrap gap-4">
             <a
-              href="#"
-              className="text-white hover:text-brand transition-colors"
-            >
-              Twitter
-            </a>
-            <span className="opacity-40">/</span>
-            <a
-              href="#"
+              href="https://www.linkedin.com/company/kingston-beta/"
+              target="_blank"
+              rel="noreferrer"
               className="text-white hover:text-brand transition-colors"
             >
               LinkedIn
+            </a>
+            <span className="opacity-40">/</span>
+            <a
+              href="https://www.youtube.com/@kingstonbeta"
+              target="_blank"
+              rel="noreferrer"
+              className="text-white hover:text-brand transition-colors"
+            >
+              YouTube
             </a>
             <span className="opacity-40">/</span>
             <a
