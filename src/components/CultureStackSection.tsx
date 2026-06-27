@@ -367,11 +367,11 @@ export default function CultureStackSection({ page }: CultureStackSectionProps) 
                 <img
                   src={images.communityRelationships}
                   alt="Kingston BETA community members smiling together after an event"
-                  className="absolute inset-0 h-full w-full object-cover object-[0%_28%] opacity-78"
+                  className="absolute inset-y-0 left-0 h-full w-full object-cover object-[50%_28%] opacity-78 lg:w-[70%] lg:-translate-x-[28%]"
                   loading="lazy"
                 />
                 <div
-                  className="absolute inset-0 bg-[linear-gradient(180deg,rgba(17,17,17,0.16)_0%,rgba(17,17,17,0.34)_44%,#111111_68%,#111111_100%)] lg:bg-[linear-gradient(90deg,rgba(17,17,17,0.08)_0%,rgba(17,17,17,0.3)_34%,rgba(17,17,17,0.78)_50%,#111111_58%,#111111_100%)]"
+                  className="absolute inset-0 bg-[linear-gradient(180deg,rgba(17,17,17,0.16)_0%,rgba(17,17,17,0.34)_44%,#111111_68%,#111111_100%)] lg:bg-[linear-gradient(90deg,rgba(17,17,17,0.08)_0%,rgba(17,17,17,0.28)_24%,rgba(17,17,17,0.72)_32%,#111111_39%,#111111_100%)]"
                   aria-hidden="true"
                 />
                 <div className="relative z-10 grid lg:grid-cols-[0.82fr_1.18fr]">

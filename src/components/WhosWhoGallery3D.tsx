@@ -725,7 +725,7 @@ export default function WhosWhoGallery3D({
                 data-who-intro-item
                   className="max-w-xl justify-self-start border-t border-white/24 pt-5 lg:justify-self-end lg:border-l lg:border-t-0 lg:pl-6 lg:pt-0"
               >
-                <p className="text-lg font-semibold leading-relaxed text-warm/76 sm:text-xl">
+                <p className="inline-block rounded-full bg-white/90 px-6 py-3 text-base font-semibold leading-relaxed text-editorial shadow-[0_8px_28px_rgba(0,0,0,0.18)] backdrop-blur-md sm:text-lg">
                     A cinematic gallery documenting the people, connections, and
                     moments that built and carried Caribbean tech forward.
                 </p>
