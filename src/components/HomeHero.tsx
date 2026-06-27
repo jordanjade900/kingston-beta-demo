@@ -6,7 +6,7 @@ import {
   Users,
 } from "lucide-react";
 import { motion, useReducedMotion } from "motion/react";
-import { useEffect, useRef, useState } from "react";
+import { useEffect, useState } from "react";
 
 const memberPortraits = [
   "/assets/community-members/member-1.jpg",
@@ -20,7 +20,6 @@ const heroWords = ["Build", "Grow", "Elevate"];
 export default function HomeHero() {
   const prefersReducedMotion = useReducedMotion();
   const [isMounted, setIsMounted] = useState(false);
-  const mountedRef = useRef(false);
 
   const [wordIndex, setWordIndex] = useState(
     prefersReducedMotion ? heroWords.length - 1 : 0,
@@ -30,15 +29,11 @@ export default function HomeHero() {
   );
   const [isDeleting, setIsDeleting] = useState(false);
 
-  // Drive animations via state-change so they fire even inside
-  // <AnimatePresence initial={false}>, which suppresses initial-prop
-  // animations on first render (hard page reload).
+  // State-change driven so animations fire even inside
+  // <AnimatePresence initial={false}> on hard page reload.
+  // Simple + StrictMode-safe: calling setIsMounted(true) twice is a no-op.
   useEffect(() => {
-    if (mountedRef.current) return;
-    mountedRef.current = true;
-    // One rAF lets the browser paint the invisible state before animating in.
-    const id = requestAnimationFrame(() => setIsMounted(true));
-    return () => cancelAnimationFrame(id);
+    setIsMounted(true);
   }, []);
 
   useEffect(() => {
