@@ -250,135 +250,312 @@ function HomeTestimonials() {
   );
 }
 
-function BlogIndex({
-  value,
-  accent = false,
-}: {
-  value: number;
-  accent?: boolean;
-}) {
-  return (
-    <span
-      className={`kb-blog-index${accent ? " kb-blog-index--accent" : ""}`}
-      aria-hidden="true"
-    >
-      {String(value).padStart(2, "0")}
-    </span>
-  );
-}
-
 function ServicesPage() {
-  const services = [
-    [
-      "Community Access",
-      "Put your founders, team, or brand inside the room where Caribbean builders, operators, investors, and digital talent already gather.",
-      "Network",
-    ],
-    [
-      "Event Partnerships",
-      "Co-create mixers, founder sessions, launch moments, workshops, and special rooms with the Kingston BETA community engine behind them.",
-      "Rooms",
-    ],
-    [
-      "Founder Visibility",
-      "Surface promising entrepreneurs through pitch moments, curated introductions, content, and credibility inside a trusted tech network.",
-      "Signal",
-    ],
-    [
-      "Ecosystem Intelligence",
-      "Use the Kingston BETA lens to understand the people, ideas, markets, and partnerships moving Caribbean technology forward.",
-      "Insight",
-    ],
+  const prefersReducedMotion = useReducedMotion();
+  const stats = [
+    ["300+", "events"],
+    ["12+", "countries"],
+    ["100,000+", "people moved"],
+  ];
+
+  const pillars = [
+    {
+      title: "Discover Opportunity",
+      lead: "See what's next before everyone else.",
+      body:
+        "The biggest opportunities are invisible until someone connects the dots. We help organizations read emerging technologies, industries, markets, and ecosystem shifts through intelligence, research, and strategic insight.",
+      services: [
+        [
+          "Opportunity Intelligence Reports",
+          "Custom research on emerging industries, startup ecosystems, AI, fintech, the creator economy, digital transformation, and Caribbean innovation.",
+        ],
+        [
+          "Trend Briefings",
+          "Executive briefings that translate Caribbean technology and innovation trends into practical business opportunities.",
+        ],
+        [
+          "Keynotes & Executive Insights",
+          "Thought leadership for leadership teams, conferences, and organizations that need to understand what's coming next.",
+        ],
+      ],
+    },
+    {
+      title: "Access Opportunity",
+      lead: "The right introduction can change everything.",
+      body:
+        "The best opportunities rarely come from cold emails. They come from trusted relationships. For nearly two decades, we've cultivated one of the Caribbean and diaspora's most valuable innovation networks: entrepreneurs, investors, creators, executives, policymakers, and global partners.",
+      services: [
+        [
+          "Events & Innovation Experiences",
+          "Curated conferences, summits, executive roundtables, founder dinners, and private salons designed to spark relationships that matter, where deals get done.",
+        ],
+        [
+          "Strategic Introductions",
+          "Warm introductions to founders, investors, corporate leaders, creators, policymakers, and ecosystem builders.",
+        ],
+        [
+          "Partnership Development",
+          "Identifying, developing, and activating strategic partnerships across the Caribbean and diaspora.",
+        ],
+        [
+          "Community Access",
+          "Membership that gives you ongoing access to the conversations, people, and opportunities shaping the region and diaspora.",
+        ],
+      ],
+    },
+    {
+      title: "Build Opportunity",
+      lead: "Great ideas need more than inspiration. They need execution.",
+      body:
+        "We help turn promising ecosystem energy into practical initiatives, durable programs, and high-impact projects built for the Caribbean and its diaspora.",
+      services: [
+        [
+          "Ecosystem Strategy",
+          "Designing startup initiatives and entrepreneurship programs built for lasting economic impact.",
+        ],
+        [
+          "Strategic Projects",
+          "Hands-on support for high-impact initiatives where innovation, partnerships, and execution have to come together.",
+        ],
+      ],
+    },
+  ];
+
+  const clients = [
+    "Entrepreneurs & Founders",
+    "International Non-Profits",
+    "Governments",
+    "Investors",
+    "Universities",
+    "Development Organizations",
+    "Creators",
+    "Innovation Ecosystem Builders",
   ];
 
   return (
-    <main className="min-h-screen bg-[#F7F5F0] px-4 py-16 text-editorial sm:px-6 lg:px-12 lg:py-24">
-      <section className="mx-auto max-w-[1700px]">
-        <div className="grid gap-6 lg:grid-cols-[1.1fr_0.9fr] lg:items-stretch">
-          <article className="relative min-h-[620px] overflow-hidden bg-editorial text-warm">
-            <img
-              src="/assets/kingston-beta-live-builder-v2.png"
-              alt=""
-              className="absolute inset-0 h-full w-full object-cover opacity-54"
-            />
-            <div className="absolute inset-0 bg-[linear-gradient(180deg,rgba(17,17,17,0.14)_0%,rgba(17,17,17,0.78)_74%,rgba(17,17,17,0.94)_100%)]" />
-            <div className="relative z-10 flex min-h-[620px] flex-col justify-between p-6 sm:p-8 lg:p-10">
-              <p className="w-fit bg-[#AFCB27] px-3 py-2 text-xs font-black uppercase tracking-[0.18em] text-editorial">
+    <main className="min-h-screen bg-[#FAFAF7] text-editorial">
+      <section className="px-4 pb-10 pt-24 sm:px-6 lg:px-12 lg:pb-14">
+        <div className="mx-auto grid max-w-[1700px] gap-6 lg:grid-cols-[1.02fr_0.98fr] lg:items-stretch">
+          <div className="flex min-h-[560px] flex-col justify-between border border-editorial/10 bg-white p-6 sm:p-8 lg:p-10">
+            <div>
+              <p className="mb-7 w-fit bg-[#AFCB27] px-3 py-2 text-xs font-black uppercase tracking-[0.18em]">
                 Services
               </p>
-              <div>
-                <p className="mb-4 font-mono text-xs font-black uppercase tracking-[0.2em] text-warm/52">
-                  Community-led services
-                </p>
-                <h1 className="max-w-[48rem] text-balance font-display text-4xl font-extrabold leading-[0.96] tracking-[-0.035em] sm:text-5xl lg:text-6xl">
-                  Bring the right people into the right room.
-                </h1>
+              <h1 className="max-w-5xl break-words font-display text-[2rem] font-extrabold leading-[0.98] tracking-tight [text-wrap:wrap] sm:text-5xl sm:leading-[0.95] xl:text-[4.7rem]">
+                Building the Opportunity Infrastructure for Caribbean Innovation
+              </h1>
+              <p className="mt-7 max-w-2xl text-lg font-semibold leading-relaxed text-editorial/66">
+                Nineteen years running, the Caribbean's first tech event series
+                and entrepreneur community that never stopped.
+              </p>
+            </div>
+            <a
+              href="mailto:ingrid@siliconcaribe.com"
+              className="mt-10 inline-flex min-h-[54px] w-fit items-center justify-center gap-3 bg-[#AFCB27] px-6 text-sm font-black uppercase tracking-[0.14em] text-editorial transition hover:bg-editorial hover:text-warm active:translate-y-[1px]"
+            >
+              Connect with Ingrid
+              <ArrowUpRight className="h-4 w-4" strokeWidth={2.5} />
+            </a>
+          </div>
+
+          <div className="relative min-h-[560px] overflow-hidden bg-[#11120f] text-warm">
+            <div className="pointer-events-none absolute inset-0 bg-[linear-gradient(135deg,rgba(255,255,255,0.055)_0%,rgba(255,255,255,0)_36%,rgba(0,0,0,0.28)_100%)]" />
+            <motion.div
+              className="pointer-events-none absolute h-[74%] w-[82%] rounded-full bg-[#AFCB27]/18 blur-[96px]"
+              initial={{ x: "-18%", y: "8%", scale: 1 }}
+              animate={
+                prefersReducedMotion
+                  ? undefined
+                  : {
+                      x: ["-18%", "16%", "4%", "-18%"],
+                      y: ["8%", "-4%", "18%", "8%"],
+                      scale: [1, 1.14, 0.96, 1],
+                    }
+              }
+              transition={{
+                duration: 18,
+                repeat: Infinity,
+                ease: "easeInOut",
+              }}
+            />
+            <motion.div
+              className="pointer-events-none absolute bottom-[-24%] right-[-20%] h-[58%] w-[68%] rounded-full bg-[#AFCB27]/10 blur-[110px]"
+              initial={{ x: "0%", y: "0%", scale: 1 }}
+              animate={
+                prefersReducedMotion
+                  ? undefined
+                  : {
+                      x: ["0%", "-18%", "6%", "0%"],
+                      y: ["0%", "-12%", "4%", "0%"],
+                      scale: [1, 1.1, 0.98, 1],
+                    }
+              }
+              transition={{
+                duration: 22,
+                repeat: Infinity,
+                ease: "easeInOut",
+              }}
+            />
+            <div className="pointer-events-none absolute inset-0 bg-[linear-gradient(rgba(247,245,240,0.05)_1px,transparent_1px),linear-gradient(90deg,rgba(247,245,240,0.05)_1px,transparent_1px)] bg-[size:48px_48px] opacity-50" />
+            <div className="pointer-events-none absolute inset-0 bg-[radial-gradient(circle_at_50%_48%,transparent_0%,rgba(17,18,15,0.34)_58%,rgba(17,18,15,0.92)_100%)]" />
+            <div className="relative z-10 flex min-h-[560px] flex-col justify-end p-6 sm:p-8 lg:p-10">
+              <p className="max-w-xl text-4xl font-extrabold leading-[0.98] text-warm drop-shadow-[0_3px_18px_rgba(0,0,0,0.55)] sm:text-5xl">
+                Opportunity happens when insight, people, and execution collide
+                in the right room.
+              </p>
+              <div className="mt-10 grid gap-px bg-white/10 sm:grid-cols-3">
+                {stats.map(([value, label]) => (
+                  <div key={label} className="bg-[#151613]/78 p-4 backdrop-blur-md">
+                    <p className="font-display text-3xl font-extrabold text-[#AFCB27]">
+                      {value}
+                    </p>
+                    <p className="mt-2 text-[10px] font-black uppercase tracking-[0.16em] text-warm/58">
+                      {label}
+                    </p>
+                  </div>
+                ))}
               </div>
             </div>
-          </article>
-
-          <aside className="grid gap-4">
-            <div className="bg-white p-6 lg:p-8">
-              <p className="text-xs font-black uppercase tracking-[0.18em] text-[#1F7A3A]">
-                What we make possible
-              </p>
-              <p className="mt-8 text-2xl font-semibold leading-snug text-editorial/74">
-                Kingston BETA helps partners, founders, and ecosystem builders
-                turn attention into relationships, relationships into
-                opportunities, and opportunities into visible momentum.
-              </p>
-            </div>
-            <div className="grid grid-cols-2 gap-4">
-              {[
-                ["5,000+", "Community members"],
-                ["19", "Years building"],
-                ["15", "Countries connected"],
-                ["4", "Communities activated"],
-              ].map(([value, label]) => (
-                <div key={label} className="bg-[#AFCB27] p-5">
-                  <p className="kb-stat-value font-display text-4xl font-extrabold">
-                    {value}
-                  </p>
-                  <p className="mt-2 text-[11px] font-black uppercase tracking-[0.16em] text-editorial/58">
-                    {label}
-                  </p>
-                </div>
-              ))}
-            </div>
-          </aside>
+          </div>
         </div>
+      </section>
 
-        <div className="mt-8 grid gap-4 lg:grid-cols-[0.72fr_1.28fr]">
-          <div className="border-y border-editorial/10 py-6">
-            <h2 className="font-display text-4xl font-extrabold leading-tight">
-              Services built around real rooms.
+      <section className="px-4 py-10 sm:px-6 lg:px-12 lg:py-14">
+        <div className="mx-auto grid max-w-[1700px] gap-6 border-y border-editorial/10 py-8 lg:grid-cols-[0.78fr_1.22fr] lg:py-10">
+          <h2 className="break-words font-display text-[2rem] font-extrabold leading-[1] tracking-tight [text-wrap:wrap] sm:text-5xl sm:leading-[0.98]">
+            We did not join the Caribbean tech ecosystem. We built it.
+          </h2>
+          <div className="grid gap-5 text-lg font-semibold leading-relaxed text-editorial/66">
+            <p>
+              Opportunity does not happen by accident. It happens when insight,
+              people, and execution collide at the right time, in the right room.
+            </p>
+            <p>
+              We've been curating those rooms. Entrepreneurs. Digital creatives.
+              Innovators. Corporations. Investors. Governments. Kingston BETA
+              connects them to what's emerging, to who matters, and to each
+              other, turning ideas into businesses, partnerships, and impact.
+            </p>
+          </div>
+        </div>
+      </section>
+
+      <section className="px-4 py-10 sm:px-6 lg:px-12 lg:py-16">
+        <div className="mx-auto max-w-[1700px]">
+          <div className="max-w-3xl">
+            <p className="w-fit bg-[#AFCB27] px-3 py-2 text-xs font-black uppercase tracking-[0.18em]">
+              What We Do For You
+            </p>
+            <h2 className="mt-6 break-words font-display text-[2rem] font-extrabold leading-[1] tracking-tight [text-wrap:wrap] sm:text-5xl sm:leading-[0.96]">
+              Discover, access, and build opportunity.
             </h2>
           </div>
-          <div className="grid gap-3">
-            {services.map(([title, copy, tag], index) => (
+
+          <div className="mt-10 grid gap-5">
+            {pillars.map((pillar, index) => (
               <article
-                key={title}
-                className="group/blog-post grid overflow-hidden border border-editorial/10 bg-white transition duration-300 hover:border-[#AFCB27]/70 hover:shadow-[0_18px_50px_rgba(17,17,17,0.08)] md:grid-cols-[9.5rem_1fr_auto] md:items-stretch"
+                key={pillar.title}
+                className="grid overflow-hidden border border-editorial/10 bg-white lg:grid-cols-[0.44fr_1fr]"
               >
-                <div className="kb-blog-index-panel">
-                  <BlogIndex value={index + 1} />
-                </div>
-                <div className="self-center p-5">
-                  <p className="text-xs font-black uppercase tracking-[0.18em] text-[#1F7A3A]">
-                    {tag}
+                <div
+                  className={`p-6 sm:p-8 lg:p-10 ${
+                    index === 1 ? "bg-editorial text-warm" : "bg-[#F7F5F0]"
+                  }`}
+                >
+                  <p
+                    className={`font-mono text-[11px] font-black uppercase tracking-[0.18em] ${
+                      index === 1 ? "text-[#AFCB27]" : "text-[#1F7A3A]"
+                    }`}
+                  >
+                    {pillar.lead}
                   </p>
-                  <h3 className="mt-2 font-display text-3xl font-extrabold">
-                    {title}
+                  <h3 className="mt-8 max-w-xl break-words font-display text-[2rem] font-extrabold leading-[1] tracking-tight [text-wrap:wrap] sm:text-5xl sm:leading-[0.95]">
+                    {pillar.title}
                   </h3>
-                  <p className="mt-3 max-w-3xl text-base leading-relaxed text-editorial/62">
-                    {copy}
+                  <p
+                    className={`mt-6 max-w-xl text-base font-semibold leading-relaxed ${
+                      index === 1 ? "text-warm/64" : "text-editorial/64"
+                    }`}
+                  >
+                    {pillar.body}
                   </p>
                 </div>
-                <span className="self-center px-5 pb-5 text-xs font-black uppercase tracking-[0.16em] text-editorial/42 md:pb-0">
-                  Start
-                </span>
+                <div className="grid divide-y divide-editorial/10">
+                  {pillar.services.map(([title, copy]) => (
+                    <div
+                      key={title}
+                      className="grid gap-4 p-6 sm:p-8 lg:grid-cols-[0.38fr_1fr] lg:p-10"
+                    >
+                      <h4 className="font-display text-2xl font-extrabold leading-tight">
+                        {title}
+                      </h4>
+                      <p className="max-w-3xl text-base leading-relaxed text-editorial/62">
+                        {copy}
+                      </p>
+                    </div>
+                  ))}
+                </div>
               </article>
             ))}
+          </div>
+        </div>
+      </section>
+
+      <section className="px-4 py-10 sm:px-6 lg:px-12 lg:py-14">
+        <div className="mx-auto grid max-w-[1700px] gap-6 lg:grid-cols-[0.92fr_1.08fr]">
+          <div className="border border-editorial/10 bg-[#AFCB27] p-6 sm:p-8 lg:p-10">
+            <h2 className="break-words font-display text-[2rem] font-extrabold leading-[1] tracking-tight [text-wrap:wrap] sm:text-5xl sm:leading-[0.96]">
+              Who we work with.
+            </h2>
+            <p className="mt-6 max-w-lg text-lg font-semibold leading-relaxed text-editorial/66">
+              Organizations and builders who need intelligence, access, and
+              execution across Caribbean innovation.
+            </p>
+          </div>
+          <div className="grid border border-editorial/10 bg-white sm:grid-cols-2">
+            {clients.map((client) => (
+              <div
+                key={client}
+                className="border-b border-editorial/10 p-5 last:border-b-0 sm:border-r sm:even:border-r-0 sm:[&:nth-last-child(-n+2)]:border-b-0"
+              >
+                <p className="text-lg font-extrabold leading-tight">{client}</p>
+              </div>
+            ))}
+          </div>
+        </div>
+      </section>
+
+      <section className="px-4 pb-16 pt-10 sm:px-6 lg:px-12 lg:pb-24 lg:pt-14">
+        <div className="mx-auto grid max-w-[1700px] overflow-hidden border border-editorial bg-editorial text-warm lg:grid-cols-[1fr_0.72fr]">
+          <div className="p-6 sm:p-8 lg:p-12">
+            <h2 className="max-w-4xl break-words font-display text-[2rem] font-extrabold leading-[1] tracking-tight [text-wrap:wrap] sm:text-5xl sm:leading-[0.96] lg:text-6xl">
+              The future belongs to those who know where opportunity is emerging.
+            </h2>
+            <div className="mt-8 grid max-w-4xl gap-5 text-lg font-semibold leading-relaxed text-warm/66">
+              <p>
+                It belongs to those who can access the right networks and have
+                the capability to build.
+              </p>
+              <p>
+                That's what we help our clients do: discover opportunity, access
+                opportunity, and build opportunity.
+              </p>
+            </div>
+          </div>
+          <div className="flex flex-col justify-between border-t border-white/10 p-6 sm:p-8 lg:border-l lg:border-t-0 lg:p-10">
+            <Mail className="h-8 w-8 text-[#AFCB27]" strokeWidth={2.25} />
+            <div className="mt-20">
+              <p className="text-sm font-black uppercase tracking-[0.16em] text-warm/46">
+                Connect directly
+              </p>
+              <a
+                href="mailto:ingrid@siliconcaribe.com"
+                className="mt-4 inline-flex items-center gap-3 break-all font-display text-3xl font-extrabold leading-tight text-[#AFCB27] transition hover:text-warm sm:text-4xl"
+              >
+                ingrid@siliconcaribe.com
+                <ArrowUpRight className="h-5 w-5 shrink-0" strokeWidth={2.5} />
+              </a>
+            </div>
           </div>
         </div>
       </section>

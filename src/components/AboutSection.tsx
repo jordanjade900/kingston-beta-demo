@@ -2,7 +2,7 @@ import { ArrowUpRight, TrendingUp } from "lucide-react";
 import { eventMilestones } from "../data/siteContent";
 
 const images = {
-  aboutCommunitySignal: "/assets/testimonials/kingston-beta-june-2018-group.png",
+  aboutCommunitySignal: "/assets/kingston-beta-about-community-signal-correct.png",
 };
 
 export default function AboutSection() {
@@ -43,7 +43,7 @@ export default function AboutSection() {
           <figure className="absolute left-1/2 top-[225px] h-[360px] w-[66%] min-w-[280px] -translate-x-1/2 overflow-hidden border-[6px] border-white bg-editorial shadow-[0_26px_70px_rgba(17,17,17,0.13)]">
             <img
               src={images.aboutCommunitySignal}
-              alt="Kingston BETA community archive group photo from June 2018"
+              alt="Kingston BETA community members in conversation at an event"
               className="h-full w-full object-contain object-center"
               style={{ filter: "sepia(0.14) saturate(0.82) contrast(1.08)" }}
               loading="lazy"
@@ -53,7 +53,7 @@ export default function AboutSection() {
               aria-hidden="true"
             />
             <figcaption className="absolute bottom-3 left-3 bg-white/90 px-2 py-1 font-mono text-[9px] font-black uppercase tracking-[0.16em] text-editorial">
-              June 2018 / Archive
+              Community / Signal
             </figcaption>
           </figure>
 
