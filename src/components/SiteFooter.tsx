@@ -50,12 +50,12 @@ export default function SiteFooter({ compact = false }: { compact?: boolean }) {
                 Contact Us
               </p>
               <h2 className="text-balance font-display text-4xl font-extrabold leading-[0.94] tracking-tight sm:text-5xl lg:text-7xl">
-                Bring your next room, program, or partnership into the network.
+                Bring your next room, program, or partnership into our network.
               </h2>
               <p className="mt-6 max-w-xl text-base leading-relaxed text-editorial/62">
-                Reach Kingston Beta for community collaborations, event
-                partnerships, program ideas, media, and Caribbean tech ecosystem
-                opportunities.
+                Build with Kingston BETA. Community collaborations. Event partnerships.
+                Programme ideas. Media Content. Caribbean tech ecosystem opportunities.
+                Services. Let&apos;s talk.
               </p>
             </div>
           </section>
@@ -104,12 +104,27 @@ export default function SiteFooter({ compact = false }: { compact?: boolean }) {
                     className="text-[#AFCB27] transition group-hover/contact:translate-x-1 group-hover/contact:-translate-y-1"
                   />
                 </a>
+                <a
+                  href="https://twitter.com/kingstonbeta"
+                  target="_blank"
+                  rel="noreferrer"
+                  className="group/contact flex items-center justify-between border border-white/10 bg-white/[0.035] p-4 transition hover:bg-white/[0.07]"
+                >
+                  <span>
+                    <span className="block text-xs font-black uppercase tracking-[0.18em] text-warm/45">
+                      Updates
+                    </span>
+                    <span className="mt-1 block font-display text-2xl font-extrabold">
+                      Twitter @kingstonbeta
+                    </span>
+                  </span>
+                  <ArrowUpRight
+                    size={22}
+                    className="text-[#AFCB27] transition group-hover/contact:translate-x-1 group-hover/contact:-translate-y-1"
+                  />
+                </a>
               </div>
             </div>
-
-            <a href="#events" className="kb-btn kb-btn-lime mt-8 w-fit self-end">
-              Plan a gathering <ArrowUpRight size={18} />
-            </a>
           </section>
         </div>}
 

@@ -39,9 +39,9 @@ const programs = [
     position: "object-[50%_38%]",
   },
   {
-    title: "Kingston BETA HitList",
-    meta: "invite-only matchmaking pitch dinners",
-    copy: "Curated dinners for entrepreneurs and digital business owners seeking an investor, loan, new business partner, or new market.",
+    title: "The HitList",
+    meta: "invite-only founder dinners",
+    copy: "Forget the pitch competition. Forget the panel. This is a dinner series. We invite vetted entrepreneurs and digital business CEOs for a three-hour, multiple-course dinner. No stage, no slides, just the right people at the right table. Maybe you need an investor, a loan, a partner, or access to a new market. Whatever it is, you're not pitching a room. You're talking to the person across the table who can actually say yes. Caribbean + Diaspora.",
     image: images.event03,
     position: "object-center",
   },

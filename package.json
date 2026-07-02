@@ -7,6 +7,8 @@
     "dev": "vite --port=3000 --host=0.0.0.0",
     "build": "vite build",
     "preview": "vite preview",
+    "video:studio": "remotion studio src/remotion/index.ts",
+    "video:render": "remotion render src/remotion/index.ts KingstonBetaPromo public/kingston-beta-promo-widescreen.mp4 --codec=h264 --crf=18",
     "clean": "rm -rf dist server.js",
     "lint": "tsc --noEmit"
   },
@@ -31,11 +33,13 @@
     "vite": "^6.2.3"
   },
   "devDependencies": {
+    "@remotion/cli": "^4.0.484",
     "@types/express": "^4.17.21",
     "@types/node": "^22.14.0",
     "@types/three": "^0.184.1",
     "autoprefixer": "^10.4.21",
     "esbuild": "^0.25.0",
+    "remotion": "^4.0.484",
     "tailwindcss": "^4.1.14",
     "tsx": "^4.21.0",
     "typescript": "~5.8.2",

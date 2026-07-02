@@ -135,8 +135,8 @@ export default function HomeHero() {
             {...v(20, 0.42)}
             className="mt-6 max-w-[39rem] text-[0.95rem] font-medium leading-relaxed text-editorial/72 sm:text-base lg:text-[1rem]"
           >
-            Jamaica&apos;s technology community. Creators, innovators, and
-            problem solvers building the future—together.
+            The Caribbean&apos;s first + longest running tech event series and
+            community.
           </motion.p>
 
           {/* CTAs */}
@@ -214,7 +214,7 @@ export default function HomeHero() {
               </div>
             </div>
             <p className="mt-4 text-sm font-black text-[#C7E51D] sm:mt-5">
-              12,000+ members and counting
+              5,000+ members and counting
             </p>
           </motion.aside>
         </div>

@@ -3,6 +3,7 @@ import { X } from "lucide-react";
 import { useEffect, useRef, useState } from "react";
 import { gsap } from "gsap";
 import * as THREE from "three";
+import { whosWhoArchiveItems } from "../data/whosWhoArchiveItems";
 
 type GalleryItem = {
   src: string;
@@ -104,6 +105,7 @@ const galleryItems: GalleryItem[] = [
     height: 3.53,
     bg: 0x2c2325,
   },
+  ...whosWhoArchiveItems,
 ];
 
 
@@ -788,11 +790,10 @@ export default function WhosWhoGallery3D({
             )}
           </AnimatePresence>
 
-          {/* Cinematic Photo Detail Panel & Wash Effect */}
+          {/* Focused photo wash and close control */}
           <AnimatePresence>
             {selectedItem && (
               <>
-                {/* Full-screen ambient wash backdrop */}
                 <motion.div
                   initial={{ opacity: 0 }}
                   animate={{ opacity: 0.16 }}
@@ -802,67 +803,21 @@ export default function WhosWhoGallery3D({
                   style={{ backgroundImage: `url(${selectedItem.src})` }}
                 />
 
-                {/* Cinematic detail panel */}
-                <motion.aside
+                <motion.button
+                  type="button"
                   key={selectedItem.src}
                   data-gallery-control
+                  onClick={handleCloseFocus}
                   onPointerDown={(event) => event.stopPropagation()}
-                  initial={{ opacity: 0, x: 40 }}
-                  animate={{ opacity: 1, x: 0 }}
-                  exit={{ opacity: 0, x: 40 }}
-                  transition={{ duration: 0.6, ease: [0.16, 1, 0.3, 1] }}
-                  className="absolute right-0 top-0 bottom-0 z-30 flex flex-col justify-center w-full md:w-[46%] lg:w-[40%] xl:w-[35%] bg-black/95 md:bg-gradient-to-l md:from-black/98 md:via-black/85 md:to-transparent p-6 sm:p-12 text-[#F7F5F0] overflow-y-auto"
-                  role="dialog"
-                  aria-modal="false"
-                  aria-label={selectedItem.label}
+                  initial={{ opacity: 0, scale: 0.92 }}
+                  animate={{ opacity: 1, scale: 1 }}
+                  exit={{ opacity: 0, scale: 0.92 }}
+                  transition={{ duration: 0.35, ease: [0.16, 1, 0.3, 1] }}
+                  className="absolute right-6 top-6 z-40 grid h-11 w-11 place-items-center border border-white/15 bg-black/45 text-[#F7F5F0] backdrop-blur-md transition hover:bg-[#AFCB27] hover:text-editorial"
+                  aria-label="Close photo focus"
                 >
-                  <button
-                    type="button"
-                    onClick={handleCloseFocus}
-                    className="absolute right-6 top-6 grid h-10 w-10 place-items-center border border-white/10 bg-black/40 backdrop-blur-md text-[#F7F5F0] transition hover:bg-[#AFCB27] hover:text-editorial cursor-pointer"
-                    aria-label="Close photo detail"
-                  >
-                    <X size={18} />
-                  </button>
-
-                  <div className="flex flex-col h-full max-h-[85vh] justify-between py-6">
-                    <div className="flex-1 flex flex-col justify-center">
-                      <p className="font-mono text-[9px] font-black uppercase tracking-[0.25em] text-[#AFCB27] mb-6">
-                        Active Focus / Community Archive
-                      </p>
-
-                      {/* Large, high-resolution premium preview of the image */}
-                      <div className="relative mb-8 flex max-h-[52vh] items-center justify-center overflow-hidden border border-white/10 bg-[#080908] shadow-2xl group">
-                        <img
-                          src={selectedItem.src}
-                          alt={selectedItem.label}
-                          className="max-h-[52vh] w-full object-contain transition duration-700 group-hover:scale-[1.02]"
-                        />
-                      </div>
-
-                      <h2 className="font-display text-3xl sm:text-4xl lg:text-5xl font-extrabold leading-[1.05] tracking-tight mb-4 text-[#F7F5F0]">
-                        {selectedItem.label}
-                      </h2>
-
-                      <p className="text-sm sm:text-base leading-relaxed text-[#F7F5F0]/70 font-medium">
-                        {selectedItem.caption}
-                      </p>
-                    </div>
-
-                    <div className="mt-8 border-t border-white/10 pt-6 flex items-center justify-between">
-                      <span className="font-mono text-[9px] font-black uppercase tracking-[0.2em] text-[#F7F5F0]/40">
-                        Kingston BETA living archive
-                      </span>
-                      <button
-                        type="button"
-                        onClick={handleCloseFocus}
-                        className="bg-[#F7F5F0] text-editorial hover:bg-[#AFCB27] px-4 py-2 text-[10px] font-black uppercase tracking-[0.16em] transition cursor-pointer"
-                      >
-                        Close Focus
-                      </button>
-                    </div>
-                  </div>
-                </motion.aside>
+                  <X size={18} />
+                </motion.button>
               </>
             )}
           </AnimatePresence>

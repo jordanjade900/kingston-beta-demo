@@ -781,7 +781,7 @@ export default function EcosystemHero({ playIntro = false }: EcosystemHeroProps)
                   </div>
                   <div className="min-w-0">
                     <div className="text-[15px] font-extrabold leading-tight text-editorial">
-                      12,000+{" "}
+                      5,000+{" "}
                       <span className="font-normal opacity-70">
                         community members
                       </span>

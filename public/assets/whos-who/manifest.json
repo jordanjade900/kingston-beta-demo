@@ -1,52 +1,222 @@
 [
     {
-        "slug":  "networking-conversation",
-        "file":  "/assets/whos-who/networking-conversation.png",
-        "label":  "Ingrid Hosting Early Kingston BETA"
+        "slug": "networking-conversation",
+        "file": "/assets/whos-who/networking-conversation.png",
+        "label": "Ingrid Hosting Early Kingston BETA"
     },
     {
-        "slug":  "christopher-karin-holta",
-        "file":  "/assets/whos-who/christopher-karin-holta.png",
-        "label":  "Christopher \u0026 Karin"
+        "slug": "christopher-karin-holta",
+        "file": "/assets/whos-who/christopher-karin-holta.png",
+        "label": "Christopher & Karin"
     },
     {
-        "slug":  "seminar-audience",
-        "file":  "/assets/whos-who/seminar-audience.png",
-        "label":  "In the Room"
+        "slug": "seminar-audience",
+        "file": "/assets/whos-who/seminar-audience.png",
+        "label": "In the Room"
     },
     {
-        "slug":  "marc-ricardo-collaboration",
-        "file":  "/assets/whos-who/marc-ricardo-collaboration.png",
-        "label":  "Marc \u0026 Ricardo"
+        "slug": "marc-ricardo-collaboration",
+        "file": "/assets/whos-who/marc-ricardo-collaboration.png",
+        "label": "Marc & Ricardo"
     },
     {
-        "slug":  "community-participants",
-        "file":  "/assets/whos-who/community-participants.png",
-        "label":  "Community Session"
+        "slug": "community-participants",
+        "file": "/assets/whos-who/community-participants.png",
+        "label": "Community Session"
     },
     {
-        "slug":  "ac-lounge-networking",
-        "file":  "/assets/whos-who/ac-lounge-networking.png",
-        "label":  "AC Lounge Evening"
+        "slug": "ac-lounge-networking",
+        "file": "/assets/whos-who/ac-lounge-networking.png",
+        "label": "AC Lounge Evening"
     },
     {
-        "slug":  "events-full-house",
-        "file":  "/assets/whos-who/events-full-house.png",
-        "label":  "Full House"
+        "slug": "events-full-house",
+        "file": "/assets/whos-who/events-full-house.png",
+        "label": "Full House"
     },
     {
-        "slug":  "jampro-registration",
-        "file":  "/assets/whos-who/jampro-registration.png",
-        "label":  "Kingston BETA Check-In"
+        "slug": "jampro-registration",
+        "file": "/assets/whos-who/jampro-registration.png",
+        "label": "Kingston BETA Check-In"
     },
     {
-        "slug":  "more-good-jobs-book",
-        "file":  "/assets/whos-who/more-good-jobs-book.png",
-        "label":  "Lucky Seat Winners"
+        "slug": "more-good-jobs-book",
+        "file": "/assets/whos-who/more-good-jobs-book.png",
+        "label": "Lucky Seat Winners"
     },
     {
-        "slug":  "kaseith-pegasus-jamaica",
-        "file":  "/assets/whos-who/kaseith-pegasus-jamaica.png",
-        "label":  "Kingston BETA Speaker Session"
+        "slug": "kaseith-pegasus-jamaica",
+        "file": "/assets/whos-who/kaseith-pegasus-jamaica.png",
+        "label": "Kingston BETA Speaker Session"
+    },
+    {
+        "slug": "early-podium-moment",
+        "file": "/assets/whos-who/v2/early-podium-moment.webp",
+        "label": "Early Podium Moment"
+    },
+    {
+        "slug": "community-night-portrait",
+        "file": "/assets/whos-who/v2/community-night-portrait.webp",
+        "label": "Community Night Portrait"
+    },
+    {
+        "slug": "march-2010-session",
+        "file": "/assets/whos-who/v2/march-2010-session.webp",
+        "label": "March 2010 Session"
+    },
+    {
+        "slug": "community-crew-photo",
+        "file": "/assets/whos-who/v2/community-crew-photo.webp",
+        "label": "Community Crew Photo"
+    },
+    {
+        "slug": "startup-stage-speaker",
+        "file": "/assets/whos-who/v2/startup-stage-speaker.webp",
+        "label": "Startup Stage Speaker"
+    },
+    {
+        "slug": "founder-conversation",
+        "file": "/assets/whos-who/v2/founder-conversation.webp",
+        "label": "Founder Conversation"
+    },
+    {
+        "slug": "early-networking-exchange",
+        "file": "/assets/whos-who/v2/early-networking-exchange.webp",
+        "label": "Early Networking Exchange"
+    },
+    {
+        "slug": "tech-friends",
+        "file": "/assets/whos-who/v2/tech-friends.webp",
+        "label": "Tech Friends"
+    },
+    {
+        "slug": "front-row-focus",
+        "file": "/assets/whos-who/v2/front-row-focus.webp",
+        "label": "Front Row Focus"
+    },
+    {
+        "slug": "mic-in-hand",
+        "file": "/assets/whos-who/v2/mic-in-hand.webp",
+        "label": "Mic In Hand"
+    },
+    {
+        "slug": "founder-spotlight",
+        "file": "/assets/whos-who/v2/founder-spotlight.webp",
+        "label": "Founder Spotlight"
+    },
+    {
+        "slug": "builder-lab-talk",
+        "file": "/assets/whos-who/v2/builder-lab-talk.webp",
+        "label": "Builder Lab Talk"
+    },
+    {
+        "slug": "after-session-introductions",
+        "file": "/assets/whos-who/v2/after-session-introductions.webp",
+        "label": "After-Session Introductions"
+    },
+    {
+        "slug": "community-smiles",
+        "file": "/assets/whos-who/v2/community-smiles.webp",
+        "label": "Community Smiles"
+    },
+    {
+        "slug": "networking-trio",
+        "file": "/assets/whos-who/v2/networking-trio.webp",
+        "label": "Networking Trio"
+    },
+    {
+        "slug": "full-room-session",
+        "file": "/assets/whos-who/v2/full-room-session.webp",
+        "label": "Full-Room Session"
+    },
+    {
+        "slug": "courtyard-conversation",
+        "file": "/assets/whos-who/v2/courtyard-conversation.webp",
+        "label": "Courtyard Conversation"
+    },
+    {
+        "slug": "outdoor-mixer",
+        "file": "/assets/whos-who/v2/outdoor-mixer.webp",
+        "label": "Outdoor Mixer"
+    },
+    {
+        "slug": "community-circle",
+        "file": "/assets/whos-who/v2/community-circle.webp",
+        "label": "Community Circle"
+    },
+    {
+        "slug": "founder-in-the-garden",
+        "file": "/assets/whos-who/v2/founder-in-the-garden.webp",
+        "label": "Founder In The Garden"
+    },
+    {
+        "slug": "night-arrival",
+        "file": "/assets/whos-who/v2/night-arrival.webp",
+        "label": "Night Arrival"
+    },
+    {
+        "slug": "coworking-club-table",
+        "file": "/assets/whos-who/v2/coworking-club-table.webp",
+        "label": "Coworking Club Table"
+    },
+    {
+        "slug": "coworking-toast",
+        "file": "/assets/whos-who/v2/coworking-toast.webp",
+        "label": "Coworking Toast"
+    },
+    {
+        "slug": "coworking-club-room",
+        "file": "/assets/whos-who/v2/coworking-club-room.webp",
+        "label": "Coworking Club Room"
+    },
+    {
+        "slug": "office-hours",
+        "file": "/assets/whos-who/v2/office-hours.webp",
+        "label": "Office Hours"
+    },
+    {
+        "slug": "founder-selfie",
+        "file": "/assets/whos-who/v2/founder-selfie.webp",
+        "label": "Founder Selfie"
+    },
+    {
+        "slug": "founder-portrait",
+        "file": "/assets/whos-who/v2/founder-portrait.webp",
+        "label": "Founder Portrait"
+    },
+    {
+        "slug": "conference-selfie",
+        "file": "/assets/whos-who/v2/conference-selfie.webp",
+        "label": "Conference Selfie"
+    },
+    {
+        "slug": "women-in-the-room",
+        "file": "/assets/whos-who/v2/women-in-the-room.webp",
+        "label": "Women In The Room"
+    },
+    {
+        "slug": "community-lineup",
+        "file": "/assets/whos-who/v2/community-lineup.webp",
+        "label": "Community Lineup"
+    },
+    {
+        "slug": "listening-room",
+        "file": "/assets/whos-who/v2/listening-room.webp",
+        "label": "Listening Room"
+    },
+    {
+        "slug": "founder-pair",
+        "file": "/assets/whos-who/v2/founder-pair.webp",
+        "label": "Founder Pair"
+    },
+    {
+        "slug": "mixer-conversation",
+        "file": "/assets/whos-who/v2/mixer-conversation.webp",
+        "label": "Mixer Conversation"
+    },
+    {
+        "slug": "entrepreneur-exchange",
+        "file": "/assets/whos-who/v2/entrepreneur-exchange.webp",
+        "label": "Entrepreneur Exchange"
     }
 ]

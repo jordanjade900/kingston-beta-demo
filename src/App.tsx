@@ -30,7 +30,7 @@ type Page =
   | "about"
   | "who"
   | "partners"
-  | "blog"
+  | "services"
   | "merch"
   | "contact";
 
@@ -42,7 +42,7 @@ const pages = new Set<Page>([
   "about",
   "who",
   "partners",
-  "blog",
+  "services",
   "merch",
   "contact",
 ]);
@@ -103,77 +103,148 @@ function CountUpStat({
 function getPageFromHash(): Page {
   const page = window.location.hash.replace("#", "") || "top";
   if (page === "community") return "events";
+  if (page === "blog") return "services";
   return pages.has(page as Page) ? (page as Page) : "top";
 }
 
 function HomeTestimonials() {
   const testimonials = [
     {
-      quote: "A few of our investment success stories: GroceryList, Cypher, Pocmi, Datafluent, HeadOffice, QuickCart, and Sendana.",
-      name: "Kingston BETA network",
-      image: "/assets/kingston-beta-community-hub-v2.png",
+      name: "Monique Powell",
+      title: "Founder and CEO/CTO, Sendana",
+      status: "A Kingston BETA Investee",
+      image: "/assets/testimonials/monique-powell-sendana-quickcart.jpeg",
+      imagePosition: "object-[50%_28%]",
+      quote:
+        "Almost everyone I know in the tech space in Jamaica is someone I met through Kingston BETA.",
     },
     {
-      quote: "Kingston BETA is the guiding light in Jamaican-tech.",
-      name: "Dyan Brennan, Cypher",
-      image: "/assets/kingston-beta-building-learning-v2.png",
+      name: "Khary Sharpe",
+      title: "CEO, HeadOffice",
+      status: "A Kingston BETA Investee",
+      image: "/assets/testimonials/khary-sharpe-headoffice.png",
+      imagePosition: "object-[50%_20%]",
+      quote:
+        "Kingston BETA has opened doors through collaborations that simply would not exist otherwise.",
     },
     {
-      quote: "I have benefitted immeasurably via networking events, pitch competitions, and access to Techstars by way of Kingston BETA.",
-      name: "Founder testimonial",
-      image: "/assets/kingston-beta-live-builder-v2.png",
+      name: "Dylan Brennan",
+      title: "CEO, Cyphr",
+      status: "A Kingston BETA Investee",
+      image: "/assets/testimonials/dylan-brennan-cyphr.jpeg",
+      imagePosition: "object-[50%_22%]",
+      quote: "I got access and acceptance to Techstars by way of Kingston BETA.",
+    },
+    {
+      name: "Jermain Morgan",
+      title: "Co-Founder, GroceryList",
+      status: "A Kingston BETA Investee",
+      image: "/assets/testimonials/jermain-morgan-grocerylist.jpeg",
+      imagePosition: "object-[50%_24%]",
+      quote:
+        "Kingston BETA and Ingrid's leadership helped us grow from startup to growth-stage.",
+    },
+    {
+      name: "Melissa Powell",
+      title: "CEO, Pocmi",
+      status: "A Kingston BETA Investee",
+      image: "/assets/testimonials/melissa-powell-pocmi.jpeg",
+      imagePosition: "object-[50%_16%]",
+      quote: "It was exactly the space I needed, a place that fueled my ideas.",
+    },
+    {
+      name: "Raquel Seville",
+      title: "CEO and Founder, Dataffluent Limited",
+      status: "A Kingston BETA Investee",
+      image: "/assets/testimonials/raquel-seville-dataffluent.jpeg",
+      imagePosition: "object-[50%_24%]",
+      quote:
+        "Kingston BETA is a critical cornerstone of tech in Jamaica and the wider Caribbean.",
     },
   ];
 
   return (
     <section className="bg-[#FAFAF7] px-4 py-12 text-editorial sm:px-6 lg:px-12 lg:py-16">
       <div className="mx-auto max-w-[1700px]">
-        <div className="grid gap-6 lg:grid-cols-[0.72fr_1.28fr] lg:items-end">
-          <div>
-            <p className="mb-5 inline-flex bg-[#AFCB27] px-3 py-2 text-xs font-black uppercase tracking-[0.18em]">
-              Testimonials
-            </p>
-            <h2 className="font-display text-3xl font-extrabold leading-[0.98] tracking-tight sm:text-4xl lg:text-5xl">
-              Faces first. Then what the room made possible.
-            </h2>
-          </div>
-          <p className="max-w-3xl border-l-4 border-[#AFCB27] pl-5 text-base font-semibold leading-relaxed text-editorial/64 lg:pl-6">
-            Stories from the people who found collaborators, sharpened ideas,
-            and built what came next through Kingston BETA.
+        <div className="max-w-4xl">
+          <p className="mb-5 inline-flex bg-[#AFCB27] px-3 py-2 text-xs font-black uppercase tracking-[0.18em]">
+            Testimonials
+          </p>
+          <h2 className="font-display text-4xl font-extrabold leading-[0.96] tracking-tight sm:text-5xl lg:text-6xl">
+            Kingston BETA Testimonials
+          </h2>
+          <p className="mt-5 max-w-3xl text-base font-semibold leading-relaxed text-editorial/64 sm:text-lg">
+            Founder and investee voices from the relationships, funding paths,
+            and community rooms Kingston BETA helped make possible.
           </p>
         </div>
 
-        <div className="mt-10 grid gap-5 md:grid-cols-3">
-          {testimonials.map((item) => (
+        <div className="mt-10 grid gap-4 md:grid-cols-2 xl:grid-cols-3">
+          {testimonials.map((item, index) => (
             <article
               key={item.name}
-              className="flex flex-col border border-editorial/10 border-t-[3px] border-t-[#AFCB27] bg-white"
+              className="group/testimonial overflow-hidden border border-editorial/10 bg-white transition duration-300 hover:-translate-y-1 hover:border-editorial/25 hover:shadow-[0_22px_55px_rgba(17,17,17,0.08)]"
             >
-              <figure className="h-48 overflow-hidden bg-editorial sm:h-52">
+              <figure className="aspect-[5/4] overflow-hidden bg-editorial">
                 <img
                   src={item.image}
-                  alt=""
-                  className="h-full w-full object-cover transition duration-700 hover:scale-[1.025]"
+                  alt={`${item.name}, ${item.title}`}
+                  className={`h-full w-full object-cover ${item.imagePosition} transition duration-700 group-hover/testimonial:scale-[1.025]`}
                   loading="lazy"
                 />
               </figure>
-              <div className="flex flex-1 flex-col p-5 sm:p-6">
-                <span
-                  className="font-display text-4xl font-extrabold leading-none text-[#AFCB27]"
-                  aria-hidden="true"
-                >
-                  “
-                </span>
-                <blockquote className="-mt-2 max-w-[34rem] pb-8 font-display text-[clamp(1rem,1.25vw,1.25rem)] font-bold leading-[1.32] tracking-[-0.015em] text-editorial/90">
-                  {item.quote}
-                </blockquote>
-                <p className="mt-auto border-t border-editorial/10 pt-4 text-[10px] font-black uppercase tracking-[0.2em] text-[#1F7A3A]">
-                  {item.name}
+              <div className="flex min-h-[245px] flex-col p-5 sm:p-6">
+                <p className="font-mono text-[10px] font-black uppercase tracking-[0.18em] text-editorial/35">
+                  {String(index + 1).padStart(2, "0")}
                 </p>
+                <p className="mt-5 text-lg font-extrabold leading-snug text-editorial sm:text-xl">
+                  &ldquo;{item.quote}&rdquo;
+                </p>
+                <div className="mt-auto border-t border-editorial/10 pt-5">
+                  <h3 className="font-display text-3xl font-extrabold leading-none tracking-tight text-editorial">
+                    {item.name}
+                  </h3>
+                  <p className="mt-2 text-sm font-bold leading-snug text-editorial/62">
+                    {item.title}
+                  </p>
+                  <p className="mt-4 text-[10px] font-black uppercase tracking-[0.18em] text-[#1F7A3A]">
+                    {item.status}
+                  </p>
+                </div>
               </div>
             </article>
           ))}
         </div>
+
+        <figure className="mt-8 overflow-hidden border border-editorial bg-editorial text-warm shadow-[0_24px_70px_rgba(17,17,17,0.14)] lg:grid lg:grid-cols-[1.12fr_0.88fr]">
+          <div className="relative min-h-[320px] overflow-hidden bg-[#111111] sm:min-h-[430px]">
+            <img
+              src="/assets/testimonials/kingston-beta-june-2018-group.png"
+              alt="Kingston BETA community group photo from June 2018"
+              className="absolute inset-0 h-full w-full object-contain object-center"
+              style={{ filter: "sepia(0.12) saturate(0.86) contrast(1.08)" }}
+              loading="lazy"
+            />
+            <div
+              className="pointer-events-none absolute inset-0 bg-[radial-gradient(circle_at_50%_45%,transparent_0%,rgba(17,17,17,0.04)_62%,rgba(17,17,17,0.22)_100%)]"
+              aria-hidden="true"
+            />
+          </div>
+          <figcaption className="flex flex-col justify-between p-6 sm:p-8 lg:p-10">
+            <p className="font-mono text-[10px] font-black uppercase tracking-[0.2em] text-[#C7E51D]">
+              June 2018 archive
+            </p>
+            <div className="mt-20 lg:mt-0">
+              <h3 className="font-display text-4xl font-extrabold leading-[0.94] tracking-tight sm:text-5xl">
+                One room, many builders.
+              </h3>
+              <p className="mt-5 max-w-md text-base font-semibold leading-relaxed text-warm/62">
+                A Kingston BETA community moment from June 2018, kept close to
+                the testimonials because this is the network those stories grew from.
+              </p>
+            </div>
+          </figcaption>
+        </figure>
       </div>
     </section>
   );
@@ -196,22 +267,27 @@ function BlogIndex({
   );
 }
 
-function BlogPage() {
-  const posts = [
+function ServicesPage() {
+  const services = [
     [
-      "SiliconCaribe Stories",
-      "3,000+ stories told about Caribbean tech, startups, innovation, digital business, and the people shaping the scene.",
-      "Archive",
+      "Community Access",
+      "Put your founders, team, or brand inside the room where Caribbean builders, operators, investors, and digital talent already gather.",
+      "Network",
     ],
     [
-      "Event Recaps",
-      "What happened in the room, who showed up, and the connections, launches, and ideas worth carrying forward.",
-      "Room Notes",
+      "Event Partnerships",
+      "Co-create mixers, founder sessions, launch moments, workshops, and special rooms with the Kingston BETA community engine behind them.",
+      "Rooms",
     ],
     [
-      "Ecosystem Signals",
-      "Perspective on entrepreneurs, tech talent, investment, digital culture, and the Caribbean's place in the Digital Age.",
+      "Founder Visibility",
+      "Surface promising entrepreneurs through pitch moments, curated introductions, content, and credibility inside a trusted tech network.",
       "Signal",
+    ],
+    [
+      "Ecosystem Intelligence",
+      "Use the Kingston BETA lens to understand the people, ideas, markets, and partnerships moving Caribbean technology forward.",
+      "Insight",
     ],
   ];
 
@@ -228,14 +304,14 @@ function BlogPage() {
             <div className="absolute inset-0 bg-[linear-gradient(180deg,rgba(17,17,17,0.14)_0%,rgba(17,17,17,0.78)_74%,rgba(17,17,17,0.94)_100%)]" />
             <div className="relative z-10 flex min-h-[620px] flex-col justify-between p-6 sm:p-8 lg:p-10">
               <p className="w-fit bg-[#AFCB27] px-3 py-2 text-xs font-black uppercase tracking-[0.18em] text-editorial">
-                Blog
+                Services
               </p>
               <div>
                 <p className="mb-4 font-mono text-xs font-black uppercase tracking-[0.2em] text-warm/52">
-                  Featured Dispatch
+                  Community-led services
                 </p>
                 <h1 className="max-w-[48rem] text-balance font-display text-4xl font-extrabold leading-[0.96] tracking-[-0.035em] sm:text-5xl lg:text-6xl">
-                  Caribbean tech stories with names, receipts, and context.
+                  Bring the right people into the right room.
                 </h1>
               </div>
             </div>
@@ -244,20 +320,20 @@ function BlogPage() {
           <aside className="grid gap-4">
             <div className="bg-white p-6 lg:p-8">
               <p className="text-xs font-black uppercase tracking-[0.18em] text-[#1F7A3A]">
-                Editorial Lens
+                What we make possible
               </p>
               <p className="mt-8 text-2xl font-semibold leading-snug text-editorial/74">
-                The blog extends Kingston BETA beyond the event room,
-                documenting Caribbean tech, startup stories, innovation, and
-                culture through the SiliconCaribe lens.
+                Kingston BETA helps partners, founders, and ecosystem builders
+                turn attention into relationships, relationships into
+                opportunities, and opportunities into visible momentum.
               </p>
             </div>
             <div className="grid grid-cols-2 gap-4">
               {[
-                ["3,000+", "Innovation stories"],
-                ["19", "Years in the room"],
-                ["15", "Countries reached"],
-                ["1", "Caribbean lens"],
+                ["5,000+", "Community members"],
+                ["19", "Years building"],
+                ["15", "Countries connected"],
+                ["4", "Communities activated"],
               ].map(([value, label]) => (
                 <div key={label} className="bg-[#AFCB27] p-5">
                   <p className="kb-stat-value font-display text-4xl font-extrabold">
@@ -275,11 +351,11 @@ function BlogPage() {
         <div className="mt-8 grid gap-4 lg:grid-cols-[0.72fr_1.28fr]">
           <div className="border-y border-editorial/10 py-6">
             <h2 className="font-display text-4xl font-extrabold leading-tight">
-              What the room remembers.
+              Services built around real rooms.
             </h2>
           </div>
           <div className="grid gap-3">
-            {posts.map(([title, copy, tag], index) => (
+            {services.map(([title, copy, tag], index) => (
               <article
                 key={title}
                 className="group/blog-post grid overflow-hidden border border-editorial/10 bg-white transition duration-300 hover:border-[#AFCB27]/70 hover:shadow-[0_18px_50px_rgba(17,17,17,0.08)] md:grid-cols-[9.5rem_1fr_auto] md:items-stretch"
@@ -299,7 +375,7 @@ function BlogPage() {
                   </p>
                 </div>
                 <span className="self-center px-5 pb-5 text-xs font-black uppercase tracking-[0.16em] text-editorial/42 md:pb-0">
-                  Read
+                  Start
                 </span>
               </article>
             ))}
@@ -352,8 +428,8 @@ function PartnersPage() {
   ];
   const lanes = [
     ["JAMPRO + DBJ", "Development partners who have helped Caribbean entrepreneurs, tech talent, and digital business owners access opportunity."],
-    ["Techstars", "Global startup network partnerships that helped move Kingston BETA entrepreneurs closer to investment and scale."],
     ["Black Tech Week + AgriHack", "Ecosystem allies who helped Caribbean tech show up across markets, conferences, and innovation programs."],
+    ["Entrepreneurs Across Borders + Techstars", "Global startup network partnerships that helped move Kingston BETA entrepreneurs closer to investment and scale."],
   ];
 
   return (
@@ -379,7 +455,7 @@ function PartnersPage() {
             <div className="grid gap-5 self-end sm:grid-cols-2">
               {[
                 [20, "+", "Partners and supporters"],
-                [15, "", "Countries touched"],
+                [15, "", "Countries connected"],
                 [300, "+", "Events backed"],
                 [100, "k+", "People reached"],
               ].map(([value, suffix, label], index) => (
@@ -638,11 +714,11 @@ function ContactPage() {
               Contact Kingston BETA
             </p>
             <h1 className="mt-7 max-w-2xl text-balance font-display text-4xl font-extrabold leading-[0.94] tracking-tight sm:text-5xl">
-              Start with the conversation you want to have.
+              Stay ahead of Caribbean tech.
             </h1>
             <p className="mt-6 max-w-xl text-base font-semibold leading-relaxed text-warm/62 sm:text-lg">
-              Community, partnership, or story: choose the right door and your
-              note will reach the people best placed to answer it.
+              Sign up for the free 5min weekly SiliconCaribe Insider newsletter.
+              Events. Trends. Innovation Stories in every issue.
             </p>
           </div>
           <figure className="relative aspect-[4/5] overflow-hidden sm:aspect-[4/3]">
@@ -653,8 +729,8 @@ function ContactPage() {
             />
             <div className="absolute inset-0 bg-[linear-gradient(180deg,transparent_46%,rgba(17,17,17,0.92)_100%)]" />
             <figcaption className="absolute inset-x-6 bottom-7 max-w-lg border-l-4 border-[#AFCB27] pl-5 text-base font-semibold leading-relaxed sm:inset-x-10 sm:bottom-10 sm:text-lg">
-              Real people are behind every inbox. Tell us enough to point the
-              conversation in the right direction.
+              Events, trends, and innovation stories from the Caribbean tech
+              ecosystem, delivered in five minutes each week.
             </figcaption>
           </figure>
         </div>
@@ -675,19 +751,19 @@ function ContactPage() {
             </p>
             <div>
               <h1 className="max-w-4xl font-display text-4xl font-extrabold leading-[0.94] tracking-tight sm:text-5xl lg:text-6xl xl:text-7xl">
-                Start with the conversation you want to have.
-              </h1>
+              Stay ahead of Caribbean tech.
+            </h1>
               <p className="mt-7 max-w-2xl text-lg font-semibold leading-relaxed text-warm/60">
-                Community, partnership, or story: choose the right door and
-                your note will reach the people best placed to answer it.
+                Sign up for the free 5min weekly SiliconCaribe Insider newsletter.
+                Events. Trends. Innovation Stories in every issue.
               </p>
             </div>
           </div>
           <div className="relative z-10 min-h-[500px] overflow-hidden">
             <div className="absolute inset-0 bg-[linear-gradient(180deg,rgba(17,17,17,0.02),rgba(17,17,17,0.68))]" />
             <p className="absolute bottom-7 left-7 right-7 max-w-lg border-l-4 border-[#AFCB27] pl-5 text-lg font-semibold leading-relaxed sm:bottom-10 sm:left-10 sm:text-xl">
-              Real people are behind every inbox. Tell us enough to point the
-              conversation in the right direction.
+              Events, trends, and innovation stories from the Caribbean tech
+              ecosystem, delivered in five minutes each week.
             </p>
           </div>
         </div>
@@ -783,7 +859,7 @@ function PageView({
     return <WhoPage onGalleryModeChange={onWhoGalleryModeChange} />;
   }
   if (page === "partners") return <PartnersPage />;
-  if (page === "blog") return <BlogPage />;
+  if (page === "services") return <ServicesPage />;
   if (page === "merch") return <MerchPage />;
   if (page === "contact") return <ContactPage />;
   return null;

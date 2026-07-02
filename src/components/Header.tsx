@@ -8,8 +8,8 @@ const navItems = [
   { id: 2, label: "Events", href: "#events" },
   { id: 3, label: "Who's Who", href: "#who" },
   { id: 4, label: "Partners", href: "#partners" },
-  { id: 5, label: "Blog", href: "#blog" },
-  { id: 6, label: "Merch", href: "#merch" },
+  { id: 5, label: "Merch", href: "#merch" },
+  { id: 6, label: "Services", href: "#services" },
   { id: 7, label: "Contact", href: "#contact" },
 ];
 
@@ -51,7 +51,8 @@ export default function Header() {
   useEffect(() => {
     const updateActivePage = () => {
       const currentHash = window.location.hash || "#top";
-      const activeItem = navItems.find((item) => item.href === currentHash);
+      const normalizedHash = currentHash === "#blog" ? "#services" : currentHash;
+      const activeItem = navItems.find((item) => item.href === normalizedHash);
 
       setActive(activeItem ?? null);
     };
