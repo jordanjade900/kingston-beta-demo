@@ -104,7 +104,7 @@ export default function HomeHero() {
       </div>
 
       <div className="relative z-10 mx-auto flex min-h-screen w-full max-w-[1800px] flex-col px-4 pb-7 pt-28 sm:px-6 sm:pt-32 lg:h-screen lg:min-h-0 lg:px-10 lg:pb-7 lg:pt-[112px]">
-        <div className="flex flex-1 flex-col justify-center py-8 lg:max-w-[52%] lg:justify-start lg:pb-[104px] lg:pt-[7vh]">
+        <div className="flex flex-1 flex-col justify-center py-8 lg:max-w-[52%] lg:justify-center lg:pb-[104px] lg:pt-[10vh]">
 
           {/* Headline — three lines staggered */}
           <h1 className="font-display text-[clamp(3.25rem,12vw,5rem)] font-extrabold leading-[0.86] tracking-[-0.06em] sm:text-[clamp(4.25rem,9vw,5.6rem)] lg:text-[clamp(3.75rem,5.35vw,6rem)]">

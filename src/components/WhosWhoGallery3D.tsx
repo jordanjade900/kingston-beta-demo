@@ -449,7 +449,7 @@ export default function WhosWhoGallery3D({
       if (isDragging) {
         const deltaY = event.clientY - lastDragY;
         dragDistance += Math.abs(deltaY);
-        targetScroll += deltaY * 0.012;
+        targetScroll -= deltaY * 0.012;
         lastDragY = event.clientY;
       }
     };
