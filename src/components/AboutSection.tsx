@@ -1,8 +1,8 @@
-import { ArrowUpRight, TrendingUp } from "lucide-react";
+import { ArrowUpRight } from "lucide-react";
 import { eventMilestones } from "../data/siteContent";
 
 const images = {
-  firstEventFlier: "/assets/thefirstkingstonbeta.png",
+  firstEventFlier: "/assets/kingston-beta-about-first-event-correct.png",
 };
 
 export default function AboutSection() {
@@ -39,8 +39,8 @@ export default function AboutSection() {
       className="kb-scroll-section kb-section-edge border-y border-editorial/10 bg-[#FAFAF7] px-4 py-18 text-editorial sm:px-6 lg:px-12 lg:py-24"
     >
       <div className="mx-auto grid max-w-[1500px] gap-12 lg:grid-cols-[1.05fr_0.95fr] lg:items-center">
-        <div className="relative min-h-[680px]">
-          <figure className="absolute left-1/2 top-[225px] h-[360px] w-[66%] min-w-[280px] -translate-x-1/2 overflow-hidden bg-editorial">
+        <div className="relative min-h-[660px] sm:min-h-[760px] lg:min-h-[820px]">
+          <figure className="absolute inset-y-0 left-1/2 w-full max-w-[460px] -translate-x-1/2 overflow-hidden sm:max-w-[560px] lg:max-w-[610px]">
             <img
               src={images.firstEventFlier}
               alt="The very first Kingston BETA event flier"
@@ -48,34 +48,6 @@ export default function AboutSection() {
               loading="lazy"
             />
           </figure>
-
-          <div className="absolute right-0 top-0 w-[250px] border border-editorial/10 bg-white p-5 shadow-[0_22px_55px_rgba(17,17,17,0.08)]">
-            <div className="flex items-start justify-between gap-4">
-              <div>
-                <p className="kb-stat-value font-display text-3xl font-extrabold tracking-tight">
-                  100,000+
-                </p>
-                <p className="mt-1 text-[11px] font-bold leading-tight text-editorial/55">
-                  people directly impacted across Kingston BETA events and communities.
-                </p>
-              </div>
-              <TrendingUp size={18} className="text-[#1F7A3A]" />
-            </div>
-            <div className="mt-5 border-t border-editorial/10 pt-4">
-              <div className="flex flex-wrap gap-1.5">
-                {["300+ events", "15 countries", "3,000+ stories", "4 communities"].map(
-                  (item) => (
-                    <span
-                      key={item}
-                      className="border border-editorial/10 bg-[#F4F2EC] px-2 py-1 text-[9px] font-black"
-                    >
-                      {item}
-                    </span>
-                  ),
-                )}
-              </div>
-            </div>
-          </div>
 
           <div className="absolute bottom-0 left-0 border border-editorial/10 bg-white px-5 py-4 shadow-[0_20px_45px_rgba(17,17,17,0.08)]">
             <p className="text-xs font-black uppercase tracking-[0.18em]">
