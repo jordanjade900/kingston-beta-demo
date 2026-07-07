@@ -296,12 +296,12 @@ function HomeCommunityBlog() {
         </figure>
 
         <aside className="grid gap-5 sm:grid-cols-2 xl:grid-cols-1">
-          <div className="min-h-[220px] bg-[#AFCB27] p-7 text-editorial sm:min-h-[312px]">
-            <UsersRound className="h-7 w-7" strokeWidth={2.35} aria-hidden="true" />
+          <div className="min-h-[220px] bg-editorial p-7 text-white sm:min-h-[312px]">
+            <UsersRound className="h-7 w-7 text-[#AFCB27]" strokeWidth={2.35} aria-hidden="true" />
             <h3 className="mt-12 font-display text-4xl font-extrabold leading-none tracking-tight">
               People
             </h3>
-            <p className="mt-4 max-w-[15rem] text-base font-extrabold leading-snug text-editorial/78">
+            <p className="mt-4 max-w-[15rem] text-base font-extrabold leading-snug text-white">
               A network that mixes skill, ambition, culture, and trust.
             </p>
           </div>
