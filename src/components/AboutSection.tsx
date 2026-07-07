@@ -2,7 +2,7 @@ import { ArrowUpRight, TrendingUp } from "lucide-react";
 import { eventMilestones } from "../data/siteContent";
 
 const images = {
-  aboutCommunitySignal: "/assets/kingston-beta-about-community-signal-correct.png",
+  firstEventFlier: "/assets/thefirstkingstonbeta.png",
 };
 
 export default function AboutSection() {
@@ -40,21 +40,13 @@ export default function AboutSection() {
     >
       <div className="mx-auto grid max-w-[1500px] gap-12 lg:grid-cols-[1.05fr_0.95fr] lg:items-center">
         <div className="relative min-h-[680px]">
-          <figure className="absolute left-1/2 top-[225px] h-[360px] w-[66%] min-w-[280px] -translate-x-1/2 overflow-hidden border-[6px] border-white bg-editorial shadow-[0_26px_70px_rgba(17,17,17,0.13)]">
+          <figure className="absolute left-1/2 top-[225px] h-[360px] w-[66%] min-w-[280px] -translate-x-1/2 overflow-hidden bg-editorial">
             <img
-              src={images.aboutCommunitySignal}
-              alt="Kingston BETA community members in conversation at an event"
+              src={images.firstEventFlier}
+              alt="The very first Kingston BETA event flier"
               className="h-full w-full object-contain object-center"
-              style={{ filter: "sepia(0.14) saturate(0.82) contrast(1.08)" }}
               loading="lazy"
             />
-            <div
-              className="pointer-events-none absolute inset-0 bg-[radial-gradient(circle_at_50%_45%,transparent_0%,rgba(17,17,17,0.08)_72%,rgba(17,17,17,0.22)_100%)]"
-              aria-hidden="true"
-            />
-            <figcaption className="absolute bottom-3 left-3 bg-white/90 px-2 py-1 font-mono text-[9px] font-black uppercase tracking-[0.16em] text-editorial">
-              Community / Signal
-            </figcaption>
           </figure>
 
           <div className="absolute right-0 top-0 w-[250px] border border-editorial/10 bg-white p-5 shadow-[0_22px_55px_rgba(17,17,17,0.08)]">

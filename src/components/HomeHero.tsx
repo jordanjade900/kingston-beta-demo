@@ -125,9 +125,6 @@ export default function HomeHero() {
               />
             </motion.span>
 
-            <motion.span {...v(24, 0.31)} className="mt-[0.14em] block">
-              Kingston<span className="text-[#F10E0E]">.</span>
-            </motion.span>
           </h1>
 
           {/* Sub-headline */}

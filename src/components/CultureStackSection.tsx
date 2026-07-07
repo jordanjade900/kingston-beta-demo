@@ -8,6 +8,8 @@ const images = {
   event02: "/assets/kingston-beta-event-02.png",
   event03: "/assets/kingston-beta-event-03.png",
   event04: "/assets/kingston-beta-event-04.png",
+  coworkClub: "/assets/coworkclub1.png",
+  hitList: "/assets/KBhitlist.png",
   communityHub: "/assets/kingston-beta-community-hub-v2.png",
   communityRelationships: "/assets/kingston-beta-community-relationships.png",
   buildingLearning: "/assets/kingston-beta-building-learning-v2.png",
@@ -35,15 +37,15 @@ const programs = [
     title: "Kingston BETA House | CoWorking Club",
     meta: "daytime coworking club",
     copy: "A daytime coworking club for people building what's next hosted in great restaurants and spaces where work actually gets done, your thinking sharpens, and your network grows.",
-    image: images.event04,
-    position: "object-[50%_38%]",
+    image: images.coworkClub,
+    position: "object-[50%_34%]",
   },
   {
     title: "The HitList",
     meta: "invite-only founder dinners",
     copy: "Forget the pitch competition. Forget the panel. This is a dinner series. We invite vetted entrepreneurs and digital business CEOs for a three-hour, multiple-course dinner. No stage, no slides, just the right people at the right table. Maybe you need an investor, a loan, a partner, or access to a new market. Whatever it is, you're not pitching a room. You're talking to the person across the table who can actually say yes. Caribbean + Diaspora.",
-    image: images.event03,
-    position: "object-center",
+    image: images.hitList,
+    position: "object-[62%_38%]",
   },
 ];
 
@@ -284,7 +286,7 @@ export default function CultureStackSection({ page }: CultureStackSectionProps) 
                 </h1>
                 <div className="border-l-4 border-[#AFCB27] pl-6">
                   <p className="max-w-xl text-lg font-semibold leading-relaxed text-warm/74 sm:text-xl">
-                    Rooms full of Caribbean people building what&apos;s next
+                    They are creating the future of tech and business
                   </p>
                 </div>
               </div>
@@ -336,7 +338,7 @@ export default function CultureStackSection({ page }: CultureStackSectionProps) 
                       key={program.title}
                       className="group overflow-hidden border border-editorial/10 bg-white"
                     >
-                      <figure className="relative h-56 overflow-hidden bg-editorial">
+                      <figure className="relative h-72 overflow-hidden bg-editorial">
                         <img
                           src={program.image}
                           alt=""

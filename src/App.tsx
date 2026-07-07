@@ -114,7 +114,7 @@ function HomeTestimonials() {
       title: "Founder and CEO/CTO, Sendana",
       status: "A Kingston BETA Investee",
       image: "/assets/testimonials/monique-powell-sendana-quickcart.jpeg",
-      imagePosition: "object-[50%_28%]",
+      imagePosition: "object-[50%_18%]",
       quote:
         "Almost everyone I know in the tech space in Jamaica is someone I met through Kingston BETA.",
     },
@@ -123,7 +123,7 @@ function HomeTestimonials() {
       title: "CEO, HeadOffice",
       status: "A Kingston BETA Investee",
       image: "/assets/testimonials/khary-sharpe-headoffice.png",
-      imagePosition: "object-[50%_20%]",
+      imagePosition: "object-[50%_16%]",
       quote:
         "Kingston BETA has opened doors through collaborations that simply would not exist otherwise.",
     },
@@ -132,7 +132,7 @@ function HomeTestimonials() {
       title: "CEO, Cyphr",
       status: "A Kingston BETA Investee",
       image: "/assets/testimonials/dylan-brennan-cyphr.jpeg",
-      imagePosition: "object-[50%_22%]",
+      imagePosition: "object-[50%_16%]",
       quote: "I got access and acceptance to Techstars by way of Kingston BETA.",
     },
     {
@@ -140,7 +140,7 @@ function HomeTestimonials() {
       title: "Co-Founder, GroceryList",
       status: "A Kingston BETA Investee",
       image: "/assets/testimonials/jermain-morgan-grocerylist.jpeg",
-      imagePosition: "object-[50%_24%]",
+      imagePosition: "object-[50%_20%]",
       quote:
         "Kingston BETA and Ingrid's leadership helped us grow from startup to growth-stage.",
     },
@@ -149,7 +149,7 @@ function HomeTestimonials() {
       title: "CEO, Pocmi",
       status: "A Kingston BETA Investee",
       image: "/assets/testimonials/melissa-powell-pocmi.jpeg",
-      imagePosition: "object-[50%_16%]",
+      imagePosition: "object-[50%_12%]",
       quote: "It was exactly the space I needed, a place that fueled my ideas.",
     },
     {
@@ -157,7 +157,7 @@ function HomeTestimonials() {
       title: "CEO and Founder, Dataffluent Limited",
       status: "A Kingston BETA Investee",
       image: "/assets/testimonials/raquel-seville-dataffluent.jpeg",
-      imagePosition: "object-[50%_24%]",
+      imagePosition: "object-[50%_18%]",
       quote:
         "Kingston BETA is a critical cornerstone of tech in Jamaica and the wider Caribbean.",
     },
@@ -165,86 +165,190 @@ function HomeTestimonials() {
 
   return (
     <section className="bg-[#FAFAF7] px-4 py-12 text-editorial sm:px-6 lg:px-12 lg:py-16">
-      <div className="mx-auto max-w-[1700px]">
-        <div className="max-w-4xl">
-          <p className="mb-5 inline-flex bg-[#AFCB27] px-3 py-2 text-xs font-black uppercase tracking-[0.18em]">
-            Testimonials
-          </p>
-          <h2 className="font-display text-4xl font-extrabold leading-[0.96] tracking-tight sm:text-5xl lg:text-6xl">
-            Kingston BETA Testimonials
-          </h2>
-          <p className="mt-5 max-w-3xl text-base font-semibold leading-relaxed text-editorial/64 sm:text-lg">
-            Founder and investee voices from the relationships, funding paths,
-            and community rooms Kingston BETA helped make possible.
+      <div className="mx-auto max-w-[1180px]">
+        <div className="grid gap-6 lg:grid-cols-[0.72fr_1.28fr] lg:items-end">
+          <div>
+            <p className="mb-5 inline-flex bg-[#AFCB27] px-3 py-2 text-xs font-black uppercase tracking-[0.18em]">
+              Testimonials
+            </p>
+            <h2 className="font-display text-3xl font-extrabold leading-[0.98] tracking-tight sm:text-4xl lg:text-5xl">
+              Faces first. Then what the room made possible.
+            </h2>
+          </div>
+          <p className="max-w-3xl border-l-4 border-[#AFCB27] pl-5 text-base font-semibold leading-relaxed text-editorial/64 lg:pl-6">
+            Stories from the people who found collaborators, sharpened ideas,
+            and built what came next through Kingston BETA.
           </p>
         </div>
 
-        <div className="mt-10 grid gap-4 md:grid-cols-2 xl:grid-cols-3">
-          {testimonials.map((item, index) => (
+        <div className="mt-10 grid gap-5 md:grid-cols-2 xl:grid-cols-3">
+          {testimonials.map((item) => (
             <article
               key={item.name}
-              className="group/testimonial overflow-hidden border border-editorial/10 bg-white transition duration-300 hover:-translate-y-1 hover:border-editorial/25 hover:shadow-[0_22px_55px_rgba(17,17,17,0.08)]"
+              className="flex flex-col border border-editorial/10 border-t-[3px] border-t-[#AFCB27] bg-white"
             >
-              <figure className="aspect-[5/4] overflow-hidden bg-editorial">
+              <figure className="aspect-square overflow-hidden bg-editorial">
                 <img
                   src={item.image}
                   alt={`${item.name}, ${item.title}`}
-                  className={`h-full w-full object-cover ${item.imagePosition} transition duration-700 group-hover/testimonial:scale-[1.025]`}
+                  className={`h-full w-full object-cover ${item.imagePosition} transition duration-700 hover:scale-[1.025]`}
                   loading="lazy"
                 />
               </figure>
-              <div className="flex min-h-[245px] flex-col p-5 sm:p-6">
-                <p className="font-mono text-[10px] font-black uppercase tracking-[0.18em] text-editorial/35">
-                  {String(index + 1).padStart(2, "0")}
-                </p>
-                <p className="mt-5 text-lg font-extrabold leading-snug text-editorial sm:text-xl">
-                  &ldquo;{item.quote}&rdquo;
-                </p>
-                <div className="mt-auto border-t border-editorial/10 pt-5">
-                  <h3 className="font-display text-3xl font-extrabold leading-none tracking-tight text-editorial">
+              <div className="flex flex-1 flex-col p-5 sm:p-6">
+                <span
+                  className="font-display text-4xl font-extrabold leading-none text-[#AFCB27]"
+                  aria-hidden="true"
+                >
+                  &ldquo;
+                </span>
+                <blockquote className="-mt-2 max-w-[34rem] pb-8 font-display text-[clamp(1rem,1.25vw,1.25rem)] font-bold leading-[1.32] tracking-[-0.015em] text-editorial/90">
+                  {item.quote}
+                </blockquote>
+                <footer className="mt-auto border-t border-editorial/10 pt-4">
+                  <p className="text-[10px] font-black uppercase tracking-[0.2em] text-[#1F7A3A]">
                     {item.name}
-                  </h3>
-                  <p className="mt-2 text-sm font-bold leading-snug text-editorial/62">
+                  </p>
+                  <p className="mt-2 text-xs font-bold leading-snug text-editorial/58">
                     {item.title}
                   </p>
-                  <p className="mt-4 text-[10px] font-black uppercase tracking-[0.18em] text-[#1F7A3A]">
-                    {item.status}
-                  </p>
-                </div>
+                </footer>
               </div>
             </article>
           ))}
         </div>
+      </div>
+    </section>
+  );
+}
 
-        <figure className="mt-8 overflow-hidden border border-editorial bg-editorial text-warm shadow-[0_24px_70px_rgba(17,17,17,0.14)] lg:grid lg:grid-cols-[1.12fr_0.88fr]">
-          <div className="relative min-h-[320px] overflow-hidden bg-[#111111] sm:min-h-[430px]">
+function BlogIndex({
+  value,
+  accent = false,
+}: {
+  value: number;
+  accent?: boolean;
+}) {
+  return (
+    <span
+      className={`kb-blog-index${accent ? " kb-blog-index--accent" : ""}`}
+      aria-hidden="true"
+    >
+      {String(value).padStart(2, "0")}
+    </span>
+  );
+}
+
+function HomeCommunityBlog() {
+  const posts = [
+    [
+      "SiliconCaribe Stories",
+      "3,000+ stories told about Caribbean tech, startups, innovation, digital business, and the people shaping the scene.",
+      "Archive",
+    ],
+    [
+      "Event Recaps",
+      "What happened in the room, who showed up, and the connections, launches, and ideas worth carrying forward.",
+      "Room Notes",
+    ],
+    [
+      "Ecosystem Signals",
+      "Perspective on entrepreneurs, tech talent, investment, digital culture, and the Caribbean's place in the Digital Age.",
+      "Signal",
+    ],
+  ];
+
+  return (
+    <section className="bg-[#F7F5F0] px-4 py-12 text-editorial sm:px-6 lg:px-12 lg:py-16">
+      <div className="mx-auto max-w-[1700px]">
+        <div className="grid gap-6 lg:grid-cols-[1.1fr_0.9fr] lg:items-stretch">
+          <article className="relative min-h-[520px] overflow-hidden bg-editorial text-warm lg:min-h-[620px]">
             <img
-              src="/assets/testimonials/kingston-beta-june-2018-group.png"
-              alt="Kingston BETA community group photo from June 2018"
-              className="absolute inset-0 h-full w-full object-contain object-center"
-              style={{ filter: "sepia(0.12) saturate(0.86) contrast(1.08)" }}
+              src="/assets/kingston-beta-live-builder-v2.png"
+              alt="Kingston BETA community member in a builder room"
+              className="absolute inset-0 h-full w-full object-cover opacity-54"
               loading="lazy"
             />
-            <div
-              className="pointer-events-none absolute inset-0 bg-[radial-gradient(circle_at_50%_45%,transparent_0%,rgba(17,17,17,0.04)_62%,rgba(17,17,17,0.22)_100%)]"
-              aria-hidden="true"
-            />
-          </div>
-          <figcaption className="flex flex-col justify-between p-6 sm:p-8 lg:p-10">
-            <p className="font-mono text-[10px] font-black uppercase tracking-[0.2em] text-[#C7E51D]">
-              June 2018 archive
-            </p>
-            <div className="mt-20 lg:mt-0">
-              <h3 className="font-display text-4xl font-extrabold leading-[0.94] tracking-tight sm:text-5xl">
-                One room, many builders.
-              </h3>
-              <p className="mt-5 max-w-md text-base font-semibold leading-relaxed text-warm/62">
-                A Kingston BETA community moment from June 2018, kept close to
-                the testimonials because this is the network those stories grew from.
+            <div className="absolute inset-0 bg-[linear-gradient(180deg,rgba(17,17,17,0.14)_0%,rgba(17,17,17,0.78)_74%,rgba(17,17,17,0.94)_100%)]" />
+            <div className="relative z-10 flex min-h-[520px] flex-col justify-between p-6 sm:p-8 lg:min-h-[620px] lg:p-10">
+              <p className="w-fit bg-[#AFCB27] px-3 py-2 text-xs font-black uppercase tracking-[0.18em] text-editorial">
+                Community Blog
+              </p>
+              <div>
+                <p className="mb-4 font-mono text-xs font-black uppercase tracking-[0.2em] text-warm/52">
+                  Featured Dispatch
+                </p>
+                <h2 className="max-w-[48rem] text-balance font-display text-4xl font-extrabold leading-[0.96] tracking-tight sm:text-5xl lg:text-6xl">
+                  Caribbean tech stories with names, receipts, and context.
+                </h2>
+              </div>
+            </div>
+          </article>
+
+          <aside className="grid gap-4">
+            <div className="bg-white p-6 lg:p-8">
+              <p className="text-xs font-black uppercase tracking-[0.18em] text-[#1F7A3A]">
+                Editorial Lens
+              </p>
+              <p className="mt-8 text-2xl font-semibold leading-snug text-editorial/74">
+                The blog extends Kingston BETA beyond the event room,
+                documenting Caribbean tech, startup stories, innovation, and
+                culture through the SiliconCaribe lens.
               </p>
             </div>
-          </figcaption>
-        </figure>
+            <div className="grid grid-cols-2 gap-4">
+              {[
+                ["3,000+", "Innovation stories"],
+                ["19", "Years in the room"],
+                ["15", "Countries reached"],
+                ["1", "Caribbean lens"],
+              ].map(([value, label]) => (
+                <div key={label} className="bg-[#AFCB27] p-5">
+                  <p className="kb-stat-value font-display text-4xl font-extrabold">
+                    {value}
+                  </p>
+                  <p className="mt-2 text-[11px] font-black uppercase tracking-[0.16em] text-editorial/58">
+                    {label}
+                  </p>
+                </div>
+              ))}
+            </div>
+          </aside>
+        </div>
+
+        <div className="mt-8 grid gap-4 lg:grid-cols-[0.72fr_1.28fr]">
+          <div className="border-y border-editorial/10 py-6">
+            <h2 className="font-display text-4xl font-extrabold leading-tight">
+              What the room remembers.
+            </h2>
+          </div>
+          <div className="grid gap-3">
+            {posts.map(([title, copy, tag], index) => (
+              <article
+                key={title}
+                className="group/blog-post grid overflow-hidden border border-editorial/10 bg-white transition duration-300 hover:border-[#AFCB27]/70 hover:shadow-[0_18px_50px_rgba(17,17,17,0.08)] md:grid-cols-[9.5rem_1fr_auto] md:items-stretch"
+              >
+                <div className="kb-blog-index-panel">
+                  <BlogIndex value={index + 1} />
+                </div>
+                <div className="self-center p-5">
+                  <p className="text-xs font-black uppercase tracking-[0.18em] text-[#1F7A3A]">
+                    {tag}
+                  </p>
+                  <h3 className="mt-2 font-display text-3xl font-extrabold">
+                    {title}
+                  </h3>
+                  <p className="mt-3 max-w-3xl text-base leading-relaxed text-editorial/62">
+                    {copy}
+                  </p>
+                </div>
+                <span className="self-center px-5 pb-5 text-xs font-black uppercase tracking-[0.16em] text-editorial/42 md:pb-0">
+                  Read
+                </span>
+              </article>
+            ))}
+          </div>
+        </div>
       </div>
     </section>
   );
@@ -307,11 +411,11 @@ function ServicesPage() {
       title: "Build Opportunity",
       lead: "Great ideas need more than inspiration. They need execution.",
       body:
-        "We help turn promising ecosystem energy into practical initiatives, durable programs, and high-impact projects built for the Caribbean and its diaspora.",
+        "We help turn promising ecosystem energy into practical initiatives, durable programmes, and high-impact projects built for the Caribbean and its diaspora.",
       services: [
         [
           "Ecosystem Strategy",
-          "Designing startup initiatives and entrepreneurship programs built for lasting economic impact.",
+          "Designing startup initiatives and entrepreneurship programmes built for lasting economic impact.",
         ],
         [
           "Strategic Projects",
@@ -359,6 +463,13 @@ function ServicesPage() {
           </div>
 
           <div className="relative min-h-[560px] overflow-hidden bg-[#11120f] text-warm">
+            <img
+              src="/assets/kingston-beta-services-ai-graphic.png"
+              alt="Abstract Caribbean innovation network graphic"
+              className="absolute inset-0 h-full w-full object-cover opacity-78"
+              loading="eager"
+            />
+            <div className="absolute inset-0 bg-[linear-gradient(180deg,rgba(17,18,15,0.12)_0%,rgba(17,18,15,0.36)_42%,rgba(17,18,15,0.9)_100%)]" />
             <div className="pointer-events-none absolute inset-0 bg-[linear-gradient(135deg,rgba(255,255,255,0.055)_0%,rgba(255,255,255,0)_36%,rgba(0,0,0,0.28)_100%)]" />
             <motion.div
               className="pointer-events-none absolute h-[74%] w-[82%] rounded-full bg-[#AFCB27]/18 blur-[96px]"
@@ -423,7 +534,7 @@ function ServicesPage() {
       <section className="px-4 py-10 sm:px-6 lg:px-12 lg:py-14">
         <div className="mx-auto grid max-w-[1700px] gap-6 border-y border-editorial/10 py-8 lg:grid-cols-[0.78fr_1.22fr] lg:py-10">
           <h2 className="break-words font-display text-[2rem] font-extrabold leading-[1] tracking-tight [text-wrap:wrap] sm:text-5xl sm:leading-[0.98]">
-            We did not join the Caribbean tech ecosystem. We built it.
+            We did not join the Caribbean tech ecosystem. We help build it.
           </h2>
           <div className="grid gap-5 text-lg font-semibold leading-relaxed text-editorial/66">
             <p>
@@ -605,7 +716,7 @@ function PartnersPage() {
   ];
   const lanes = [
     ["JAMPRO + DBJ", "Development partners who have helped Caribbean entrepreneurs, tech talent, and digital business owners access opportunity."],
-    ["Black Tech Week + AgriHack", "Ecosystem allies who helped Caribbean tech show up across markets, conferences, and innovation programs."],
+    ["Black Tech Week + AgriHack", "Ecosystem allies who helped Caribbean tech show up across markets, conferences, and innovation programmes."],
     ["Entrepreneurs Across Borders + Techstars", "Global startup network partnerships that helped move Kingston BETA entrepreneurs closer to investment and scale."],
   ];
 
@@ -844,18 +955,21 @@ function ContactPage() {
       kicker: "Join the room",
       copy: "Membership, attendance, volunteering, founder questions, and the many ways to take part.",
       email: "community@kingstonbeta.com",
+      href: undefined,
     },
     {
       title: "Sponsorship",
       kicker: "Back the room",
-      copy: "Brand partnerships, event sponsorships, program collaboration, spaces, and shared opportunities.",
+      copy: "Brand partnerships, event sponsorships, programme collaboration, spaces, and shared opportunities.",
       email: "sponsor@kingstonbeta.com",
+      href: undefined,
     },
     {
-      title: "Media",
-      kicker: "Tell the story",
-      copy: "Interviews, press, speaking requests, event coverage, and access to the Kingston BETA archive.",
-      email: "media@kingstonbeta.com",
+      title: "Newsletter",
+      kicker: "Know the story",
+      copy: "Never miss what's happening at Kingston BETA. Get updates on Founder events, opportunities, and resources. Sign up",
+      email: "newsletter@kingstonbeta.com",
+      href: "http://eepurl.com/iqXgj-",
     },
   ];
 
@@ -891,12 +1005,8 @@ function ContactPage() {
               Contact Kingston BETA
             </p>
             <h1 className="mt-7 max-w-2xl text-balance font-display text-4xl font-extrabold leading-[0.94] tracking-tight sm:text-5xl">
-              Stay ahead of Caribbean tech.
+              Stay Connected to Caribbean Tech.
             </h1>
-            <p className="mt-6 max-w-xl text-base font-semibold leading-relaxed text-warm/62 sm:text-lg">
-              Sign up for the free 5min weekly SiliconCaribe Insider newsletter.
-              Events. Trends. Innovation Stories in every issue.
-            </p>
           </div>
           <figure className="relative aspect-[4/5] overflow-hidden sm:aspect-[4/3]">
             <img
@@ -905,10 +1015,6 @@ function ContactPage() {
               className="h-full w-full object-cover object-[72%_center] sm:object-[66%_center]"
             />
             <div className="absolute inset-0 bg-[linear-gradient(180deg,transparent_46%,rgba(17,17,17,0.92)_100%)]" />
-            <figcaption className="absolute inset-x-6 bottom-7 max-w-lg border-l-4 border-[#AFCB27] pl-5 text-base font-semibold leading-relaxed sm:inset-x-10 sm:bottom-10 sm:text-lg">
-              Events, trends, and innovation stories from the Caribbean tech
-              ecosystem, delivered in five minutes each week.
-            </figcaption>
           </figure>
         </div>
 
@@ -928,20 +1034,12 @@ function ContactPage() {
             </p>
             <div>
               <h1 className="max-w-4xl font-display text-4xl font-extrabold leading-[0.94] tracking-tight sm:text-5xl lg:text-6xl xl:text-7xl">
-              Stay ahead of Caribbean tech.
+              Stay Connected to Caribbean Tech.
             </h1>
-              <p className="mt-7 max-w-2xl text-lg font-semibold leading-relaxed text-warm/60">
-                Sign up for the free 5min weekly SiliconCaribe Insider newsletter.
-                Events. Trends. Innovation Stories in every issue.
-              </p>
             </div>
           </div>
           <div className="relative z-10 min-h-[500px] overflow-hidden">
             <div className="absolute inset-0 bg-[linear-gradient(180deg,rgba(17,17,17,0.02),rgba(17,17,17,0.68))]" />
-            <p className="absolute bottom-7 left-7 right-7 max-w-lg border-l-4 border-[#AFCB27] pl-5 text-lg font-semibold leading-relaxed sm:bottom-10 sm:left-10 sm:text-xl">
-              Events, trends, and innovation stories from the Caribbean tech
-              ecosystem, delivered in five minutes each week.
-            </p>
           </div>
         </div>
 
@@ -949,7 +1047,9 @@ function ContactPage() {
           {routes.map((route, index) => (
             <a
               key={route.email}
-              href={`mailto:${route.email}`}
+              href={route.href ?? `mailto:${route.email}`}
+              target={route.href ? "_blank" : undefined}
+              rel={route.href ? "noreferrer" : undefined}
               className="group/contact flex min-h-[340px] flex-col border border-editorial/10 bg-white p-6 transition duration-300 hover:-translate-y-1 hover:bg-[#AFCB27] sm:p-8"
             >
               <div className="flex items-start justify-between gap-4">
@@ -969,7 +1069,7 @@ function ContactPage() {
                   {route.copy}
                 </p>
                 <p className="mt-7 flex items-center justify-between border-t border-editorial/10 pt-5 font-mono text-[11px] uppercase tracking-[0.12em] text-editorial/48">
-                  {route.email} <ArrowUpRight className="h-4 w-4" />
+                  {route.href ? "Sign up" : route.email} <ArrowUpRight className="h-4 w-4" />
                 </p>
               </div>
             </a>
@@ -1114,6 +1214,7 @@ export default function App() {
             className="min-h-screen will-change-transform"
           >
             <HomeHero />
+            <HomeCommunityBlog />
             <HomeTestimonials />
             <BackToTopButton />
           </motion.div>

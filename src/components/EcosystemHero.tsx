@@ -63,7 +63,7 @@ export default function EcosystemHero({ playIntro = false }: EcosystemHeroProps)
   const commentsPanelRef = useRef<HTMLDivElement>(null);
   const curtainRef = useRef<HTMLDivElement>(null);
 
-  // Dynamic typewriter words for We build, learn, elevate.
+  // Dynamic typewriter words for We build, grow, elevate.
   const [titleNumber, setTitleNumber] = useState(0);
   const [typedWord, setTypedWord] = useState("");
   const [isDeleting, setIsDeleting] = useState(false);
@@ -621,11 +621,11 @@ export default function EcosystemHero({ playIntro = false }: EcosystemHeroProps)
             <div className="kb-curtain-mark relative z-10 flex flex-col items-center justify-center text-center">
               <div className="kb-curtain-title font-display text-[42px] font-extrabold leading-none tracking-[-0.055em] text-editorial sm:text-[58px]">
                 <span className="kb-curtain-word-wrap inline-block overflow-hidden pb-2">
-                  <span className="kb-curtain-word inline-block">Kingston</span>
+                  <span className="kb-curtain-word inline-block">We</span>
                 </span>
                 <span className="kb-curtain-word-wrap ml-2 inline-block overflow-hidden pb-2 sm:ml-3">
                   <span className="kb-curtain-word kb-curtain-word-accent inline-block text-[#AFCB27]">
-                    Beta
+                    Build
                   </span>
                 </span>
               </div>

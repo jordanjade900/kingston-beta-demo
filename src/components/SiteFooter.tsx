@@ -24,7 +24,7 @@ const footerLinks = [
       { label: "Instagram", href: "https://www.instagram.com/kingstonbeta" },
       {
         label: "Caribbean Tech Week",
-        href: "https://caribbeantechweek.vercel.app/",
+        href: "http://caribbeanttechweek.com/",
       },
     ],
   },
@@ -50,11 +50,11 @@ export default function SiteFooter({ compact = false }: { compact?: boolean }) {
                 Contact Us
               </p>
               <h2 className="text-balance font-display text-4xl font-extrabold leading-[0.94] tracking-tight sm:text-5xl lg:text-7xl">
-                Bring your next room, program, or partnership into our network.
+                Bring your next room, programme, or partnership into our network.
               </h2>
               <p className="mt-6 max-w-xl text-base leading-relaxed text-editorial/62">
                 Build with Kingston BETA. Community collaborations. Event partnerships.
-                Programme ideas. Media Content. Caribbean tech ecosystem opportunities.
+                Programme ideas. Newsletter. Caribbean tech ecosystem opportunities.
                 Services. Let&apos;s talk.
               </p>
             </div>
