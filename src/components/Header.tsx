@@ -97,7 +97,7 @@ export default function Header() {
           transition={{ duration: 0.58, ease: [0.16, 1, 0.3, 1], delay: 0.08 }}
         >
           <img
-            src="https://res.cloudinary.com/dad155oxi/image/upload/v1780171676/kingston-beta-logo-transparent_s9ynpu.png"
+            src="/assets/kingston-beta-logo.png"
             alt="Kingston Beta"
             className="h-auto w-[104px] object-contain transition group-hover/kb-logo:opacity-80 min-[380px]:w-[118px] sm:w-[138px] lg:w-[150px]"
           />

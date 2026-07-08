@@ -773,7 +773,7 @@ footer,
   z-index: 2;
   height: 26px;
   background:
-    linear-gradient(90deg, var(--color-brand) 0 18%, transparent 18% 21%, var(--color-editorial) 21% 100%) top left / 100% 2px no-repeat,
+    linear-gradient(90deg, var(--color-brand) 0 18%, var(--color-editorial) 18% 100%) top left / 100% 2px no-repeat,
     linear-gradient(90deg, transparent 0 6%, rgba(17, 17, 17, 0.08) 6% 6.2%, transparent 6.2% 12%) 0 9px / 120px 10px repeat-x,
     linear-gradient(90deg, var(--color-brand) 0 46px, transparent 46px) left 100% / 100% 3px no-repeat;
 }
@@ -789,7 +789,7 @@ footer,
 
 .kb-section-edge-flip::before {
   background:
-    linear-gradient(90deg, var(--color-editorial) 0 79%, transparent 79% 82%, var(--color-brand) 82% 100%) top left / 100% 2px no-repeat,
+    linear-gradient(90deg, var(--color-editorial) 0 79%, var(--color-brand) 79% 100%) top left / 100% 2px no-repeat,
     linear-gradient(90deg, transparent 0 6%, rgba(17, 17, 17, 0.08) 6% 6.2%, transparent 6.2% 12%) 0 9px / 120px 10px repeat-x,
     linear-gradient(270deg, var(--color-brand) 0 46px, transparent 46px) right 100% / 100% 3px no-repeat;
 }
