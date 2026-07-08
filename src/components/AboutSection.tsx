@@ -39,17 +39,17 @@ export default function AboutSection() {
       className="kb-scroll-section kb-section-edge border-y border-editorial/10 bg-[#FAFAF7] px-4 py-18 text-editorial sm:px-6 lg:px-12 lg:py-24"
     >
       <div className="mx-auto grid max-w-[1500px] gap-12 lg:grid-cols-[1.05fr_0.95fr] lg:items-center">
-        <div className="relative min-h-[660px] sm:min-h-[760px] lg:min-h-[820px]">
-          <figure className="absolute inset-y-0 left-1/2 w-full max-w-[460px] -translate-x-1/2 overflow-hidden sm:max-w-[560px] lg:max-w-[610px]">
+        <div className="relative flex flex-col items-start justify-center">
+          <figure className="mx-auto w-full max-w-[460px] overflow-hidden sm:max-w-[560px] lg:max-w-[610px]">
             <img
               src={images.firstEventFlier}
               alt="The very first Kingston BETA event flier"
-              className="h-full w-full object-contain object-center"
+              className="max-h-[560px] w-full object-contain object-center sm:max-h-[660px] lg:max-h-[700px]"
               loading="lazy"
             />
           </figure>
 
-          <div className="absolute bottom-0 left-0 border border-editorial/10 bg-white px-5 py-4 shadow-[0_20px_45px_rgba(17,17,17,0.08)]">
+          <div className="kb-community-signal-card mt-4 border border-editorial/10 bg-white px-5 py-4 shadow-[0_20px_45px_rgba(17,17,17,0.08)]">
             <p className="text-xs font-black uppercase tracking-[0.18em]">
               Community signal
             </p>
